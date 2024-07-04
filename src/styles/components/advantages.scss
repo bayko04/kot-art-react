@@ -1,0 +1,21 @@
+.advantages {
+    &__row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__item {
+        text-align: center;
+        padding: 65px;
+
+        & p {
+            font-family: monts;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 25px;
+            color: #022479;
+            margin: 10px 0 0 0;
+        }
+    }
+}

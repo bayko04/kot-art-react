@@ -1,0 +1,30 @@
+.kot-auth {
+    height: 600px;
+    background: url("../../images/content/kotAuth.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    &__btns {
+        display: flex;
+        padding: calc(600px / 2) 0 0 0;
+        justify-content: space-between;
+        align-items: center;
+        font-family: roboto;
+        font-weight: 400;
+        font-size: 14px;
+
+        & a,
+        & button {
+            width: 365px;
+            padding: 20px;
+            text-align: center;
+            background: #16b6b6;
+            color: #fff;
+            border-radius: 5px;
+            transform: translateY(-50%);
+        }
+        & button {
+            background: #b7b7b7;
+        }
+    }
+}

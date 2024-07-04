@@ -1,0 +1,53 @@
+.find-art {
+    padding: 50px 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.09) 0%,
+        rgba(47, 187, 215, 0.09) 63.5%,
+        rgba(255, 243, 250, 0.09) 100%
+    );
+
+    text-align: center;
+
+    &__title {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-family: roboto;
+        font-weight: 500;
+        font-size: 32px;
+        color: #023059;
+    }
+
+    &__text {
+        font-family: roboto;
+        font-weight: 400;
+        font-size: 20px;
+        color: #8b949c;
+        max-width: 415px;
+        margin: 27px auto;
+    }
+
+    &__btns {
+        display: flex;
+        gap: 157px;
+        justify-content: center;
+
+        & button {
+            text-transform: uppercase;
+            font-family: roboto;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 18px 88px;
+            color: #fff;
+            border-radius: 4px;
+        }
+    }
+
+    &__help {
+        background: #f579bd;
+    }
+
+    &__yourself {
+        background: #5cd3cb;
+    }
+}

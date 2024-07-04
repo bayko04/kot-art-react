@@ -1,0 +1,45 @@
+.footer {
+    max-width: 1300px;
+    box-shadow: 0px 4px 55px 0px #188b8385;
+    padding: 25px 50px;
+    margin: 0 auto;
+
+    &__lists {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__column {
+        & h3 {
+            font-family: "open sans";
+            font-weight: 700;
+            font-size: 17px;
+            color: #000;
+            line-height: 52px;
+            padding: 0 0 7px 0;
+            border-bottom: 1px solid #000;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0 0 0;
+
+        & li {
+            font-family: "open sans";
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        & a {
+            color: #023059;
+        }
+    }
+
+    &__payment {
+        border-top: 1px solid #bfbfbf;
+        padding: 30px 0 0 0;
+        margin: 50px 0 0 0;
+    }
+}

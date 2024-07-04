@@ -1,0 +1,21 @@
+@import "./statics/null.scss";
+@import "./header.scss";
+@import "./statics/font.scss";
+@import "./components/FirstSection.scss";
+@import "./pages/HomePage.scss";
+@import "./components/FindArt.scss";
+@import "./components/Team.scss";
+@import "./components/BatBanner.scss";
+@import "./components/KotAuth.scss";
+@import "./components/advantages.scss";
+@import "./components/Footer.scss";
+
+body {
+    font-family: roboto;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 1230px;
+    margin: 0 auto;
+}
