@@ -1,0 +1,36 @@
+.auth {
+  min-height: 100vh;
+  background: #f3f1f2;
+  position: relative;
+
+  &__logo {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 300px 0 0 0;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: center;
+    gap: 105px;
+
+    & a {
+      font-family: lato;
+      font-weight: 700;
+      font-size: 40px;
+      color: #220848;
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: #ea3ef7;
+      }
+
+      &:active {
+        color: #f362fe;
+      }
+    }
+  }
+}

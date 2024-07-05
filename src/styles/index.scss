@@ -9,13 +9,19 @@
 @import "./components/KotAuth.scss";
 @import "./components/advantages.scss";
 @import "./components/Footer.scss";
+@import "./components/DiscoverStyle.scss";
+@import "./components/AllCategories.scss";
+@import "./components/NewItems.scss";
+@import "./components/SelectedArt.scss";
+@import "./components/BuyOnline.scss";
+@import "./pages/Auth.scss";
 
 body {
-    font-family: roboto;
-    font-weight: 400;
+  font-family: roboto;
+  font-weight: 400;
 }
 
 .container {
-    max-width: 1230px;
-    margin: 0 auto;
+  max-width: 1230px;
+  margin: 0 auto;
 }

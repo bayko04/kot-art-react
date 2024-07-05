@@ -1,0 +1,62 @@
+.discover-style {
+  text-align: center;
+  padding: 20px 0 40px;
+
+  &__title {
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 24px;
+    color: #082947;
+  }
+
+  &__text {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 510px;
+    margin: 10px auto;
+    color: #8b949c;
+  }
+
+  .discover-style__form {
+    display: flex;
+    gap: 20px;
+
+    & select {
+      padding: 10px 0;
+      text-transform: uppercase;
+      font-family: roboto;
+      font-weight: 500;
+      font-size: 14px;
+      width: 324px;
+      border-bottom: 1px solid #000;
+    }
+
+    & button {
+      text-transform: uppercase;
+      font-family: roboto;
+      font-weight: 500;
+      font-size: 14px;
+      width: 332px;
+      display: inline-block;
+      padding: 10px 0;
+      color: #fff;
+      background: #f9a8d4;
+    }
+  }
+
+  &__filter {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 0 0;
+
+    & li {
+      cursor: pointer;
+      font-family: roboto;
+      font-weight: 300;
+      font-size: 14px;
+      background: #f4f2f1;
+      padding: 7px 15px;
+    }
+  }
+}
