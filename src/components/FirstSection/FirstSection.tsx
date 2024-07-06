@@ -36,7 +36,7 @@ const FirstSection = () => {
               </div>
               <div className="first-section__rigth">
                 <div className="first-section__timer">
-                  {/* <img src={timerImg} alt="" /> */}
+                  <img src={timerImg} alt="" />
                 </div>
               </div>
             </div>
