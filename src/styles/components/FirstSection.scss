@@ -60,6 +60,9 @@
   }
 
   // dots
+  & .slick-dots.custom-dots {
+    box-shadow: none;
+  }
 
   & .slick-dots.custom-dots {
     bottom: 30px;
