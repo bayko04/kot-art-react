@@ -33,12 +33,12 @@
       background: transparent;
       // overflow: hidden;
 
-      // & option {
-      //   width: 100%;
-      //   white-space: nowrap; /* Запрещает перенос текста */
-      //   overflow: hidden; /* Скрытие переполнения */
-      //   text-overflow: ellipsis; /* Добавление многоточия для длинного текста */
-      // }
+      & option {
+        // width: 100%;
+        // white-space: nowrap; /* Запрещает перенос текста */
+        // overflow: hidden; /* Скрытие переполнения */
+        // text-overflow: ellipsis; /* Добавление многоточия для длинного текста */
+      }
     }
 
     & button {

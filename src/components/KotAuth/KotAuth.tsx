@@ -6,10 +6,12 @@ const KotAuth = () => {
     <div className="kot-auth">
       <div className="container">
         <div className="kot-auth__btns">
-          <Link to="" className="kot-auth__signIn">
+          <Link to="/auth" className="kot-auth__signIn">
             Sing in
           </Link>
-          <button className="kot-auth__google">Continue with Google</button>
+          <button className="kot-auth__google">
+            <Link to="/atuh"></Link>
+          </button>
         </div>
       </div>
     </div>

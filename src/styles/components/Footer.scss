@@ -74,13 +74,24 @@
   &__media-row {
     display: flex;
     gap: 15px;
+
+    & a {
+      cursor: pointer;
+    }
   }
 
   &__logo {
+    & img {
+      cursor: pointer;
+    }
   }
 
   &__payment {
     text-align: end;
+
+    & img {
+      cursor: pointer;
+    }
   }
 
   @media (max-width: 1300px) {
