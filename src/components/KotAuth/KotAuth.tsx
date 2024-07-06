@@ -9,9 +9,7 @@ const KotAuth = () => {
           <Link to="/auth" className="kot-auth__signIn">
             Sing in
           </Link>
-          <button className="kot-auth__google">
-            <Link to="/atuh"></Link>
-          </button>
+          <button className="kot-auth__google">Continue with Google</button>
         </div>
       </div>
     </div>
