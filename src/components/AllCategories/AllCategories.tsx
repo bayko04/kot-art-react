@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import firstImg from "../../images/png/slider1/1.png";
 import secondImg from "../../images/png/slider1/2.png";
@@ -10,12 +10,35 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const AllCategories = () => {
+  const slider = useRef<any>(null);
+
   const settings = {
     dots: true,
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+
+    customPaging: function (i: any) {
+      return <div className="custom-dot"></div>;
+    },
+    dotsClass: "slick-dots custom-dots",
+
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
   };
 
   return (
@@ -26,38 +49,40 @@ const AllCategories = () => {
           <Link to="/">All paintings</Link>
         </p>
 
-        <Slider {...settings} className="all-categories__slider">
-          <div className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={firstImg} alt="" />
+        <div className="slider-container">
+          <Slider {...settings} className="all-categories__slider">
+            <div className="all-categories__slide">
+              <div className="all-categories__painting">
+                <img src={firstImg} alt="" />
+              </div>
+              <p className="all-categories__name">KOTART COLLECTION</p>
             </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={secondImg} alt="" />
+            <div className="all-categories__slide">
+              <div className="all-categories__painting">
+                <img src={secondImg} alt="" />
+              </div>
+              <p className="all-categories__name">KOTART COLLECTION</p>
             </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={thirdImg} alt="" />
+            <div className="all-categories__slide">
+              <div className="all-categories__painting">
+                <img src={thirdImg} alt="" />
+              </div>
+              <p className="all-categories__name">KOTART COLLECTION</p>
             </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fourthImg} alt="" />
+            <div className="all-categories__slide">
+              <div className="all-categories__painting">
+                <img src={fourthImg} alt="" />
+              </div>
+              <p className="all-categories__name">KOTART COLLECTION</p>
             </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fivethImg} alt="" />
+            <div className="all-categories__slide">
+              <div className="all-categories__painting">
+                <img src={fivethImg} alt="" />
+              </div>
+              <p className="all-categories__name">KOTART COLLECTION</p>
             </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-        </Slider>
+          </Slider>
+        </div>
       </div>
     </div>
   );

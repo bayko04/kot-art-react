@@ -1,44 +1,101 @@
 .first-section {
-    height: 100vh;
-    background: url("../../images/content/back.jpg") no-repeat;
-    background-size: cover;
-    background-position: center center;
-    padding: 130px 0 0 0;
+  height: 100vh;
 
-    &__row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+  &__backgrounds {
+    &_1 {
+      background: url("../../images/content/back.jpg") no-repeat;
+      min-height: 100vh;
+      background-size: cover;
+      background-position: center center;
+      padding: 130px 0 0 0;
     }
+  }
 
-    &__left {
-        text-align: center;
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__left {
+    text-align: center;
+  }
+
+  &__title {
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 51px;
+    color: #082947;
+    max-width: 488px;
+  }
+
+  &__text {
+    font-family: inter;
+    font-weight: 500;
+    font-size: 15px;
+    max-width: 123px;
+    color: #034c8c;
+    margin: 45px auto;
+  }
+
+  &__btn {
+    & button {
+      font-family: inter;
+      font-weight: 500;
+      font-size: 14px;
+      background: #fdcc35;
+      padding: 10px 65px;
     }
+  }
 
+  &__timer {
+    width: 273px;
+    height: 244px;
+
+    & img {
+      height: 344px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // dots
+
+  & .slick-dots.custom-dots {
+    bottom: 30px;
+  }
+
+  & .custom-dot {
+    background-color: rgba(51, 51, 51, 0.25);
+  }
+
+  & .slick-dots.custom-dots li.slick-active .custom-dot {
+    background-color: rgba(8, 41, 71, 1); /* Цвет активной точки */
+  }
+
+  // adaptive
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
     &__title {
-        font-family: roboto;
-        font-weight: 700;
-        font-size: 51px;
-        color: #082947;
-        max-width: 488px;
+      font-size: 41px;
     }
 
     &__text {
-        font-family: inter;
-        font-weight: 500;
-        font-size: 15px;
-        max-width: 123px;
-        color: #034c8c;
-        margin: 45px auto;
+      font-size: 15px;
+      margin: 25px auto;
     }
 
     &__btn {
-        & button {
-            font-family: inter;
-            font-weight: 500;
-            font-size: 14px;
-            background: #fdcc35;
-            padding: 10px 65px;
-        }
+      & button {
+        font-size: 14px;
+      }
     }
+  }
+  @media (max-width: 768px) {
+    &__row {
+      flex-direction: column;
+    }
+  }
 }

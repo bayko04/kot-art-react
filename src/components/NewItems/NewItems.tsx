@@ -10,7 +10,7 @@ const NewItems = () => {
   const slider = useRef<any>(null);
 
   const settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 500,

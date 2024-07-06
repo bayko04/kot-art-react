@@ -1,30 +1,59 @@
 .kot-auth {
-    height: 600px;
-    background: url("../../images/content/kotAuth.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
+  height: 600px;
+  background: url("../../images/content/kotAuth.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
 
-    &__btns {
-        display: flex;
-        padding: calc(600px / 2) 0 0 0;
-        justify-content: space-between;
-        align-items: center;
-        font-family: roboto;
-        font-weight: 400;
-        font-size: 14px;
+  &__btns {
+    display: flex;
+    padding: calc(600px / 2) 0 0 0;
+    justify-content: space-between;
+    align-items: center;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 14px;
 
-        & a,
-        & button {
-            width: 365px;
-            padding: 20px;
-            text-align: center;
-            background: #16b6b6;
-            color: #fff;
-            border-radius: 5px;
-            transform: translateY(-50%);
-        }
-        & button {
-            background: #b7b7b7;
-        }
+    & a,
+    & button {
+      width: 365px;
+      padding: 20px;
+      text-align: center;
+      background: #16b6b6;
+      color: #fff;
+      border-radius: 5px;
+      transform: translateY(-50%);
+      box-shadow: 0px 4px 8px 0px rgba(255, 255, 255, 1);
     }
+    & button {
+      position: relative;
+      color: #000;
+      background: #ffffff;
+      box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 1);
+      box-shadow: 0px 4px 4px 0px rgba(42, 254, 254, 1);
+
+      &::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 50%;
+        left: 90px;
+        transform: translateY(-50%);
+        background: url("../../images/svg/google.svg\ fill.svg") no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    &__btns {
+      padding: 150px 0 0 0;
+      flex-direction: column;
+      gap: 250px;
+    }
+  }
 }

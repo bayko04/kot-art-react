@@ -22,9 +22,22 @@
     font-weight: 700;
     font-size: 16px;
     text-transform: uppercase;
+    position: relative;
+    display: inline-block;
 
     & a {
       color: #034c8c;
+
+      &::after {
+        content: "";
+        width: 20px;
+        height: 10px;
+        position: absolute;
+        top: 3px;
+        right: -35px;
+        background: url("../../images/png/btnsArrow/blue.svg") no-repeat;
+        background-size: contain;
+      }
     }
   }
 
@@ -38,5 +51,36 @@
       height: 500px;
       object-fit: contain;
     }
+  }
+
+  // slider arrows
+
+  & .custom-prev-arrow {
+    left: -70px;
+  }
+
+  & .custom-next-arrow {
+    right: -70px;
+  }
+
+  @media (max-width: 1350px) {
+    & .custom-prev-arrow {
+      left: -20px;
+    }
+
+    & .custom-next-arrow {
+      right: -20px;
+    }
+  }
+  @media (max-width: 992px) {
+    & .custom-prev-arrow {
+      left: -20px;
+    }
+
+    & .custom-next-arrow {
+      right: -20px;
+    }
+  }
+  @media (max-width: 768px) {
   }
 }

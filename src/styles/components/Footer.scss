@@ -1,84 +1,99 @@
 .footer {
-    max-width: 1300px;
-    box-shadow: 0px 4px 55px 0px #188b8385;
-    padding: 25px 50px;
-    margin: 0 auto;
+  max-width: 1300px;
+  box-shadow: 0px 4px 55px 0px #188b8385;
+  padding: 25px 50px;
+  margin: 80px auto 50px auto;
 
+  &__lists {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__column {
+    & h3 {
+      font-family: "open sans";
+      font-weight: 700;
+      font-size: 17px;
+      color: #000;
+      line-height: 52px;
+      padding: 0 0 7px 0;
+      border-bottom: 1px solid #000;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 0;
+
+    & li {
+      font-family: "open sans";
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    & a {
+      color: #023059;
+    }
+  }
+
+  &__payment {
+    border-top: 1px solid #bfbfbf;
+    padding: 30px 0 0 0;
+    margin: 50px 0 0 0;
+  }
+
+  &__contact {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 0 0 44px 0;
+
+    & a {
+      display: block;
+    }
+  }
+
+  &__gmail {
+    color: #337ab7 !important;
+  }
+
+  &__adress {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &__media-row {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__logo {
+  }
+
+  &__payment {
+    text-align: end;
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
     &__lists {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    &__column {
-        & h3 {
-            font-family: "open sans";
-            font-weight: 700;
-            font-size: 17px;
-            color: #000;
-            line-height: 52px;
-            padding: 0 0 7px 0;
-            border-bottom: 1px solid #000;
-        }
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        margin: 15px 0 0 0;
-
-        & li {
-            font-family: "open sans";
-            font-weight: 400;
-            font-size: 15px;
-        }
-
-        & a {
-            color: #023059;
-        }
-    }
-
-    &__payment {
-        border-top: 1px solid #bfbfbf;
-        padding: 30px 0 0 0;
-        margin: 50px 0 0 0;
-    }
-
-
-    &__contact {
-        font-family: roboto;
-        font-weight: 400;
-        font-size: 15px;
-        margin: 0 0 44px 0;
-
-        & a {
-            display: block;
-        }
-    }
-    
-
-    &__gmail {
-        color: #337AB7 !important;
-    }
-
-    &__adress {
-        font-family: roboto;
-        font-weight: 400;
-        font-size: 15px;
+      flex-direction: column;
     }
 
     &__media {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
+      align-items: start;
     }
-
-    &__media-row {
-        display: flex;
-        gap: 15px;
-    }
-
-    &__logo {
-        
-    }
+  }
 }
