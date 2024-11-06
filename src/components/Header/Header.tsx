@@ -1,14 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import LogoImg from "../../images/svg/logo.svg";
 import Burger from "../Burger/Burger";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import searchImg from "../../images/svg/header/SVG.svg";
 import shopImg from "../../images/svg/header/Vector.svg";
 import favoriteImg from "../../images/svg/header/Vector-1.svg";
 import profileImg from "../../images/svg/header/nav.svg";
+import { setBurger } from "../../store/reducers/BurgerSlice";
 
 const Header = () => {
   const { burger } = useSelector((state: any) => state.burger);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -44,13 +46,19 @@ const Header = () => {
 
             <div className={`header__auth ${burger ? "active" : ""}`}>
               <button
-                onClick={() => navigate("/auth")}
+                onClick={() => {
+                  navigate("/auth");
+                  dispatch(setBurger(false));
+                }}
                 className="header__signIn"
               >
                 Sign in
               </button>
               <button
-                onClick={() => navigate("/auth")}
+                onClick={() => {
+                  navigate("/auth");
+                  dispatch(setBurger(false));
+                }}
                 className="header__signUp"
               >
                 Sign up

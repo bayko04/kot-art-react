@@ -6,8 +6,8 @@ const BurgerSlice = createSlice({
     burger: false,
   },
   reducers: {
-    setBurger: (state) => {
-      state.burger = !state.burger;
+    setBurger: (state, action) => {
+      state.burger = action.payload;
     },
   },
 });

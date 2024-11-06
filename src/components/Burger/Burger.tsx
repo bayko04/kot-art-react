@@ -7,7 +7,7 @@ const Burger = () => {
   const { burger } = useSelector((state: any) => state.burger);
 
   const toggleBurger = () => {
-    dispatch(setBurger());
+    burger ? dispatch(setBurger(false)) : dispatch(setBurger(true));
   };
 
   return (

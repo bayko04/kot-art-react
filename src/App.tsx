@@ -4,8 +4,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";
 import Author from "./pages/Author/Author";
 import HeaderLayout from "./layouts/HeaderLayout";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { burger } = useSelector((state: any) => state.burger);
+
+  useEffect(() => {
+    burger
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "visible");
+  }, [burger]);
+
   return (
     <BrowserRouter>
       <div className="app">
