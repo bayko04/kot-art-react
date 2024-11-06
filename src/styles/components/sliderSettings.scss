@@ -36,6 +36,21 @@
   content: url("/images/svg/arrow/Right.svg");
 }
 
+.custom-prev-line-slider {
+  content: "";
+  background: url("../../images/svg/arrow/leftPink.svg");
+  background-position: center;
+  width: 20px;
+  height: 16px;
+}
+.custom-next-line-slider {
+  content: "";
+  background: url("../../images/svg/arrow/RightBlue.svg");
+  background-position: center;
+  width: 20px;
+  height: 16px;
+}
+
 // SLIDER DOTS
 
 .slick-dots.custom-dots {

@@ -13,12 +13,12 @@ const AllCategories = () => {
   const slider = useRef<any>(null);
 
   const settings = {
-    dots: true,
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToShow: 8,
+    slidesToScroll: 8,
 
     customPaging: function (i: any) {
       return <div className="custom-dot"></div>;
@@ -43,45 +43,46 @@ const AllCategories = () => {
 
   return (
     <div className="all-categories">
-      <div className="container">
-        <h2 className="all-categories__title">All categories</h2>
-        <p className="all-categories__subtitle">
-          <Link to="/">All paintings</Link>
-        </p>
+      <h2 className="all-categories__title">Shop by Category</h2>
+      <p className="all-categories__subtitle">
+        <Link to="/">All paintings</Link>
+      </p>
 
-        <div className="slider-container">
-          <Slider {...settings} className="all-categories__slider">
-            <div className="all-categories__slide">
-              <div className="all-categories__painting">
-                <img src={firstImg} alt="" />
-              </div>
-              <p className="all-categories__name">KOTART COLLECTION</p>
+      <div className="slider-container">
+        <Slider {...settings} className="all-categories__slider">
+          <div className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={firstImg} alt="" />
             </div>
-            <div className="all-categories__slide">
-              <div className="all-categories__painting">
-                <img src={secondImg} alt="" />
-              </div>
-              <p className="all-categories__name">KOTART COLLECTION</p>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={secondImg} alt="" />
             </div>
-            <div className="all-categories__slide">
-              <div className="all-categories__painting">
-                <img src={thirdImg} alt="" />
-              </div>
-              <p className="all-categories__name">KOTART COLLECTION</p>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={thirdImg} alt="" />
             </div>
-            <div className="all-categories__slide">
-              <div className="all-categories__painting">
-                <img src={fourthImg} alt="" />
-              </div>
-              <p className="all-categories__name">KOTART COLLECTION</p>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={fourthImg} alt="" />
             </div>
-            <div className="all-categories__slide">
-              <div className="all-categories__painting">
-                <img src={fivethImg} alt="" />
-              </div>
-              <p className="all-categories__name">KOTART COLLECTION</p>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={fivethImg} alt="" />
             </div>
-          </Slider>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+        </Slider>
+        <div className="all-categories__btn">
+          <button>Shop for Art</button>
         </div>
       </div>
     </div>

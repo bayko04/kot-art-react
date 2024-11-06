@@ -1,0 +1,45 @@
+.underHeader {
+  background: rgba(233, 234, 236, 1);
+  color: rgba(2, 36, 121, 1);
+  font-weight: 400;
+  font-size: 18px;
+
+  &__list {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 31px;
+
+    & li {
+      line-height: 28px;
+      padding: 21px 0;
+    }
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    font-size: 13px;
+
+    &__list {
+      gap: 14px;
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      flex-direction: column;
+      z-index: 10001;
+      display: none;
+
+      &.active {
+        display: flex;
+      }
+
+      & li {
+        padding: 0;
+      }
+    }
+  }
+}

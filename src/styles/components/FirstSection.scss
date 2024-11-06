@@ -1,12 +1,13 @@
 .first-section {
-  height: 100vh;
+  height: 100%;
 
   &__backgrounds {
     &_1 {
-      background: url("../../images/content/back.jpg") no-repeat;
-      min-height: 100vh;
+      height: 1400px;
+      background: url("../../images/content/backg.png") no-repeat;
       background-size: cover;
-      background-position: center center;
+      background-position: bottom;
+      margin: 0 0 -10px 0;
       padding: 130px 0 0 0;
     }
   }
@@ -73,14 +74,25 @@
   }
 
   & .slick-dots.custom-dots li.slick-active .custom-dot {
-    background-color: rgba(8, 41, 71, 1); /* Цвет активной точки */
+    background-color: #e9eaec; /* Цвет активной точки */
   }
 
   // adaptive
 
   @media (max-width: 1300px) {
+    &__backgrounds {
+      &_1 {
+        height: 1000px;
+      }
+    }
   }
   @media (max-width: 992px) {
+    &__backgrounds {
+      &_1 {
+        height: 700px;
+      }
+    }
+
     &__title {
       font-size: 41px;
     }
@@ -97,8 +109,21 @@
     }
   }
   @media (max-width: 768px) {
+    &__backgrounds {
+      &_1 {
+        height: 500px;
+      }
+    }
+
     &__row {
       flex-direction: column;
+    }
+  }
+  @media (max-width: 400px) {
+    &__backgrounds {
+      &_1 {
+        height: 400px;
+      }
     }
   }
 }

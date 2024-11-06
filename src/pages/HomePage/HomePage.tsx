@@ -12,22 +12,26 @@ import AllCategories from "../../components/AllCategories/AllCategories";
 import NewItems from "../../components/NewItems/NewItems";
 import SelectedArt from "../../components/SelectedArt/SelectedArt";
 import BuyOnline from "../../components/BuyOnline/BuyOnline";
+import UnderHeader from "../../components/UnderHeader/UnderHeader";
+import NewItems2 from "../../components/NewItems2/NewItems2";
 
 const HomePage = () => {
   return (
     <div className="home-page">
-      <Header />
+      {/* <Header />
+      <UnderHeader /> */}
       <FirstSection />
-      <DiscoverStyle />
+      {/* <DiscoverStyle /> */}
       <AllCategories />
-      <FindArt />
+      {/* <FindArt /> */}
       <NewItems />
-      <Team />
+      <NewItems2 />
+      {/* <Team /> */}
       <SelectedArt />
       <BatBanner />
       <BuyOnline />
-      <KotAuth />
       <Advantages />
+      <KotAuth />
       <Footer />
     </div>
   );

@@ -9,15 +9,15 @@
     padding: 40px 0;
   }
 
-  &__list {
-    font-family: inder;
-    font-weight: 400;
-    font-size: 18px;
-    display: flex;
-    gap: 26px;
-
-    & a {
-      color: #022479;
+  &__btn {
+    & button {
+      display: inline-block;
+      background: transparent;
+      font-weight: 400;
+      font-size: 15px;
+      padding: 15px 46px;
+      border-radius: 8px;
+      border: 2px solid rgba(249, 168, 212, 1);
     }
   }
 
@@ -26,11 +26,52 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 78px;
+    height: 75px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
 
   &__panel {
     display: flex;
     gap: 33px;
+
+    & img {
+      width: 25px;
+      height: 20px;
+      object-fit: contain;
+    }
+  }
+
+  &__auth {
+    display: flex;
+    gap: 14px;
+    color: rgba(2, 48, 89, 1);
+    background: transparent;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__signIn {
+    padding: 9px 12px;
+    background: white;
+  }
+
+  &__signUp {
+    border-radius: 8px;
+    background: rgba(253, 204, 53, 1);
+    padding: 9px 31px;
   }
 
   // adaptive
@@ -44,26 +85,34 @@
     &__list {
       font-size: 12px;
     }
+
+    &__panel {
+      gap: 23px;
+    }
   }
   @media (max-width: 768px) {
     padding: 10px 0;
 
-    &__nav {
-      display: none;
+    &__logo {
+      // display: none;
     }
-    &__panel {
+
+    &__auth {
       display: none;
     }
 
-    &__nav.active {
-      display: block;
-      background: #fff;
-      min-height: 100vh;
-      min-width: 100vw;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10000;
+    &__auth.active {
+      display: flex;
+      flex-direction: column-reverse;
+      position: fixed;
+      top: 460px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    &__nav {
+      // display: none;
     }
 
     &__list.active {
@@ -75,15 +124,41 @@
       transform: translate(-50%, -50%);
     }
 
-    &__panel.active {
-      display: flex;
+    &__right {
+      display: none;
+    }
 
+    &__panel {
+    }
+
+    &__right.active {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
       z-index: 10001;
+    }
+
+    &__panel.active {
+      flex-direction: row;
+      justify-content: end;
+      position: fixed;
+      top: 60px;
+      width: 100%;
+      right: 50px;
+      text-align: center;
 
       & svg {
         width: 30px;
         height: 30px;
       }
+    }
+
+    &__btn {
+      display: none;
     }
   }
 }

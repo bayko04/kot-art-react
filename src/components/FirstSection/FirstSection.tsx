@@ -21,7 +21,7 @@ const FirstSection = () => {
     <div className="first-section">
       <Slider {...settings}>
         <div className="first-section__backgrounds_1">
-          <div className="container">
+          {/* <div className="container">
             <div className="first-section__row">
               <div className="first-section__left">
                 <h1 className="first-section__title">
@@ -40,10 +40,10 @@ const FirstSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="first-section__backgrounds_1">
-          <div className="container">
+          {/* <div className="container">
             <div className="first-section__row">
               <div className="first-section__left">
                 <h1 className="first-section__title">Browse new collection</h1>
@@ -60,7 +60,7 @@ const FirstSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </Slider>
     </div>

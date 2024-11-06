@@ -6,16 +6,17 @@ import thirdImg from "../../images/png/viewAllCol/3.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import heartImg from "../../images/svg/header/Vector-1.svg";
 
 const BuyOnline = () => {
   const slider = useRef<any>(null);
 
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
 
     responsive: [
@@ -50,13 +51,63 @@ const BuyOnline = () => {
         <div className="slider-container">
           <Slider ref={slider} {...settings} className="buy-online__slider">
             <div className="buy-online__slide">
-              <img src={firstImg} alt="" />
+              <div className="buy-online__sliderUp">
+                <div className="buy-online__favorite">
+                  <img src={heartImg} alt="" />
+                </div>
+              </div>
+
+              <div className="buy-online__painting">
+                <img src={firstImg} alt="" />
+              </div>
+
+              <div className="buy-online__content">
+                <h5 className="buy-online__name">MOVIE TIME</h5>
+                <p className="buy-online__description">
+                  Original artwork. Mixed media on canvas. 130x100 cm
+                </p>
+                <p className="buy-online__price">$5,500</p>
+              </div>
             </div>
+
             <div className="buy-online__slide">
-              <img src={secondImg} alt="" />
+              <div className="buy-online__sliderUp">
+                <div className="buy-online__favorite">
+                  <img src={heartImg} alt="" />
+                </div>
+              </div>
+
+              <div className="buy-online__painting">
+                <img src={secondImg} alt="" />
+              </div>
+
+              <div className="buy-online__content">
+                <h5 className="buy-online__name">MOVIE TIME</h5>
+                <p className="buy-online__description">
+                  Original artwork. Mixed media on canvas. 130x100 cm
+                </p>
+                <p className="buy-online__price">$5,500</p>
+              </div>
             </div>
+
             <div className="buy-online__slide">
-              <img src={thirdImg} alt="" />
+              <div className="buy-online__sliderUp">
+                <div className="buy-online__favorite">
+                  <img src={heartImg} alt="" />
+                </div>
+              </div>
+
+              <div className="buy-online__painting">
+                <img src={thirdImg} alt="" />
+              </div>
+
+              <div className="buy-online__content">
+                <h5 className="buy-online__name">MOVIE TIME</h5>
+                <p className="buy-online__description">
+                  Original artwork. Mixed media on canvas. 130x100 cm
+                </p>
+                <p className="buy-online__price">$5,500</p>
+              </div>
             </div>
           </Slider>
 

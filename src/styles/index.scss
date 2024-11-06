@@ -12,11 +12,20 @@
 @import "./components/DiscoverStyle.scss";
 @import "./components/AllCategories.scss";
 @import "./components/NewItems.scss";
+@import "./components/NewItems2.scss";
 @import "./components/SelectedArt.scss";
 @import "./components/BuyOnline.scss";
 @import "./pages/Auth.scss";
 @import "./components/sliderSettings.scss";
 @import "./components/Burger.scss";
+@import "./components/UnderHeader.scss";
+@import "./components/PaintingCard.scss";
+@import "./components/Pagination.scss";
+@import "./components/LineSlider.scss";
+@import "./components/BackToTop.scss";
+
+// pages
+@import "./pages/Author.scss";
 
 body {
   font-family: roboto;
@@ -31,7 +40,8 @@ body {
     max-width: 992px;
   }
   @media (max-width: 992px) {
-    max-width: 768px;
+    padding: 0 20px;
+    max-width: 868px;
   }
   @media (max-width: 768px) {
     padding: 0 20px;

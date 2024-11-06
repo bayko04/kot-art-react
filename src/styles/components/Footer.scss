@@ -1,8 +1,9 @@
 .footer {
-  max-width: 1300px;
+  max-width: 1500px;
   box-shadow: 0px 4px 55px 0px #188b8385;
-  padding: 25px 50px;
-  margin: 80px auto 50px auto;
+  padding: 20px 97px 58px;
+  margin: 0 auto;
+  background: white;
 
   &__lists {
     display: flex;
@@ -11,20 +12,19 @@
 
   &__column {
     & h3 {
-      font-family: "open sans";
+      font-family: fair;
       font-weight: 700;
-      font-size: 17px;
-      color: #000;
-      line-height: 52px;
-      padding: 0 0 7px 0;
-      border-bottom: 1px solid #000;
+      font-size: 24px;
+      color: rgba(0, 0, 0, 1);
+      line-height: 31px;
+      padding: 0 0 37px 0;
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    margin: 15px 0 0 0;
+    gap: 25px;
 
     & li {
       font-family: "open sans";
@@ -37,59 +37,81 @@
     }
   }
 
-  &__payment {
-    border-top: 1px solid #bfbfbf;
-    padding: 30px 0 0 0;
-    margin: 50px 0 0 0;
-  }
-
   &__contact {
     font-family: roboto;
     font-weight: 400;
     font-size: 15px;
-    margin: 0 0 44px 0;
 
     & a {
       display: block;
+      padding: 0 0 0 35px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background-size: contain;
+      }
+    }
+  }
+
+  &__number {
+    &::before {
+      background: url("../../images/svg/footer/phone.svg") no-repeat;
     }
   }
 
   &__gmail {
-    color: #337ab7 !important;
+    &::before {
+      background: url("../../images/svg/footer/email.svg") no-repeat;
+    }
   }
 
   &__adress {
-    font-family: roboto;
-    font-weight: 400;
-    font-size: 15px;
+    &::before {
+      background: url("../../images/svg/footer/location.svg") no-repeat;
+    }
   }
 
   &__media {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 50px;
   }
 
   &__media-row {
     display: flex;
     gap: 15px;
 
-    & a {
+    & img {
       cursor: pointer;
     }
   }
 
   &__logo {
+    text-align: center;
+    margin: 0 0 33px 0;
+
     & img {
+      width: 85px;
+      height: 87px;
+      object-fit: contain;
       cursor: pointer;
     }
   }
 
   &__payment {
-    text-align: end;
+    display: block;
+    object-fit: contain;
+    text-align: center;
+    padding: 30px 0;
 
     & img {
+      width: 570px;
       cursor: pointer;
     }
   }
@@ -97,6 +119,11 @@
   @media (max-width: 1300px) {
   }
   @media (max-width: 992px) {
+    padding: 20px 57px 58px;
+
+    &__column {
+      margin: 0 0 70px 0;
+    }
   }
   @media (max-width: 768px) {
     &__lists {
@@ -105,6 +132,20 @@
 
     &__media {
       align-items: start;
+    }
+  }
+
+  &__payment {
+    & img {
+      width: 500px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &__payment {
+      & img {
+        width: 300px;
+      }
     }
   }
 }
