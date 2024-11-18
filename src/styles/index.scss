@@ -23,9 +23,13 @@
 @import "./components/Pagination.scss";
 @import "./components/LineSlider.scss";
 @import "./components/BackToTop.scss";
+@import "../pages/PaintingDetails/AuthorCard/AuthorCard.scss";
+@import "../pages/PaintingDetails/MultiPaintingBlock/MultiPaintingBlock.scss";
+@import "../pages/PaintingDetails/PaintingBanner/PaintingBanner.scss";
 
 // pages
 @import "./pages/Author.scss";
+@import "../pages/PaintingDetails/PaintingDetails.scss";
 
 body {
   font-family: roboto;

@@ -6,6 +6,7 @@ import Author from "./pages/Author/Author";
 import HeaderLayout from "./layouts/HeaderLayout";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import PaintingDetails from "./pages/PaintingDetails/PaintingDetails";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
@@ -24,6 +25,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/author" element={<Author />} />
+            <Route path="/painting-details" element={<PaintingDetails />} />
           </Route>
         </Routes>
       </div>
