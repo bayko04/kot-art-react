@@ -43,13 +43,27 @@
       border-radius: 10px;
       width: 450px;
       height: 30px;
-      padding: 10px 10px;
+      padding: 20px 10px;
     }
 
     & button {
       width: 100%;
       border-radius: 10px;
       padding: 10px 10px;
+      background: rgba(229, 38, 137, 0.243);
+      color: white;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__dashboard {
+      width: 90%;
+    }
+
+    &__form {
+      & input {
+        width: 100%;
+      }
     }
   }
 }

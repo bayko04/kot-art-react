@@ -4,7 +4,7 @@
   left: 0;
   height: 100vh;
   width: 100%;
-  z-index: 2000;
+  z-index: 20002;
 
   &::before {
     content: "";
@@ -18,7 +18,7 @@
 
   &__search {
     position: absolute;
-    top: 40%;
+    top: 300px;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
@@ -47,12 +47,12 @@
       display: flex;
       align-items: center;
       gap: 30px;
-      background: rgb(216, 216, 216);
+      background: rgb(255, 255, 255);
       padding: 15px 10px;
     }
 
     & li {
-      border-bottom: 1px solid rgb(255, 0, 43);
+      border-bottom: 1px solid pink;
     }
 
     & li:first-child {
@@ -71,6 +71,26 @@
     & img {
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    &__search {
+      width: 80%;
+    }
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+  }
+  @media (max-width: 420px) {
+    &__data-img {
+      height: 70px;
+
+      & img {
+        height: 100%;
+        object-fit: contain;
+      }
     }
   }
 }

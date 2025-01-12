@@ -1,7 +1,10 @@
 import "./AdminLogin.scss";
 import logoImg from "../../../images/svg/whiteLogo.svg";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="admin-login">
       <div className="admin-login__dashboard">
@@ -19,7 +22,7 @@ const AdminLogin = () => {
             <input placeholder="Password" type="text" />
           </div>
           <div>
-            <button>Login</button>
+            <button onClick={() => navigate("/admin")}>Login</button>
           </div>
         </form>
       </div>
