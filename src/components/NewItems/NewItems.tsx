@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import firstImg from "../../images/png/newItems/1.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,6 +9,7 @@ import sl2 from "../../images/content/sl2.jpg";
 
 const NewItems = () => {
   const slider = useRef<any>(null);
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
@@ -23,6 +24,12 @@ const NewItems = () => {
       return <div className="custom-dot"></div>;
     },
     dotsClass: "slick-dots custom-dots",
+  };
+
+  const handleNavigate = (e: any) => {
+    e.stopPropagation();
+
+    navigate("/painting-details");
   };
 
   return (

@@ -1,15 +1,17 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import firstImg from "../../images/png/viewAllCol/1.png";
 import secondImg from "../../images/png/viewAllCol/2.png";
 import thirdImg from "../../images/png/viewAllCol/3.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import heartImg from "../../images/svg/header/Vector-1.svg";
+import heartImg from "../../images/svg/header/favoriteUn.svg";
+import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
 
 const BuyOnline = () => {
   const slider = useRef<any>(null);
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -35,6 +37,11 @@ const BuyOnline = () => {
     ],
   };
 
+  const handleNavigate = (e: any) => {
+    e.stopPropagation();
+    navigate("painting-details");
+  };
+
   return (
     <div className="buy-online">
       <div className="container">
@@ -50,11 +57,9 @@ const BuyOnline = () => {
 
         <div className="slider-container">
           <Slider ref={slider} {...settings} className="buy-online__slider">
-            <div className="buy-online__slide">
+            <div onClick={handleNavigate} className="buy-online__slide">
               <div className="buy-online__sliderUp">
-                <div className="buy-online__favorite">
-                  <img src={heartImg} alt="" />
-                </div>
+                <FavoriteBtn />
               </div>
 
               <div className="buy-online__painting">
@@ -70,11 +75,9 @@ const BuyOnline = () => {
               </div>
             </div>
 
-            <div className="buy-online__slide">
+            <div onClick={handleNavigate} className="buy-online__slide">
               <div className="buy-online__sliderUp">
-                <div className="buy-online__favorite">
-                  <img src={heartImg} alt="" />
-                </div>
+                <FavoriteBtn />
               </div>
 
               <div className="buy-online__painting">
@@ -90,11 +93,9 @@ const BuyOnline = () => {
               </div>
             </div>
 
-            <div className="buy-online__slide">
+            <div onClick={handleNavigate} className="buy-online__slide">
               <div className="buy-online__sliderUp">
-                <div className="buy-online__favorite">
-                  <img src={heartImg} alt="" />
-                </div>
+                <FavoriteBtn />
               </div>
 
               <div className="buy-online__painting">

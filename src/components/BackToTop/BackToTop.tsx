@@ -1,6 +1,10 @@
 const BackToTop = () => {
+  const handleToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div className="backToTop">
+    <div onClick={handleToTop} className="backToTop">
       <button>BACK TO TOP</button>
     </div>
   );

@@ -1,0 +1,10 @@
+.category-list {
+
+
+  &__cards {
+    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,27 @@
+.admin-header {
+  padding: 30px 0;
+  width: 100%;
+  display: none;
+  padding: 30px 30px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid silver;
+  }
+
+  &__title {
+    cursor: pointer;
+    font-family: roboto;
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 0 20px 0;
+    z-index: 1000;
+  }
+
+  @media (max-width: 1300px) {
+    display: block;
+  }
+}

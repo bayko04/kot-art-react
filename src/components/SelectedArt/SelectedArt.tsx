@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import firstImg from "../../images/png/selectedArt/1.png";
 import secondImg from "../../images/png/selectedArt/2.png";
 import thirdImg from "../../images/png/selectedArt/3.png";
@@ -7,10 +7,12 @@ import fourthImg from "../../images/png/selectedArt/4.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import heartImg from "../../images/svg/header/Vector-1.svg";
+import heartImg from "../../images/svg/header/favoriteUn.svg";
+import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
 
 const SelectedArt = () => {
   const slider = useRef<any>(null);
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -37,6 +39,12 @@ const SelectedArt = () => {
     ],
   };
 
+  const handleNavigate = (e: any) => {
+    e.stopPropagation();
+
+    navigate("/painting-details");
+  };
+
   return (
     <div className="selected-art">
       <h2 className="selected-art__title">Selected artworks</h2>
@@ -46,15 +54,13 @@ const SelectedArt = () => {
 
       <div className="slider-container">
         <Slider ref={slider} {...settings} className="selected-art__slider">
-          <div className="selected-art__slide">
+          <div onClick={handleNavigate} className="selected-art__slide">
             <div className="selected-art__sliderUp">
               {/* <h3 className="selected-art__inStock">In stock</h3> */}
               <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3>
-              <div className="selected-art__favorite">
-                <img src={heartImg} alt="" />
-              </div>
+              <FavoriteBtn />
             </div>
             <div className="selected-art__painting">
               <img src={firstImg} alt="" />
@@ -67,15 +73,13 @@ const SelectedArt = () => {
               <p className="selected-art__price">$5,500</p>
             </div>
           </div>
-          <div className="selected-art__slide">
+          <div onClick={handleNavigate} className="selected-art__slide">
             <div className="selected-art__sliderUp">
               <h3 className="selected-art__inStock">In stock</h3>
               {/* <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3> */}
-              <div className="selected-art__favorite">
-                <img src={heartImg} alt="" />
-              </div>
+              <FavoriteBtn />
             </div>
             <div className="selected-art__painting">
               <img src={secondImg} alt="" />
@@ -88,15 +92,13 @@ const SelectedArt = () => {
               <p className="selected-art__price">$5,500</p>
             </div>
           </div>
-          <div className="selected-art__slide">
+          <div onClick={handleNavigate} className="selected-art__slide">
             <div className="selected-art__sliderUp">
               {/* <h3 className="selected-art__inStock">In stock</h3> */}
               <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3>
-              <div className="selected-art__favorite">
-                <img src={heartImg} alt="" />
-              </div>
+              <FavoriteBtn />
             </div>
             <div className="selected-art__painting">
               <img src={thirdImg} alt="" />
@@ -109,20 +111,18 @@ const SelectedArt = () => {
               <p className="selected-art__price">$5,500</p>
             </div>
           </div>
-          <div className="selected-art__slide">
+          <div onClick={handleNavigate} className="selected-art__slide">
             <div className="selected-art__sliderUp">
               <h3 className="selected-art__inStock">In stock</h3>
               {/* <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3> */}
-              <div className="selected-art__favorite">
-                <img src={heartImg} alt="" />
-              </div>
+              <FavoriteBtn />
             </div>
             <div className="selected-art__painting">
               <img src={fourthImg} alt="" />
             </div>
-            <div className="selected-art__content">
+            <div onClick={handleNavigate} className="selected-art__content">
               <h5 className="selected-art__name">MOVIE TIME</h5>
               <p className="selected-art__description">
                 Original artwork. Mixed media on canvas. 130x100 cm

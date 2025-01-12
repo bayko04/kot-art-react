@@ -104,3 +104,49 @@
   font-weight: 400;
   font-style: normal;
 }
+
+// railway
+
+@font-face {
+  font-family: railway;
+  src: url("../../fonts/railway/Raleway-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: railway;
+  src: url("../../fonts/railway/Raleway-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: railway;
+  src: url("../../fonts/railway/Raleway-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: railway;
+  src: url("../../fonts/railway/Raleway-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+// helv
+@font-face {
+  font-family: helv;
+  src: url("../../fonts/Helvetica/HelveticaNeueCyr-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: helv;
+  src: url("../../fonts/Helvetica/HelveticaNeueCyr-Black.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}

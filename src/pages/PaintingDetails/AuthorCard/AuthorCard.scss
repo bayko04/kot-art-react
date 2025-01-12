@@ -52,6 +52,8 @@
     font-weight: 400;
     line-height: 22.86px;
     position: relative;
+    max-height: 100px;
+    overflow: hidden;
 
     &::after {
       content: "";

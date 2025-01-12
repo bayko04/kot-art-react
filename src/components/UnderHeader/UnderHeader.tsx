@@ -11,22 +11,22 @@ const UnderHeader = () => {
     <div className="underHeader">
       <ul className={`underHeader__list ${burger ? "active" : ""}`}>
         <li className="underHeader__item">
-          <Link to="#">HOME</Link>
+          <Link to="/">HOME</Link>
         </li>
         <li
           onClick={() => dispatch(setBurger(false))}
           className="underHeader__item"
         >
-          <Link to="/author">ARTISTS</Link>
+          <Link to="/authors-list">ARTISTS</Link>
         </li>
         <li className="underHeader__item">
-          <Link to="#">ARTWORKS</Link>
+          <Link to="/all-artworks">ARTWORKS</Link>
         </li>
         <li className="underHeader__item">
-          <Link to="#">THE GALLERY</Link>
+          <Link to="/gallery">THE GALLERY</Link>
         </li>
         <li className="underHeader__item">
-          <Link to="#">CONTACT US</Link>
+          <Link to="/contacts">CONTACT US</Link>
         </li>
       </ul>
     </div>

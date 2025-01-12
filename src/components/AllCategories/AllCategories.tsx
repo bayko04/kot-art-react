@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import firstImg from "../../images/png/slider1/1.png";
 import secondImg from "../../images/png/slider1/2.png";
 import thirdImg from "../../images/png/slider1/3.png";
@@ -8,9 +8,11 @@ import fivethImg from "../../images/png/slider1/5.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./AllCategories.scss";
 
 const AllCategories = () => {
   const slider = useRef<any>(null);
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -45,7 +47,7 @@ const AllCategories = () => {
     <div className="all-categories">
       <h2 className="all-categories__title">Shop by Category</h2>
       <p className="all-categories__subtitle">
-        <Link to="/">All paintings</Link>
+        <Link to="/all-paintings">All paintings</Link>
       </p>
 
       <div className="slider-container">
@@ -82,7 +84,9 @@ const AllCategories = () => {
           </div>
         </Slider>
         <div className="all-categories__btn">
-          <button>Shop for Art</button>
+          <button onClick={() => navigate("/all-categories")}>
+            Shop for Art
+          </button>
         </div>
       </div>
     </div>

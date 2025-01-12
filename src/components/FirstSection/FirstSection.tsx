@@ -2,6 +2,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import timerImg from "../../images/png/timer.png";
+import pinkPant from "../../images/png/pinkCat.png";
+import logoImg from "../../images/svg/logo.svg";
+import "./FirstSection.scss";
 
 const FirstSection = () => {
   const settings = {
@@ -21,26 +24,20 @@ const FirstSection = () => {
     <div className="first-section">
       <Slider {...settings}>
         <div className="first-section__backgrounds_1">
-          {/* <div className="container">
+          <div className="container">
             <div className="first-section__row">
               <div className="first-section__left">
-                <h1 className="first-section__title">
-                  Browse new <br /> collection
-                </h1>
-                <p className="first-section__text">
-                  Available until 3:00 PM, May 31, 2024.
-                </p>
-                <div className="first-section__btn">
-                  <button>see this item</button>
+                <div className="first-section__logo">
+                  <img src={logoImg} alt="" />
                 </div>
               </div>
               <div className="first-section__rigth">
                 <div className="first-section__timer">
-                  <img src={timerImg} alt="" />
+                  <img src={pinkPant} alt="" />
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="first-section__backgrounds_1">
           {/* <div className="container">

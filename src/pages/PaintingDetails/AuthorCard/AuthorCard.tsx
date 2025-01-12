@@ -1,4 +1,12 @@
+import { useState } from "react";
+
 const AuthorCard = () => {
+  const [isHided, setIsHided] = useState(true);
+
+  const toggleHide = () => {
+    setIsHided((prev) => !prev);
+  };
+
   return (
     <div className="author-card">
       <h4 className="author-card__title">About the artist</h4>
@@ -16,10 +24,19 @@ const AuthorCard = () => {
               paintings and sculptures, Roman often uses various organic
               materials, mainly wood, which to his perception “… Has lived for
               an entire life, accumulating energy and experience from its
-              environment that have left
+              environment that have left paintings and sculptures, Roman often
+              uses various organic materials, mainly wood, which to his
+              perception “… Has lived for an entire life, accumulating energy
+              and experience from its environment that have left
             </p>
 
-            <div className="author-card__readMore">
+            <div
+              onClick={toggleHide}
+              className={`author-card__readMore ${
+                isHided ? "hided" : "showed"
+              }`}
+            >
+              {/* {isHided ? <button>Read more</button> : <button>hide</button>} */}
               <button>Read more</button>
             </div>
           </div>

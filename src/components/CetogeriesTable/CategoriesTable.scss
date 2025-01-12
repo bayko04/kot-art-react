@@ -1,0 +1,16 @@
+.categories-table {
+  flex-grow: 1;
+
+  table {
+    width: 100%;
+  }
+
+  thead {
+    text-align: left;
+    height: 30px;
+
+    & tr {
+      background: #cbe8f8;
+    }
+  }
+}

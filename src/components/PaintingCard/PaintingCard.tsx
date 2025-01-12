@@ -1,6 +1,23 @@
 import heartImg from "../../images/svg/header/Vector-1.svg";
+import { IPainting } from "../../types/paintingsType";
+import "./PaintingCard.scss";
 
-const PaintingCard = ({ img }: { img: string }) => {
+interface IProps extends IPainting {
+  img?: string;
+  width?: string;
+}
+
+const PaintingCard = ({
+  image,
+  title,
+  key,
+  price,
+  currency,
+  description,
+  img,
+  follow,
+  width = "25%",
+}: IProps) => {
   return (
     <div className="painting-card">
       <div className="painting-card__sliderUp">
@@ -11,7 +28,7 @@ const PaintingCard = ({ img }: { img: string }) => {
         </div> */}
       </div>
       <div className="painting-card__painting">
-        <img src={img} alt="" />
+        <img src={image} alt="" />
       </div>
       <div className="painting-card__content">
         <h5 className="painting-card__name">MOVIE TIME</h5>

@@ -1,0 +1,19 @@
+.paintings-list {
+  &__title {
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 30px 0;
+  }
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}

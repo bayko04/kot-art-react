@@ -1,35 +1,31 @@
 @import "./statics/null.scss";
-@import "./components/header.scss";
 @import "./statics/font.scss";
-@import "./components/FirstSection.scss";
-@import "./pages/HomePage.scss";
 @import "./components/FindArt.scss";
 @import "./components/Team.scss";
 @import "./components/BatBanner.scss";
-@import "./components/KotAuth.scss";
-@import "./components/advantages.scss";
-@import "./components/Footer.scss";
 @import "./components/DiscoverStyle.scss";
-@import "./components/AllCategories.scss";
 @import "./components/NewItems.scss";
-@import "./components/NewItems2.scss";
 @import "./components/SelectedArt.scss";
 @import "./components/BuyOnline.scss";
-@import "./pages/Auth.scss";
 @import "./components/sliderSettings.scss";
 @import "./components/Burger.scss";
 @import "./components/UnderHeader.scss";
-@import "./components/PaintingCard.scss";
 @import "./components/Pagination.scss";
 @import "./components/LineSlider.scss";
 @import "./components/BackToTop.scss";
+@import "./../components/SideBar/SideBar.scss";
 @import "../pages/PaintingDetails/AuthorCard/AuthorCard.scss";
 @import "../pages/PaintingDetails/MultiPaintingBlock/MultiPaintingBlock.scss";
 @import "../pages/PaintingDetails/PaintingBanner/PaintingBanner.scss";
+@import "../components/BasicBtn/BasicBtn.scss";
+// @import "../pages/CreatePainting/CreatePainting.scss";
+// @import "../pages/CreateCategory/CreateCategory.scss";
 
 // pages
-@import "./pages/Author.scss";
 @import "../pages/PaintingDetails/PaintingDetails.scss";
+@import "../layouts/AdminLayout/AdminLayout.scss";
+// @import "../pages/Admin/PaintingsList/PaintingsList.scss";
+// @import "../pages/Admin/CategoryList/CategoryList.scss";
 
 body {
   font-family: roboto;

@@ -4,9 +4,11 @@ import Burger from "../Burger/Burger";
 import { useDispatch, useSelector } from "react-redux";
 import searchImg from "../../images/svg/header/SVG.svg";
 import shopImg from "../../images/svg/header/Vector.svg";
-import favoriteImg from "../../images/svg/header/Vector-1.svg";
+import favoriteImg from "../../images/svg/header/favoriteUn.svg";
 import profileImg from "../../images/svg/header/nav.svg";
 import { setBurger } from "../../store/reducers/BurgerSlice";
+import "./Header.scss";
+import { setSearchModal } from "../../store/reducers/useSearchStore";
 
 const Header = () => {
   const { burger } = useSelector((state: any) => state.burger);
@@ -30,13 +32,13 @@ const Header = () => {
 
           <div className={`header__right ${burger ? "active" : ""}`}>
             <div className={`header__panel ${burger ? "active" : ""}`}>
-              <Link to="/">
+              <Link onClick={() => dispatch(setSearchModal(true))} to="/">
                 <img src={searchImg} alt="" />
               </Link>
-              <Link to="/">
+              {/* <Link to="/">
                 <img src={shopImg} alt="" />
-              </Link>
-              <Link to="/">
+              </Link> */}
+              <Link to="/profile/favorite">
                 <img src={favoriteImg} alt="" />
               </Link>
               <Link to="/">
@@ -47,7 +49,7 @@ const Header = () => {
             <div className={`header__auth ${burger ? "active" : ""}`}>
               <button
                 onClick={() => {
-                  navigate("/auth");
+                  navigate("/auth/sign-in");
                   dispatch(setBurger(false));
                 }}
                 className="header__signIn"
@@ -56,7 +58,7 @@ const Header = () => {
               </button>
               <button
                 onClick={() => {
-                  navigate("/auth");
+                  navigate("/auth/sign-up");
                   dispatch(setBurger(false));
                 }}
                 className="header__signUp"

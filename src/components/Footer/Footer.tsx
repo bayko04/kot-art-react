@@ -7,6 +7,7 @@ import googleImg from "../../images/svg/footer/google.svg";
 import logoWhite from "../../images/svg/footer/logo.svg";
 import pinterestImg from "../../images/svg/footer/pinterest.svg";
 import paymentImg from "../../images/png/payments.png";
+import "./Footer.scss";
 
 const Footer = () => {
   return (

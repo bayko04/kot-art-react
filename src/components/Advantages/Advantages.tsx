@@ -2,6 +2,7 @@ import adv1 from "../../images/svg/advantages/Group-1.svg";
 import adv2 from "../../images/svg/advantages/Group.svg";
 import adv3 from "../../images/svg/advantages/Vector.svg";
 import adv4 from "../../images/svg/advantages/shipped 1.svg";
+import "./Advantages.scss";
 
 const Advantages = () => {
   return (

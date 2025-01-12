@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./NewItems2.scss";
 
 const NewItems2 = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="new-items2">
       <div className="container">
         <h2 className="new-items2__title">New items</h2>
         <p className="new-items2__subtitle">
-          <Link to="/">All paintings</Link>
+          <Link to="/all-paintings">All paintings</Link>
         </p>
 
         <div className="new-items2__dashboard">
@@ -21,7 +24,7 @@ const NewItems2 = () => {
               gallery to their doorstep.
             </p>
             <div className="new-items2__btn">
-              <button>read more</button>
+              <button onClick={() => navigate("about-us")}>read more</button>
             </div>
           </div>
         </div>
