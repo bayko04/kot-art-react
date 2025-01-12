@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import heartImg from "../../images/svg/header/Vector-1.svg";
 import { IPainting } from "../../types/paintingsType";
 import "./PaintingCard.scss";
@@ -18,8 +19,16 @@ const PaintingCard = ({
   follow,
   width = "25%",
 }: IProps) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (e: any) => {
+    e.stopPropagation();
+
+    navigate("/painting-details");
+  };
+
   return (
-    <div className="painting-card">
+    <div onClick={handleNavigate} className="painting-card">
       <div className="painting-card__sliderUp">
         {/* <h3 className="painting-card__inStock">In stock</h3> */}
         <h3 className="painting-card__availability">ASK FOR AVAILABILITY</h3>

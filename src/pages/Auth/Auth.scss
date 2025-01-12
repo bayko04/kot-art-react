@@ -3,7 +3,7 @@
 
   &__wrapper {
     width: 100%;
-    min-height: 500px;
+    // min-height: 500px;
     background: rgb(255, 255, 255);
     padding: 50px 100px;
     border-radius: 8px;
@@ -74,8 +74,7 @@
   }
   @media (max-width: 992px) {
     &__wrapper {
-      padding: 40px;
-      height: 450px;
+      height: 100%;
     }
     &__btns {
       justify-content: center;
@@ -83,7 +82,7 @@
   }
   @media (max-width: 768px) {
     &__wrapper {
-      padding: 20px;
+      padding: 40px 30px;
     }
   }
 }

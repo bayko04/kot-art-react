@@ -43,6 +43,10 @@ const AllCategories = () => {
     ],
   };
 
+  const handleNavigate = () => {
+    navigate("/category/KOTART COLLECTION");
+  };
+
   return (
     <div className="all-categories">
       <h2 className="all-categories__title">Shop by Category</h2>
@@ -52,31 +56,31 @@ const AllCategories = () => {
 
       <div className="slider-container">
         <Slider {...settings} className="all-categories__slider">
-          <div className="all-categories__slide">
+          <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={firstImg} alt="" />
             </div>
             <p className="all-categories__name">KOTART COLLECTION</p>
           </div>
-          <div className="all-categories__slide">
+          <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={secondImg} alt="" />
             </div>
             <p className="all-categories__name">KOTART COLLECTION</p>
           </div>
-          <div className="all-categories__slide">
+          <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={thirdImg} alt="" />
             </div>
             <p className="all-categories__name">KOTART COLLECTION</p>
           </div>
-          <div className="all-categories__slide">
+          <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={fourthImg} alt="" />
             </div>
             <p className="all-categories__name">KOTART COLLECTION</p>
           </div>
-          <div className="all-categories__slide">
+          <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={fivethImg} alt="" />
             </div>

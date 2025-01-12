@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import someImg from "../../images/png/slider1/3.png";
 import "./CategoryCard.scss";
 
 const CategoryCard = ({ title, img }: { title: string; img: string }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="category-card">
+    <div
+      onClick={() => navigate("/category/KOTART COLLECTION")}
+      className="category-card"
+    >
       <div className="category-card__slide">
         <div className="category-card__painting">
           <img src={someImg} alt="" />

@@ -9,9 +9,11 @@ import cardImg2 from "../../images/png/slider1/2.png";
 import cardImg3 from "../../images/png/slider1/3.png";
 import cardImg4 from "../../images/png/slider1/4.png";
 import "./AuthorDetail.scss";
+import { useNavigate } from "react-router-dom";
 
 const AuthorDetail = () => {
   const [isHided, setIsHided] = useState(true);
+  const navigate = useNavigate();
 
   const toggleHide = () => {
     setIsHided((prev) => !prev);

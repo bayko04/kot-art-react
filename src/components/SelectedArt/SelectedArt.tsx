@@ -49,7 +49,7 @@ const SelectedArt = () => {
     <div className="selected-art">
       <h2 className="selected-art__title">Selected artworks</h2>
       <p className="selected-art__subtitle">
-        <Link to="/">All paintings</Link>
+        <Link to="/all-paintings">All paintings</Link>
       </p>
 
       <div className="slider-container">

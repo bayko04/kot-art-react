@@ -1,10 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthorCard = () => {
   const [isHided, setIsHided] = useState(true);
+  const navigate = useNavigate();
 
   const toggleHide = () => {
     setIsHided((prev) => !prev);
+  };
+
+  const handleNavigate = () => {
+    navigate("/author-detail");
   };
 
   return (
@@ -37,7 +43,7 @@ const AuthorCard = () => {
               }`}
             >
               {/* {isHided ? <button>Read more</button> : <button>hide</button>} */}
-              <button>Read more</button>
+              <button onClick={handleNavigate}>Read more</button>
             </div>
           </div>
         </div>

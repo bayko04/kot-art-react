@@ -52,7 +52,7 @@ const BuyOnline = () => {
           Discover our curation of original artworks for sale.
         </p>
         <div className="buy-online__all-collection">
-          <Link to="/">All our collections</Link>
+          <Link to="/all-categories">All our collections</Link>
         </div>
 
         <div className="slider-container">

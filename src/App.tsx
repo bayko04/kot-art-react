@@ -35,6 +35,7 @@ import RolesList from "./pages/Admin/Lists/RolesList/RolesList";
 import PaintingsList from "./pages/Admin/Lists/PaintingsList/PaintingsList";
 import CreateAuthor from "./pages/Admin/CreateForms/CreateAuthor/CreateAuthor";
 import CreateAdmin from "./pages/Admin/CreateForms/CreateAdmin/CreateAdmin";
+import CategoryRenderer from "./shared/ui/CategoryRenderer/CategoryRenderer";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
@@ -63,6 +64,8 @@ function App() {
             <Route path="/gallery" element={<GalleryList />} />
             <Route path="/authors-list" element={<AuthorsList />} />
             <Route path="profile/favorite" element={<FavoriteList />} />
+
+            <Route path="/category/:slug" element={<CategoryRenderer />} />
 
             <Route path="/auth" element={<Auth />}>
               <Route path="sign-in" element={<SignIn />} />
