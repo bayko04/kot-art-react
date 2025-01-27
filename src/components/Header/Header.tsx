@@ -9,6 +9,10 @@ import profileImg from "../../images/svg/header/nav.svg";
 import { setBurger } from "../../store/reducers/BurgerSlice";
 import "./Header.scss";
 import { setSearchModal } from "../../store/reducers/useSearchStore";
+import facebookImg from "../../images/svg/footer/facebook.svg";
+import instImg from "../../images/svg/footer/inst.svg";
+import googleImg from "../../images/svg/footer/google.svg";
+import pinterestImg from "../../images/svg/footer/pinterest.svg";
 
 const Header = () => {
   const { burger } = useSelector((state: any) => state.burger);
@@ -65,6 +69,15 @@ const Header = () => {
               >
                 Sign up
               </button>
+            </div>
+
+            <div className={`header__network ${burger ? "active" : ""}`}>
+              <div className="header__network-row">
+                <img src={facebookImg} alt="" />
+                <img src={instImg} alt="" />
+                <img src={googleImg} alt="" />
+                <img src={pinterestImg} alt="" />
+              </div>
             </div>
           </div>
         </div>

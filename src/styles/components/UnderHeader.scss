@@ -13,6 +13,10 @@
     & li {
       line-height: 28px;
       padding: 21px 0;
+
+      & a {
+        color: black;
+      }
     }
   }
 
@@ -26,7 +30,7 @@
     &__list {
       gap: 14px;
       position: absolute;
-      top: 250px;
+      top: 200px;
       left: 50%;
       transform: translateX(-50%);
       flex-direction: column;
@@ -35,6 +39,7 @@
 
       &.active {
         display: flex;
+        align-items: center;
       }
 
       & li {

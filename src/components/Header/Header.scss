@@ -80,6 +80,26 @@
     padding: 9px 31px;
   }
 
+  &__network {
+    display: none;
+    position: absolute;
+    top: 560px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__network-row {
+    display: flex;
+    gap: 15px;
+
+    & img {
+      cursor: pointer;
+    }
+  }
+
   // adaptive
 
   @media (max-width: 1300px) {
@@ -105,6 +125,10 @@
 
     &__auth {
       display: none;
+    }
+
+    &__network.acitve {
+      display: block;
     }
 
     &__auth.active {

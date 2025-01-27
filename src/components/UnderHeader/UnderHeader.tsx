@@ -37,6 +37,12 @@ const UnderHeader = () => {
           onClick={() => dispatch(setBurger(false))}
           className="underHeader__item"
         >
+          <Link to="/gallery">NFT</Link>
+        </li>
+        <li
+          onClick={() => dispatch(setBurger(false))}
+          className="underHeader__item"
+        >
           <Link to="/contacts">CONTACT US</Link>
         </li>
       </ul>
