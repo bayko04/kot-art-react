@@ -1,6 +1,7 @@
 import React from "react";
 import batImg from "../../images/png/batman.png";
 import { Link } from "react-router-dom";
+import './BatBanner.scss'
 
 const BatBanner = () => {
   return (

@@ -1,4 +1,4 @@
-.bat-banner {
+ .bat-banner {
   background: #1e1e1e;
   height: 435px;
   position: relative;
@@ -111,6 +111,10 @@
 
     &__row {
       align-items: center;
+    }
+
+    &__title {
+      font-size: 30px;
     }
 
     &__img {

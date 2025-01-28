@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import sl1 from "../../images/content/sl1.jpg";
 import sl2 from "../../images/content/sl2.jpg";
+import "./NewItems.scss";
 
 const NewItems = () => {
   const slider = useRef<any>(null);
@@ -34,10 +35,10 @@ const NewItems = () => {
 
   return (
     <div className="new-items">
-      {/* <h2 className="new-items__title">New items</h2>
-        <p className="new-items__subtitle">
-          <Link to="/">All paintings</Link>
-        </p> */}
+      <div className="new-items__header">
+        <h2>Popular art</h2>
+        <p>All popular paintings</p>
+      </div>
 
       <div className="slider-container">
         <Slider ref={slider} {...settings} className="new-items__slider">

@@ -1,5 +1,25 @@
 .new-items {
-  padding: 180px 0 115px;
+  padding: 40px 0 70px;
+
+
+  &__header {
+    text-align: center;
+    margin: 0 0 35px 0;
+
+    & h2 {
+      font-size: 32px;
+      font-family: roboto;
+      font-weight: 500;
+      color: #023059;
+      margin: 0 0 10px 0;
+    }
+
+    & p {
+      font-size: 18px;
+      font-family: roboto;
+      color: #6a7b8c;;
+    }
+  }
 
   &__subtitle {
     font-family: inter;
@@ -34,13 +54,17 @@
   &__content {
     text-align: center;
     margin: 30px 0 0 0;
+    display: none;
+
 
     & h3 {
+      white-space: nowrap;
       font-family: roboto;
       font-weight: 500;
       font-size: 32px;
       color: #023059;
       margin: 0 0 23px 0;
+      text-align: center;
     }
 
     & p {
@@ -48,6 +72,7 @@
       font-weight: 400;
       font-size: 18px;
       line-height: 21.09px;
+      text-align: center;
     }
 
     & ul {
@@ -75,6 +100,10 @@
         height: 515px;
         border: 2px solid rgba(92, 211, 203, 1);
         transform: translateY(0);
+      }
+
+      .new-items__content {
+        display: block;
       }
     }
   }
@@ -105,7 +134,69 @@
   @media (max-width: 1300px) {
   }
   @media (max-width: 992px) {
+    .slick-slide {
+      .new-items__painting {
+        height: 200px;
+      }
+  
+      &.slick-active {
+        .new-items__painting {
+          height: 400px;
+        }
+      }
+    }
   }
   @media (max-width: 768px) {
+
+    .slick-track {
+      & > div {
+        padding: 0 10px;
+      }
+    }
+
+    .slick-slide {
+      .new-items__painting {
+        height: 150px;
+      }
+  
+      &.slick-active {
+        .new-items__painting {
+          height: 300px;
+        }
+      }
+    }
   }
+  @media (max-width: 500px) {
+    
+
+    .slick-slide {
+      .new-items__painting {
+        height: 100px;
+      }
+  
+      &.slick-active {
+        .new-items__painting {
+          height: 200px;
+        }
+      }
+    }
+  }
+  @media (max-width: 400px) {
+
+   &__content {
+    & h3 {
+    font-size: 22px;
+    }
+
+    & p {
+      font-size: 18px;
+    }
+    
+    & li {
+      font-size: 18px;
+      
+    }
+   }
+  }
+  
 }

@@ -71,7 +71,10 @@
 
   &__signIn {
     padding: 9px 12px;
-    background: white;
+    background: rgb(161, 161, 161);
+    border-radius: 8px;
+    color: white;
+
   }
 
   &__signUp {
@@ -83,7 +86,7 @@
   &__network {
     display: none;
     position: absolute;
-    top: 560px;
+    top: 610px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
