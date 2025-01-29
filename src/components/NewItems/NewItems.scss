@@ -1,7 +1,6 @@
 .new-items {
   padding: 40px 0 70px;
 
-
   &__header {
     text-align: center;
     margin: 0 0 35px 0;
@@ -59,6 +58,8 @@
 
     & h3 {
       white-space: nowrap;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
       font-family: roboto;
       font-weight: 500;
       font-size: 32px;
@@ -119,6 +120,7 @@
   }
 
   .slick-dots.custom-dots {
+    left: calc(50% - 10px);
     box-shadow: none;
     bottom: -60px;
   }
@@ -181,7 +183,7 @@
       }
     }
   }
-  @media (max-width: 400px) {
+  @media (max-width: 460px) {
 
    &__content {
     & h3 {

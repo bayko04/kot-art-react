@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import heartImg from "../../images/svg/header/favoriteUn.svg";
 import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
+import './SelectedArt.scss'
 
 const SelectedArt = () => {
   const slider = useRef<any>(null);

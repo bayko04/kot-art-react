@@ -135,6 +135,14 @@
     }
   }
 
+  &__column {
+    margin: 0 0 70px 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
   &__payment {
     & img {
       width: 500px;
