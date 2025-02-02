@@ -93,6 +93,10 @@
   @media (max-width: 992px) {
   }
   @media (max-width: 768px) {
+    &__dashboard {
+      height: 500px;
+    }
+
     &__content {
       top: 25px;
       left: 25px;
@@ -128,6 +132,23 @@
           right: 15px;
         }
       }
+    }
+  }
+  @media (max-width: 450px) {
+    &__dashboard {
+      height: 500px;
+    }
+
+    &__text {
+      text-align: center;
+      line-height: 24px;
+      font-size: 14px;
+      margin: 30px 0;
+    }
+  }
+  @media (max-width: 385px) {
+    &__dashboard {
+      height: 540px;
     }
   }
 }

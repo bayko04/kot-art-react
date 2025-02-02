@@ -32,16 +32,19 @@ const Footer = () => {
               <li>
                 <Link to="">Gallery</Link>
               </li>
+              <li>
+                <Link to="">NFT</Link>
+              </li>
             </ul>
           </div>
           <div className="footer__column">
             <h3>Services</h3>
             <ul className="footer__list">
               <li>
-                <Link to="">Arts</Link>
+                <Link to="">All Artworks</Link>
               </li>
               <li>
-                <Link to="">Exhibition</Link>
+                <Link to="">Artist Collaborations</Link>
               </li>
             </ul>
           </div>
