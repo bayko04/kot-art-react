@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { setBurger } from "../../store/reducers/BurgerSlice";
+import "./UnderHeader.scss";
 
 const UnderHeader = () => {
   const { burger } = useSelector((state: any) => state.burger);

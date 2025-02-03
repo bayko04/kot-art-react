@@ -88,7 +88,8 @@ const AllCategories = () => {
             </div>
             <p className="all-categories__name">KOTART COLLECTION</p>
           </div>
-          {//ddd
+          {
+            // scsss
           }
           <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
