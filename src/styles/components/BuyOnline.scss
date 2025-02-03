@@ -1,7 +1,7 @@
 .buy-online {
   text-align: center;
   background: rgba(233, 234, 236, 1);
-  padding: 40px 0 40px;
+  padding: 47px 0 57px;
 
   &__title {
     font-family: roboto;
@@ -160,5 +160,6 @@
     }
   }
   @media (max-width: 768px) {
+    padding: 40px 0 40px;
   }
 }

@@ -13,7 +13,9 @@ const LineSlider = ({ title }: { title: string }) => {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    variableWidth: false,
 
     customPaging: function (i: any) {
       return <div className="custom-dot"></div>;
@@ -42,6 +44,12 @@ const LineSlider = ({ title }: { title: string }) => {
 
       <div className="line-slider__container">
         <Slider ref={slider} {...settings} className="line-slider__slider">
+          <LineSlide />
+          <LineSlide />
+          <LineSlide />
+          <LineSlide />
+          <LineSlide />
+          <LineSlide />
           <LineSlide />
           <LineSlide />
           <LineSlide />

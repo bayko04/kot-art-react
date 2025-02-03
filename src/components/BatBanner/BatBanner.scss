@@ -1,4 +1,4 @@
- .bat-banner {
+.bat-banner {
   background: #1e1e1e;
   height: 435px;
   position: relative;
@@ -27,8 +27,6 @@
   }
 
   &__btn {
-
-
     & a {
       font-family: roboto;
       font-weight: 400;
@@ -109,7 +107,7 @@
   }
   @media (max-width: 768px) {
     height: auto;
-    padding: 70px 0 0 0;
+    padding: 40px 0 0 0;
 
     &__row {
       align-items: center;

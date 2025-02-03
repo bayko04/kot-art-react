@@ -74,7 +74,6 @@
     background: rgb(161, 161, 161);
     border-radius: 8px;
     color: white;
-
   }
 
   &__signUp {
@@ -84,7 +83,6 @@
   }
 
   &__network {
-    display: none;
     position: absolute;
     top: 610px;
     left: 50%;
@@ -92,6 +90,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: none;
   }
 
   &__network-row {
@@ -130,8 +129,8 @@
       display: none;
     }
 
-    &__network.acitve {
-      display: block;
+    &__network.active {
+      display: flex;
     }
 
     &__auth.active {

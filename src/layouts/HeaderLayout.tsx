@@ -29,7 +29,7 @@ const HeaderLayout: FC = () => {
           <Outlet />
         </div>
 
-        <Footer />
+        <Footer />  
       </div>
     </div>
   );

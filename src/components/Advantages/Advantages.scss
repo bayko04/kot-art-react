@@ -1,5 +1,5 @@
 .advantages {
-  padding: 40px 0;
+  padding: 85px 0 95px;
   // border-bottom: 8px solid rgba(243, 90, 173, 1);
 
   &__row {
@@ -39,6 +39,8 @@
   @media (max-width: 992px) {
   }
   @media (max-width: 768px) {
+    padding: 40px 0;
+
     &__row {
       flex-direction: column;
       gap: 30px;

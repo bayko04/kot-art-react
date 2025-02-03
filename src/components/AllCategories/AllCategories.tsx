@@ -20,7 +20,9 @@ const AllCategories = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 8,
-    slidesToScroll: 8,
+    slidesToScroll: 1,
+    swipeToSlide: true, // Позволяет тянуть на любое расстояние
+    variableWidth: false, // Можно попробовать true, но тогда нужно убедиться, что ширина у элементов корректная
 
     customPaging: function (i: any) {
       return <div className="custom-dot"></div>;
@@ -56,6 +58,38 @@ const AllCategories = () => {
 
       <div className="slider-container">
         <Slider {...settings} className="all-categories__slider">
+          <div onClick={handleNavigate} className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={firstImg} alt="" />
+            </div>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div onClick={handleNavigate} className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={secondImg} alt="" />
+            </div>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div onClick={handleNavigate} className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={thirdImg} alt="" />
+            </div>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div onClick={handleNavigate} className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={fourthImg} alt="" />
+            </div>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          <div onClick={handleNavigate} className="all-categories__slide">
+            <div className="all-categories__painting">
+              <img src={fivethImg} alt="" />
+            </div>
+            <p className="all-categories__name">KOTART COLLECTION</p>
+          </div>
+          {//ddd
+          }
           <div onClick={handleNavigate} className="all-categories__slide">
             <div className="all-categories__painting">
               <img src={firstImg} alt="" />
