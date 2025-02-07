@@ -6,9 +6,8 @@ import CreateHeader from "../../ui/CreateHeader/CreateHeader";
 import ListTemplate from "../../../../shared/ui/ListTemplate/ListTemplate";
 import { useDispatch } from "react-redux";
 
-
 const PaintingsList: FC = () => {
-  const { data } = useGetPaintings();
+  const { data, isFetching } = useGetPaintings();
   const navigate = useNavigate();
 
   const handleCreatePainting = () => {
@@ -36,7 +35,8 @@ const PaintingsList: FC = () => {
           />
         ))}
       </div> */}
-      <ListTemplate />
+
+      <ListTemplate isFetching={isFetching} data={data} admin />
     </div>
   );
 };

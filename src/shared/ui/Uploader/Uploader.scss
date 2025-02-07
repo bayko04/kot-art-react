@@ -1,6 +1,40 @@
 .uploader {
   cursor: pointer;
 
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__img {
+    height: 60px;
+    flex: 0 0 100px;
+    cursor: inherit;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    flex: 0 0 100px;
+    height: 60px;
+
+    & p {
+      margin: 10px 0 0 0;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 15px;
+    }
+  }
+
   &__upload {
     width: 100px;
     height: 60px;
@@ -25,12 +59,5 @@
       top: 0;
       left: 0;
     }
-  }
-
-  & img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 15px;
   }
 }

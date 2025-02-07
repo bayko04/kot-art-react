@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import PaintingsService from "../../../../../services/PaintingsService";
+import PaintingsService from "../../../../../shared/services/PaintingsService";
 
 export function useCreateCategory() {
   return useMutation({

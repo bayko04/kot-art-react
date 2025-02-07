@@ -1,5 +1,5 @@
 import React from "react";
-import { filterData } from "../../staticData/filterData";
+import { filterData } from "../../shared/staticData/filterData";
 
 const DiscoverStyle = () => {
   return (

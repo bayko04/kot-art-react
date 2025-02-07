@@ -6,7 +6,7 @@ import CreateHeader from "../../ui/CreateHeader/CreateHeader";
 import ListTemplate from "../../../../shared/ui/ListTemplate/ListTemplate";
 
 const CategoryList: FC = () => {
-  const { data } = useGetCategory();
+  const { data, isFetching } = useGetCategory();
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -26,7 +26,12 @@ const CategoryList: FC = () => {
           <CategoryCard title={item.title} img={item.image} />
         ))}
       </div> */}
-      <ListTemplate listType="category" />
+      <ListTemplate
+        isFetching={isFetching}
+        data={data}
+        admin
+        listType="category"
+      />
     </div>
   );
 };

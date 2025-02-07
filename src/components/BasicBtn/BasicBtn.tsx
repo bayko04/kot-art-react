@@ -1,13 +1,17 @@
 const BasicBtn = ({
   title,
   clickFn,
+  bg,
 }: {
   title: string;
   clickFn?: () => void;
+  bg?: string;
 }) => {
   return (
     <div className="basic-btn">
-      <button onClick={clickFn}>{title}</button>
+      <button style={{ background: bg }} onClick={clickFn}>
+        {title}
+      </button>
     </div>
   );
 };

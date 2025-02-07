@@ -54,7 +54,7 @@ const CreateCategory = () => {
         <div className="">
           <label htmlFor="image">Select a painting</label>
           {/* <input type="file" name="image" onChange={handleFileChange} /> */}
-          <Uploader />
+          <Uploader onFileChange={handleFileChange} />
         </div>
       </form>
 
@@ -62,7 +62,7 @@ const CreateCategory = () => {
         {/* <button type="button" onClick={onSubmit}>
           Создать
         </button> */}
-        <BasicBtn title="Create" />
+        <BasicBtn clickFn={onSubmit} title="Create" />
       </div>
     </div>
   );

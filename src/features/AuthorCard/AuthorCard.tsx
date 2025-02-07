@@ -1,19 +1,44 @@
 import style from "./AuthorCard.module.scss";
 import imgTest from "../../images/content/sl2.jpg";
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
+import DeleteBtn from "../../shared/ui/DeleteBtn/DeleteBtn";
 
-const AuthorCard = () => {
+interface IAuthorCard {
+  deletable?: boolean;
+  admin?: boolean;
+  name?: string;
+  bio?: string;
+  avatar?: string;
+  id?: number;
+}
+
+const AuthorCard: FC<IAuthorCard> = ({
+  deletable,
+  admin,
+  name,
+  bio,
+  avatar,
+  id,
+}) => {
   const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    if (admin) {
+      return navigate(`/admin/edit-author/${id}`);
+    }
+
+    navigate("/author-detail");
+  };
+
   return (
-    <div
-      onClick={() => navigate("/author-detail")}
-      className={style.authorCard}
-    >
+    <div onClick={handleNavigate} className={style.authorCard}>
       <div className={style.authorCard__img}>
-        <img src={imgTest} alt="" />
+        <img src={avatar || imgTest} alt="" />
       </div>
-      <div className={style.authorCard__name}>ROMAN KOZHOKIN</div>
+      <div className={style.authorCard__name}>{name || "ROMAN KOZHOKIN"}</div>
+
+      {/* {deletable && <DeleteBtn />} */}
     </div>
   );
 };

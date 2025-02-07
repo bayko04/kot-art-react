@@ -1,11 +1,19 @@
 import ListTemplate from "../../../shared/ui/ListTemplate/ListTemplate";
+import { useGetAuthors } from "../../Admin/CreateForms/CreatePainting/api/useAuthors";
 import "./AuthorsList.scss";
 
 const AuthorsList = () => {
+  const { data, isFetching } = useGetAuthors();
+
   return (
     <div className="authors-list">
       <div className="container">
-        <ListTemplate listType="author" title="Artists" />
+        <ListTemplate
+          isFetching={isFetching}
+          data={data}
+          listType="author"
+          title="Artists"
+        />
       </div>
     </div>
   );

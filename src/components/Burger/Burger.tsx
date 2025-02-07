@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setBurger } from "../../store/reducers/BurgerSlice";
+import { setBurger } from "../../shared/store/reducers/BurgerSlice";
 
 const Burger = () => {
   const dispatch = useDispatch();

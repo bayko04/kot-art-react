@@ -36,6 +36,10 @@ import PaintingsList from "./pages/Admin/Lists/PaintingsList/PaintingsList";
 import CreateAuthor from "./pages/Admin/CreateForms/CreateAuthor/CreateAuthor";
 import CreateAdmin from "./pages/Admin/CreateForms/CreateAdmin/CreateAdmin";
 import CategoryRenderer from "./shared/ui/CategoryRenderer/CategoryRenderer";
+import EditCategory from "./pages/Admin/EditForms/EditCategory/EditCategory";
+import EditPainting from "./pages/Admin/EditForms/EditPainting/EditPainting";
+import EditAuthor from "./pages/Admin/EditForms/EditAuthor/EditAuthor";
+import CategoryPaintings from "./pages/Lists/CategoryPaintings/CategoryPaintings";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
@@ -60,6 +64,10 @@ function App() {
             <Route path="/all-paintings" element={<AllPaintings />} />
             <Route path="/all-categories" element={<AllCategories />} />
             <Route path="/all-artworks" element={<AllArtworks />} />
+            <Route
+              path="/category/paintings/:slug"
+              element={<CategoryPaintings />}
+            />
             <Route path="/paints-category" element={<PaintsByCategory />} />
             <Route path="/gallery" element={<GalleryList />} />
             <Route path="/authors-list" element={<AuthorsList />} />
@@ -83,6 +91,9 @@ function App() {
             <Route path="create-painting" element={<CreatePainting />} />
             <Route path="create-category" element={<CreateCategory />} />
             <Route path="create-artist" element={<CreateAuthor />} />
+            <Route path="edit-category/:id" element={<EditCategory />} />
+            <Route path="edit-painting/:id" element={<EditPainting />} />
+            <Route path="edit-author/:id" element={<EditAuthor />} />
             <Route path="give-role" element={<CreateAdmin />} />
             <Route path="create-author" element={<AuthorsAdminList />} />
             <Route path="create-roles" element={<RolesList />} />

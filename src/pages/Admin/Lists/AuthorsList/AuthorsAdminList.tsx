@@ -3,9 +3,11 @@ import CreateHeader from "../../ui/CreateHeader/CreateHeader";
 import ListTemplate from "../../../../shared/ui/ListTemplate/ListTemplate";
 import { useNavigate } from "react-router-dom";
 import "./AuthorsAdminList.scss";
+import { useGetAuthors } from "./api/useAuthors";
 
 const AuthorsAdminList: FC = () => {
   const navigate = useNavigate();
+  const { data, isFetching } = useGetAuthors();
 
   const handleClick = () => {
     navigate("/admin/create-artist");
@@ -19,7 +21,12 @@ const AuthorsAdminList: FC = () => {
         handleClick={handleClick}
       />
 
-      <ListTemplate listType="author" />
+      <ListTemplate
+        isFetching={isFetching}
+        admin
+        data={data}
+        listType="author"
+      />
     </div>
   );
 };

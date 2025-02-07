@@ -2,13 +2,15 @@ import { useState } from "react";
 import "./CreateAuthor.scss";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
+import { useCreateAuthor } from "./api/useCreateAuthor";
 
 const CreateAuthor = () => {
-  //   const { mutate: createCategoryFn, isSuccess } = useCreateCategory();
+  const { mutate: createAuthorFn, isSuccess } = useCreateAuthor();
 
   const [formState, setFormState] = useState({
-    title: "",
-    image: null,
+    name: "",
+    bio: "",
+    avatar: "",
   });
 
   const handleChange = (e: any) => {
@@ -22,17 +24,17 @@ const CreateAuthor = () => {
   const handleFileChange = (e: any) => {
     setFormState({
       ...formState,
-      image: e.target.files[0],
+      avatar: e.target.files[0],
     });
   };
 
-  //   const onSubmit = () => {
-  //     createCategoryFn(formState);
-  //   };
+  const onSubmit = () => {
+    createAuthorFn(formState);
+  };
 
-  //   if (isSuccess) {
-  //     return <h1>Картинка успешно создана!</h1>;
-  //   }
+  if (isSuccess) {
+    return <h1>Картинка успешно создана!</h1>;
+  }
   return (
     <div className="create-author">
       <div className="create-author__header">
@@ -44,25 +46,31 @@ const CreateAuthor = () => {
           <label htmlFor="name">Artists fullname</label>
           <input
             type="text"
-            name="title"
-            value={formState.title}
+            name="name"
+            value={formState.name}
             onChange={handleChange}
           />
         </div>
         <div className="">
           <label htmlFor="name">Artists bio</label>
-          <textarea name="" id=""></textarea>
+
+          <textarea
+            value={formState.bio}
+            onChange={handleChange}
+            name="bio"
+            id=""
+          ></textarea>
         </div>
         <div className="">
           <label htmlFor="image">Upload artists picture</label>
           {/* <input type="file" name="image" onChange={handleFileChange} /> */}
-          <Uploader />
+          <Uploader onFileChange={handleFileChange} />
         </div>
       </form>
 
       <div className="create-author__btns">
-        {/* <button type="button">Создать</button> */}
-        <BasicBtn title="Create" />
+        {/* <button  type="button">Создать</button> */}
+        <BasicBtn clickFn={onSubmit} title="Create" />
       </div>
     </div>
   );

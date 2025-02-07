@@ -25,7 +25,7 @@ const SelectedArt = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     swipeToSlide: true,
-    variableWidth: false, 
+    variableWidth: false,
     responsive: [
       {
         breakpoint: 992,
@@ -63,13 +63,13 @@ const SelectedArt = () => {
               <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3>
-              <FavoriteBtn />
+              <FavoriteBtn id={9} />
             </div>
             <div className="selected-art__painting">
               <img src={firstImg} alt="" />
             </div>
             <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
+              <h5 className="selected-art__name">MOVIE TIME cdfdsfdfd</h5>
               <p className="selected-art__description">
                 Original artwork. Mixed media on canvas. 130x100 cm
               </p>

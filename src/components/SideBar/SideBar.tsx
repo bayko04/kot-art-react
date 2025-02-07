@@ -5,7 +5,7 @@ import paintImg from "../../images/svg/admin/paint.svg";
 import painterImg from "../../images/svg/admin/painter.svg";
 import rolesImg from "../../images/svg/admin/setting.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { setBurger } from "../../store/reducers/BurgerSlice";
+import { setBurger } from "../../shared/store/reducers/BurgerSlice";
 
 interface ISidebar {
   id: number;

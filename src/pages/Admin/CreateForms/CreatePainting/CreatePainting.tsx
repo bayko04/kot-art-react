@@ -10,7 +10,7 @@ const CreatePainting = () => {
   const { data: categoriesList } = useGetCategories();
   const { mutate: createPaintFn, isSuccess } = useCreatePaint();
 
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState<any>({
     title: "",
     price: "",
     currency: "",
@@ -19,7 +19,7 @@ const CreatePainting = () => {
     height: "",
     author: "",
     category: "",
-    image: null,
+    images: [],
   });
 
   const handleChange = (e: any) => {
@@ -33,7 +33,12 @@ const CreatePainting = () => {
   const handleFileChange = (e: any) => {
     setFormState({
       ...formState,
-      image: e.target.files[0],
+      images: [
+        {
+          is_main: false,
+          image: e.target.files[0],
+        },
+      ],
     });
   };
 
@@ -44,6 +49,8 @@ const CreatePainting = () => {
   if (isSuccess) {
     return <h1>Картинка успешно создана!</h1>;
   }
+
+  console.log(formState);
 
   return (
     <div className="create-paint">
@@ -139,13 +146,13 @@ const CreatePainting = () => {
         <div className="">
           <label htmlFor="image">Select a paint</label>
           {/* <input type="file" name="image" onChange={handleFileChange} /> */}
-          <Uploader />
+          <Uploader onFileChange={handleFileChange} />
         </div>
       </form>
 
       <div className="create-paint__btns">
         {/* <button type="button" onClick={onSubmit}></button> */}
-        <BasicBtn title="Create" />
+        <BasicBtn clickFn={onSubmit} title="Create" />
       </div>
     </div>
   );

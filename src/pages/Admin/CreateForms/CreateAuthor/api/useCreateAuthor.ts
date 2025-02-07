@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import PaintingsService from "../../../../../services/PaintingsService";
+import PaintingsService from "../../../../../shared/services/PaintingsService";
 
 export function useCreateAuthor() {
   return useMutation({
@@ -11,7 +11,8 @@ export function useCreateAuthor() {
         formData.append(key, value as string | Blob);
       });
 
-      const response = await PaintingsService.createCategory(formData);
+      console.log(formData);
+      const response = await PaintingsService.AuthorCreate(formData);
 
       return response.data.results;
     },

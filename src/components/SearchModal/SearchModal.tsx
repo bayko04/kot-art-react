@@ -2,7 +2,7 @@ import "./SearchModal.scss";
 import dataImg from "../../images/png/pinkCat.png";
 import CloseBtn from "../../shared/ui/CloseBtn/CloseBtn";
 import { useDispatch } from "react-redux";
-import { setSearchModal } from "../../store/reducers/useSearchStore";
+import { setSearchModal } from "../../shared/store/reducers/useSearchStore";
 import { useEffect, useState } from "react";
 
 const SearchModal = () => {

@@ -1,5 +1,6 @@
 .categories-card {
   flex: 0 0 calc(25% - 20px);
+  position: relative;
 
   &__slide {
     cursor: pointer;

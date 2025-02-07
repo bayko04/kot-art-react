@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { relative } from "path";
 import AdminHeader from "../../pages/Admin/ui/AdminHeader/AdminHeader";
 import { useSelector } from "react-redux";
+import EditBtn from "../../shared/ui/EditBtn/EditBtn";
 
 const AdminLayout = () => {
   const { burger } = useSelector((state: any) => state.burger);

@@ -2,20 +2,21 @@ import axios from "axios";
 import $api, { API_URL } from "../http/index";
 
 export default class PaintingsService {
-  static async AuthorCreate(name: string, bio: string) {
-    return $api.post(`${API_URL}/user/register/`, {
-      name,
-      bio,
+  static AuthorCreate = (formData: FormData) => {
+    return $api.post("/painting/admin/author-create/", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data", // Не обязательно, но можно оставить
+      },
     });
-  }
+  };
   static async deleteAuthor(id: number) {
-    return $api.get(`/painting/admin/author-delete/${id}/`);
+    return $api.delete(`/painting/admin/author-delete/${id}/`);
   }
-  static async updateAuthor(id: number) {
-    return $api.put(`/painting/admin/author-update/${id}/`);
+  static async updateAuthor(formData: FormData, id: number) {
+    return $api.put(`/painting/admin/author-update/${id}/`, formData);
   }
-  static async updateAuthorPatch(id: number) {
-    return $api.patch(`/painting/admin/author-update/${id}/`);
+  static async updateAuthorPatch(formData: FormData, id: number) {
+    return $api.patch(`/painting/admin/author-update/${id}/`, formData);
   }
   static async getAuthors() {
     return axios.get(`${API_URL}/painting/admin/authors/`);
@@ -29,39 +30,27 @@ export default class PaintingsService {
   static async getCategoryList() {
     return axios.get(`${API_URL}/painting/admin/category-list/`);
   }
+  static async getCategoryPaints(id: number) {
+    return axios.get(`${API_URL}/painting/admin/category-retreive/${id}/`);
+  }
   static async updateCategory(id: number, title: string) {
     return $api.put(`/painting/admin/category-update/${id}/`, { title });
   }
-  static async updateCategoryPathc(id: number, title: string) {
-    return $api.patch(`/painting/admin/category-update/${id}/`, { title });
+  static async updateCategoryPatch(formData: FormData, id: number) {
+    return $api.patch(`/painting/admin/category-update/${id}/`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   }
-  static async createPainting(
-    // title: string,
-    // price: string,
-    // currency: string,
-    // description: string,
-    // width: string,
-    // height: string,
-    // images: string[],
-    // author: number,
-    // category: number
-    formData: FormData
-  ) {
+  static async createPainting(formData: FormData) {
     return $api.post(
       `/painting/admin/create/`,
-      // title,
-      // price,
-      // currency,
-      // description,
-      // width,
-      // height,
-      // images,
-      // author,
-      // category,
+
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data", // Устанавливаем заголовок явно
+          "Content-Type": "multipart/form-data",
         },
       }
     );
@@ -118,11 +107,15 @@ export default class PaintingsService {
     });
   }
   //
-  static async paintingList() {
-    return axios.get(`${API_URL}/painting/auth/list/`);
+  static async paintingList(categoryTitle?: string) {
+    return axios.get(`${API_URL}/painting/auth/list/`, {
+      params: {
+        category_title: categoryTitle,
+      },
+    });
   }
   static async paintingRetrieve(id: number) {
-    return $api.get(`/painting/auth/retrieve/${id}/`);
+    return axios.get(`${API_URL}/painting/auth/retrieve/${id}/`);
   }
   static async paintingFollow(id: number) {
     return $api.post(`/painting/auth/${id}/follow/`);

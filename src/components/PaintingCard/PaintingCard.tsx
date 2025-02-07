@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import heartImg from "../../images/svg/header/Vector-1.svg";
-import { IPainting } from "../../types/paintingsType";
+import { IPainting } from "../../shared/types/paintingsType";
 import "./PaintingCard.scss";
+import DeleteBtn from "../../shared/ui/DeleteBtn/DeleteBtn";
 
 interface IProps extends IPainting {
   img?: string;
   width?: string;
+  deletable?: boolean;
+  admin?: boolean;
 }
 
 const PaintingCard = ({
@@ -18,11 +21,17 @@ const PaintingCard = ({
   img,
   follow,
   width = "25%",
+  admin,
+  id,
 }: IProps) => {
   const navigate = useNavigate();
 
   const handleNavigate = (e: any) => {
     e.stopPropagation();
+
+    if (admin) {
+      return navigate(`/admin/edit-painting/${id}`);
+    }
 
     navigate("/painting-details");
   };
@@ -40,12 +49,14 @@ const PaintingCard = ({
         <img src={image} alt="" />
       </div>
       <div className="painting-card__content">
-        <h5 className="painting-card__name">MOVIE TIME</h5>
+        <h5 className="painting-card__name">{title || "MOVIE TIME"}</h5>
         <p className="painting-card__description">
-          Original artwork. Mixed media on canvas. 130x100 cm
+          {description || "Original artwork. Mixed media on canvas. 130x100 cm"}
         </p>
-        <p className="painting-card__price">$5,500</p>
+        <p className="painting-card__price">{price || "$5,500"}</p>
       </div>
+
+      {/* {true && <DeleteBtn />} */}
     </div>
   );
 };

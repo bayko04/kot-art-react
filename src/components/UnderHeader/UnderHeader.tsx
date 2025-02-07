@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setBurger } from "../../store/reducers/BurgerSlice";
+import { setBurger } from "../../shared/store/reducers/BurgerSlice";
 import "./UnderHeader.scss";
 
 const UnderHeader = () => {

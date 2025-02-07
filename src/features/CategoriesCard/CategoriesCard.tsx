@@ -1,21 +1,37 @@
 import "./CategoriesCard.scss";
 import firstImg from "../../images/png/slider1/1.png";
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
+import DeleteBtn from "../../shared/ui/DeleteBtn/DeleteBtn";
 
-const CategoriesCard = () => {
+interface IProps {
+  deletable?: boolean;
+  admin?: boolean;
+  title?: string;
+  image?: string;
+  id?: number;
+}
+
+const CategoriesCard: FC<IProps> = ({ admin, title, image, id }) => {
   const navigate = useNavigate();
 
+  const handleNavigate = () => {
+    if (admin) {
+      return navigate(`/admin/edit-category/${id}`);
+    }
+    navigate(`/category/paintings/${title}`);
+  };
+
   return (
-    <div
-      onClick={() => navigate("/category/KOTART COLLECTION")}
-      className="categories-card"
-    >
+    <div onClick={handleNavigate} className="categories-card">
       <div className="categories-card__slide">
         <div className="categories-card__painting">
-          <img src={firstImg} alt="" />
+          <img src={image || firstImg} alt="" />
         </div>
-        <p className="categories-card__name">KOTART COLLECTION</p>
+        <p className="categories-card__name">{title || "KOTART COLLECTION"}</p>
       </div>
+
+      {/* {deletable && <DeleteBtn />} */}
     </div>
   );
 };
