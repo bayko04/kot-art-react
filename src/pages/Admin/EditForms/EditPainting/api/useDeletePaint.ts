@@ -6,6 +6,7 @@ export function useDeletePaint() {
     mutationKey: ["deletePaint"],
     mutationFn: async ({ id }: { id: number }) => {
       const response = await PaintingsService.deletePainting(id);
+      console.log("deleted");
       return response.data.results;
     },
   });

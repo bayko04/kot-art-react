@@ -95,7 +95,7 @@ function App() {
             <Route path="edit-painting/:id" element={<EditPainting />} />
             <Route path="edit-author/:id" element={<EditAuthor />} />
             <Route path="give-role" element={<CreateAdmin />} />
-            <Route path="create-author" element={<AuthorsAdminList />} />
+            <Route path="authors-list" element={<AuthorsAdminList />} />
             <Route path="create-roles" element={<RolesList />} />
           </Route>
         </Routes>

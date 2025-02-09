@@ -3,6 +3,7 @@ import heartImg from "../../images/svg/header/Vector-1.svg";
 import { IPainting } from "../../shared/types/paintingsType";
 import "./PaintingCard.scss";
 import DeleteBtn from "../../shared/ui/DeleteBtn/DeleteBtn";
+import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
 
 interface IProps extends IPainting {
   img?: string;
@@ -41,9 +42,7 @@ const PaintingCard = ({
       <div className="painting-card__sliderUp">
         {/* <h3 className="painting-card__inStock">In stock</h3> */}
         <h3 className="painting-card__availability">ASK FOR AVAILABILITY</h3>
-        {/* <div className="painting-card__favorite">
-          <img src={heartImg} alt="" />
-        </div> */}
+        {!admin && <FavoriteBtn id={id} />}
       </div>
       <div className="painting-card__painting">
         <img src={image} alt="" />

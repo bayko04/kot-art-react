@@ -25,8 +25,8 @@ const Uploader = ({ onFileChange }: { onFileChange?: any }) => {
             />
             <img src={uploaderImg} alt="" />
           </div>
-          <p>{fileName}</p>
         </div>
+        <p>{fileName}</p>
         {/* <div className="uploader__img">
           <img src={img2} alt="" />
         </div> */}

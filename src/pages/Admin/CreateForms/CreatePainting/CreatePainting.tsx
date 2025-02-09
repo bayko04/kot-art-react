@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useGetAuthors, useGetCategories } from "./api/useAuthors";
-import { useCreatePaint } from "./api/useCreatePain";
+import { useCreatePaint } from "./api/useCreatePaint";
 import "./CreatePainting.scss";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
+import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 const CreatePainting = () => {
   const { data: authorsList } = useGetAuthors();
   const { data: categoriesList } = useGetCategories();
-  const { mutate: createPaintFn, isSuccess } = useCreatePaint();
-
+  const { mutate: createPaintFn, isSuccess, isPending } = useCreatePaint();
+  const navigate = useNavigate();
   const [formState, setFormState] = useState<any>({
     title: "",
     price: "",
@@ -18,7 +20,7 @@ const CreatePainting = () => {
     width: "",
     height: "",
     author: "",
-    category: "",
+    categories: "",
     images: [],
   });
 
@@ -35,7 +37,7 @@ const CreatePainting = () => {
       ...formState,
       images: [
         {
-          is_main: false,
+          is_main: true,
           image: e.target.files[0],
         },
       ],
@@ -47,10 +49,8 @@ const CreatePainting = () => {
   };
 
   if (isSuccess) {
-    return <h1>Картинка успешно создана!</h1>;
+    navigate("/admin/paintings-list");
   }
-
-  console.log(formState);
 
   return (
     <div className="create-paint">
@@ -79,12 +79,14 @@ const CreatePainting = () => {
         </div>
         <div className="">
           <label htmlFor="currency">Currency</label>
-          <input
-            type="text"
+
+          <select
             name="currency"
             value={formState.currency}
             onChange={handleChange}
-          />
+          >
+            <option value="USD">USD</option>
+          </select>
         </div>
         <div className="">
           <label htmlFor="description">Description</label>
@@ -131,7 +133,7 @@ const CreatePainting = () => {
         <div className="">
           <label htmlFor="category">Select a category</label>
           <select
-            name="category"
+            name="categories"
             value={formState.category}
             onChange={handleChange}
           >
@@ -151,8 +153,11 @@ const CreatePainting = () => {
       </form>
 
       <div className="create-paint__btns">
-        {/* <button type="button" onClick={onSubmit}></button> */}
-        <BasicBtn clickFn={onSubmit} title="Create" />
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <BasicBtn clickFn={onSubmit} title="Create" />
+        )}
       </div>
     </div>
   );

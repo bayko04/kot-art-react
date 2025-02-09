@@ -3,10 +3,16 @@ import "./EditAuthor.scss";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import { useGetAuthors } from "../EditPainting/api/useAuthors";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEditAuthor } from "./api/useEditAuthor";
 import { useDeleteAuthor } from "./api/useDeleteAuthor";
 import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
+import {
+  setIsDelete,
+  setIsDeleteUrl,
+} from "../../../../shared/store/reducers/usePopupsStore";
+import { useDispatch } from "react-redux";
+import { ClipLoader } from "react-spinners";
 
 const EditAuthor = () => {
   const { data: authorsData, isFetching } = useGetAuthors();
@@ -17,8 +23,9 @@ const EditAuthor = () => {
     avatar: "",
   });
   const params = useParams();
-  const { mutate: editAuthorFn } = useEditAuthor();
-  const { mutate: deleteFn } = useDeleteAuthor();
+  const navigate = useNavigate();
+  const { mutate: editAuthorFn, isSuccess, isPending } = useEditAuthor();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const filtered = authorsData.filter(
@@ -47,8 +54,15 @@ const EditAuthor = () => {
   };
 
   const handleDelete = () => {
-    deleteFn({ id: Number(params.id) });
+    dispatch(setIsDelete(true));
+    if (params.id) {
+      dispatch(setIsDeleteUrl(`/painting/admin/author-delete/${+params.id}/`));
+    }
   };
+
+  if (isSuccess) {
+    navigate("/admin/authors-list");
+  }
 
   return (
     <div className="edit-author">
@@ -86,8 +100,14 @@ const EditAuthor = () => {
       )}
 
       <div className="edit-author__btns">
-        <BasicBtn clickFn={onSubmit} title="Edit" />
-        <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <>
+            <BasicBtn clickFn={onSubmit} title="Edit" />
+            <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+          </>
+        )}
       </div>
     </div>
   );

@@ -5,6 +5,6 @@ export interface IPainting {
   price?: string;
   currency?: string;
   description?: string;
-  id?: string;
+  id?: number;
   follow?: boolean;
 }

@@ -4,18 +4,24 @@ import PaintingsService from "../../../../../shared/services/PaintingsService";
 export function useEditPaint() {
   return useMutation({
     mutationKey: ["editPaint"],
-    mutationFn: async (data: any) => {
-      // Создаем новый объект FormData
+    mutationFn: async ({ data, id }: { data: any; id: number }) => {
       const formData = new FormData();
 
-      // Добавляем каждое поле из объекта data в formData
       Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value as string | Blob);
+        if (key === "images" && Array.isArray(value)) {
+          value.forEach((imageObj, index) => {
+            formData.append(
+              `images[${index}]is_main`,
+              String(imageObj.is_main)
+            );
+            formData.append(`images[${index}]image`, imageObj.image);
+          });
+        } else {
+          formData.append(key, value as string | Blob);
+        }
       });
 
-      // Отправляем formData
-      console.log(formData);
-      const response = await PaintingsService.createPainting(formData);
+      const response = await PaintingsService.updatePaintingPatch(formData, id);
 
       return response.data.results;
     },

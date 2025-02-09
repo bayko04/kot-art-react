@@ -34,7 +34,9 @@ const SearchModal = () => {
 
   useEffect(() => {
     const isFiltered = data.filter((item: any) => {
-      return item.title.toLowerCase().includes(searchValue || "".toLowerCase());
+      return item.title
+        .toLowerCase()
+        .includes((searchValue || "").toLowerCase());
     });
 
     setFiltered(isFiltered);

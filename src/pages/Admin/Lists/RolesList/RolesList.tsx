@@ -14,7 +14,7 @@ const RolesList = () => {
     <div className="roles-list">
       <CreateHeader
         title="Roles"
-        btnText="Give out the role "
+        btnText="Give out the role"
         handleClick={handleNavigate}
       />
 

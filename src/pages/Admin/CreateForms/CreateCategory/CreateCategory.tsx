@@ -3,9 +3,16 @@ import { useCreateCategory } from "./api/useCreateCategory";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import "./CreateCategory.scss";
+import { useNavigate } from "react-router-dom";
+import { ClipLoader } from "react-spinners";
 
 const CreateCategory = () => {
-  const { mutate: createCategoryFn, isSuccess } = useCreateCategory();
+  const {
+    mutate: createCategoryFn,
+    isSuccess,
+    isPending,
+  } = useCreateCategory();
+  const navigate = useNavigate();
 
   const [formState, setFormState] = useState({
     title: "",
@@ -32,7 +39,7 @@ const CreateCategory = () => {
   };
 
   if (isSuccess) {
-    return <h1>Картинка успешно создана!</h1>;
+    navigate("/admin/category-list");
   }
 
   return (
@@ -62,7 +69,12 @@ const CreateCategory = () => {
         {/* <button type="button" onClick={onSubmit}>
           Создать
         </button> */}
-        <BasicBtn clickFn={onSubmit} title="Create" />
+
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <BasicBtn clickFn={onSubmit} title="Create" />
+        )}
       </div>
     </div>
   );

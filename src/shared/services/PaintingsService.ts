@@ -82,29 +82,8 @@ export default class PaintingsService {
       category,
     });
   }
-  static async updatePaintingPatch(
-    title: string,
-    price: string,
-    currency: string,
-    description: string,
-    width: string,
-    height: string,
-    images: string[],
-    author: number,
-    category: number,
-    id: number
-  ) {
-    return $api.patch(`/painting/admin/update/${id}/`, {
-      title,
-      price,
-      currency,
-      description,
-      width,
-      height,
-      images,
-      author,
-      category,
-    });
+  static async updatePaintingPatch(formData: FormData, id: number) {
+    return $api.patch(`/painting/admin/update/${id}/`, formData);
   }
   //
   static async paintingList(categoryTitle?: string) {
@@ -117,10 +96,16 @@ export default class PaintingsService {
   static async paintingRetrieve(id: number) {
     return axios.get(`${API_URL}/painting/auth/retrieve/${id}/`);
   }
+  static async paintingFollowList() {
+    return $api.get(`${API_URL}/painting/auth/follow-list/`);
+  }
   static async paintingFollow(id: number) {
     return $api.post(`/painting/auth/${id}/follow/`);
   }
   static async paintingStopFollow(id: number) {
     return $api.delete(`/painting/auth/${id}/follow/`);
+  }
+  static async delete(url: string) {
+    return $api.delete(url);
   }
 }

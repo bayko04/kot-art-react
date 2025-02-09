@@ -3,19 +3,27 @@ import { useEditCategory } from "./api/useEditCategory";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import "./EditCategory.scss";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useDeleteCategory } from "./api/useDeleteCategory";
+import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetCategories } from "../EditPainting/api/useAuthors";
 import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
+import {
+  setIsDelete,
+  setIsDeleteUrl,
+} from "../../../../shared/store/reducers/usePopupsStore";
+import { ClipLoader } from "react-spinners";
 
 const EditCategory = () => {
   const [data, setData] = useState<any>({});
-  // const { data: categoryData } = useSelector((state: any) => state.category);
   const { data: categoryData, isFetching } = useGetCategories();
-  const { mutate: editCategoryFn, isSuccess } = useEditCategory();
-  const { mutate: deleteFn } = useDeleteCategory();
+  const { mutate: editCategoryFn, isSuccess, isPending } = useEditCategory();
   const params = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [formState, setFormState] = useState({
+    title: "",
+    image: "",
+  });
 
   useEffect(() => {
     const filtered = categoryData.filter(
@@ -23,11 +31,6 @@ const EditCategory = () => {
     );
     setData(filtered);
   }, []);
-
-  const [formState, setFormState] = useState({
-    title: "",
-    image: "",
-  });
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -49,13 +52,16 @@ const EditCategory = () => {
   };
 
   const handleDelete = () => {
-    deleteFn({ id: Number(params.id) });
+    dispatch(setIsDelete(true));
+    if (params.id) {
+      dispatch(
+        setIsDeleteUrl(`/painting/admin/category-delete/${+params.id}/`)
+      );
+    }
   };
 
-  console.log(formState);
-
   if (isSuccess) {
-    return <h1>Картинка успешно создана!</h1>;
+    navigate("/admin/category-list");
   }
 
   return (
@@ -89,8 +95,15 @@ const EditCategory = () => {
         {/* <button type="button" onClick={onSubmit}>
           Создать
         </button> */}
-        <BasicBtn clickFn={onSubmit} title="Edit" />
-        <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <>
+            <BasicBtn clickFn={onSubmit} title="Edit" />
+            <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+          </>
+        )}
       </div>
     </div>
   );

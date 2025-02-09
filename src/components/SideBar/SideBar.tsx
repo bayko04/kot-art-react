@@ -37,7 +37,7 @@ const SideBar = () => {
     {
       id: 2,
       title: "Artists",
-      link: "create-author",
+      link: "authors-list",
       img: painterImg,
     },
     {

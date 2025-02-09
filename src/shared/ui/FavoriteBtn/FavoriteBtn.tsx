@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heartImg from "../../../images/svg/header/favoriteUn.svg";
 import heartRedImg from "../../../images/svg/header/favorite.svg";
 import "./FavoriteBtn.scss";
 import { useAddFavorite, useDeleteFavorite } from "./api/useFavorite";
+import { useGetFavorites } from "../../../pages/Lists/FavoriteList/api/useGetFavorites";
 
 const FavoriteBtn = ({ id }: { id?: number }) => {
   const { mutate: addFavoriteFn } = useAddFavorite();
   const { mutate: deleteFavoriteFn } = useDeleteFavorite();
+  const { data, isFetched } = useGetFavorites();
   const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    const followidList = data.filter((item: any) => item.id === id);
+    setIsLiked(followidList[0]?.id || false);
+  }, [isFetched]);
 
   const toggleLike = (e: any) => {
     e.stopPropagation();

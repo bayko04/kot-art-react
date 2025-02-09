@@ -63,7 +63,7 @@ const SelectedArt = () => {
               <h3 className="selected-art__availability">
                 ASK FOR AVAILABILITY
               </h3>
-              <FavoriteBtn id={9} />
+              <FavoriteBtn id={22} />
             </div>
             <div className="selected-art__painting">
               <img src={firstImg} alt="" />

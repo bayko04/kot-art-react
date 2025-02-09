@@ -3,10 +3,13 @@ import "./CreateAuthor.scss";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import { useCreateAuthor } from "./api/useCreateAuthor";
+import { useNavigate } from "react-router-dom";
+import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
+import { ClipLoader } from "react-spinners";
 
 const CreateAuthor = () => {
-  const { mutate: createAuthorFn, isSuccess } = useCreateAuthor();
-
+  const navigate = useNavigate();
+  const { mutate: createAuthorFn, isSuccess, isPending } = useCreateAuthor();
   const [formState, setFormState] = useState({
     name: "",
     bio: "",
@@ -33,7 +36,7 @@ const CreateAuthor = () => {
   };
 
   if (isSuccess) {
-    return <h1>Картинка успешно создана!</h1>;
+    navigate("/admin/authors-list");
   }
   return (
     <div className="create-author">
@@ -69,8 +72,11 @@ const CreateAuthor = () => {
       </form>
 
       <div className="create-author__btns">
-        {/* <button  type="button">Создать</button> */}
-        <BasicBtn clickFn={onSubmit} title="Create" />
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <BasicBtn clickFn={onSubmit} title="Create" />
+        )}
       </div>
     </div>
   );

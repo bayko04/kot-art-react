@@ -4,23 +4,26 @@ import "./EditPainting.scss";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import { useGetPaintings } from "../../Lists/PaintingsList/api/usePaintings";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetPaint } from "./api/useGetPaint";
 import { useDeletePaint } from "./api/useDeletePaint";
 import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
+import {
+  setIsDelete,
+  setIsDeleteUrl,
+} from "../../../../shared/store/reducers/usePopupsStore";
+import { useDispatch } from "react-redux";
+import { ClipLoader } from "react-spinners";
+import { useEditPaint } from "./api/useEditPaint";
 
 const EditPainting = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { data: authorsList } = useGetAuthors();
   const { data: categoriesList } = useGetCategories();
-  // const { mutate: editPaintFn, isSuccess } = useCreatePaint();
-  const {
-    data: paintingData,
-    isSuccess: isSuccessPaintList,
-    isFetching,
-  } = useGetPaint(Number(params.id));
-  const { mutate: deleteFn } = useDeletePaint();
-  const [data, setData] = useState<any>({});
+  const { mutate: editPaintFn, isSuccess, isPending } = useEditPaint();
+  const { data: paintingData } = useGetPaint(Number(params.id));
+  const dispatch = useDispatch();
   const [formState, setFormState] = useState({
     title: "",
     price: "",
@@ -56,16 +59,19 @@ const EditPainting = () => {
   };
 
   const onSubmit = () => {
-    // editPaintFn(formState);
+    editPaintFn({ data: formState, id: Number(params.id) });
   };
 
   const handleDelete = () => {
-    deleteFn({ id: Number(params.id) });
+    dispatch(setIsDelete(true));
+    if (params.id) {
+      dispatch(setIsDeleteUrl(`/painting/admin/delete/${+params.id}/`));
+    }
   };
 
-  // if (isSuccess) {
-  //   return <h1>Картинка успешно создана!</h1>;
-  // }
+  if (isSuccess) {
+    navigate("/admin/paintings-list");
+  }
 
   return (
     <div className="edit-paint">
@@ -73,7 +79,7 @@ const EditPainting = () => {
         <h1 className="edit-paint__title">Create painting</h1>
       </div>
 
-      {isFetching ? (
+      {false ? (
         <BasicLoader />
       ) : (
         <form className="edit-paint__form">
@@ -151,7 +157,7 @@ const EditPainting = () => {
               value={formState.category}
               onChange={handleChange}
             >
-              <option value={paintingData?.category?.title}>
+              <option value={paintingData?.categories?.title}>
                 {paintingData?.category?.title}
               </option>
               {categoriesList?.map((item: any) => (
@@ -170,8 +176,14 @@ const EditPainting = () => {
       )}
 
       <div className="edit-paint__btns">
-        <BasicBtn clickFn={onSubmit} title="Edit" />
-        <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+        {isPending ? (
+          <ClipLoader />
+        ) : (
+          <>
+            <BasicBtn clickFn={onSubmit} title="Edit" />
+            <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+          </>
+        )}
       </div>
     </div>
   );
