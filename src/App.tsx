@@ -1,4 +1,5 @@
-import "./App.css";
+import "./App.scss";
+import "./global.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Auth from "./pages/Auth/Auth";

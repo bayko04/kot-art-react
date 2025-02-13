@@ -11,7 +11,7 @@ $api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    config.headers.Authorization = `Bearer ${`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM5MDY1MjQ4LCJpYXQiOjE3MzkwNjE2NDgsImp0aSI6IjYwOTFhZTk4MzVjODQzM2M5YjFhNjZjY2RlNGE2Zjc2IiwidXNlcl9pZCI6MX0.g3eccN4BqrnT-4m-S3vxeWX-ocdKGK_pIiIegJGQoLI`}`;
+    config.headers.Authorization = `Bearer ${`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM5NDA1NTE2LCJpYXQiOjE3Mzk0MDE5MTYsImp0aSI6ImMyMzg5ZGVlZTZmMjRhMTFiYTY1NGFjNmRkMTk5N2E3IiwidXNlcl9pZCI6MX0.CBewqfw4Mk8Z46gq4rxvsZeO3OKQZxojixsN_NqQ6GU`}`;
   } else {
     console.error("Token not found in localStorage");
   }

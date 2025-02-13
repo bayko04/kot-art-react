@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useGetAuthors, useGetCategories } from "./api/useAuthors";
 import { useCreatePaint } from "./api/useCreatePaint";
 import "./CreatePainting.scss";
@@ -7,45 +10,68 @@ import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
+// Определяем схему валидации
+const schema = yup.object().shape({
+  title: yup.string().required("Name is required"),
+  price: yup
+    .number()
+    .typeError("Price must be a number")
+    .positive("Price must be greater than zero")
+    .required("Price is required"),
+  currency: yup.string().required("Currency is required"),
+  description: yup.string().required("Description is required"),
+  width: yup
+    .number()
+    .typeError("Width must be a number")
+    .positive("Width must be greater than zero")
+    .required("Width is required"),
+  height: yup
+    .number()
+    .typeError("Height must be a number")
+    .positive("Height must be greater than zero")
+    .required("Height is required"),
+  author: yup.string().required("Artist is required"),
+  categories: yup.string().required("Category is required"),
+  images: yup.array().min(1, "At least one image is required"),
+});
+
 const CreatePainting = () => {
   const { data: authorsList } = useGetAuthors();
   const { data: categoriesList } = useGetCategories();
   const { mutate: createPaintFn, isSuccess, isPending } = useCreatePaint();
   const navigate = useNavigate();
-  const [formState, setFormState] = useState<any>({
-    title: "",
-    price: "",
-    currency: "",
-    description: "",
-    width: "",
-    height: "",
-    author: "",
-    categories: "",
-    images: [],
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      title: "",
+      price: 0,
+      currency: "USD",
+      description: "",
+      width: 0,
+      height: 0,
+      author: "",
+      categories: "",
+      images: [],
+    },
   });
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+  const onSubmit = (data: any) => {
+    createPaintFn(data);
   };
 
   const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      images: [
-        {
-          is_main: true,
-          image: e.target.files[0],
-        },
-      ],
-    });
-  };
-
-  const onSubmit = () => {
-    createPaintFn(formState);
+    const file = e.target.files[0];
+    if (file) {
+      setValue("images", [{ is_main: true, image: file }], {
+        shouldValidate: true,
+      });
+    }
   };
 
   if (isSuccess) {
@@ -54,74 +80,52 @@ const CreatePainting = () => {
 
   return (
     <div className="create-paint">
-      <div className="create-pain__header">
+      <div className="create-paint__header">
         <h1 className="create-paint__title">Create painting</h1>
       </div>
 
-      <form className="create-paint__form">
-        <div className="">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="title"
-            value={formState.title}
-            onChange={handleChange}
-          />
+      <form className="create-paint__form" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="title">Name</label>
+          <input type="text" {...register("title")} />
+          <p className="validateError">{errors.title?.message}</p>
         </div>
-        <div className="">
-          <label htmlFor="price">Price</label>
-          <input
-            type="text"
-            name="price"
-            value={formState.price}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="">
-          <label htmlFor="currency">Currency</label>
 
-          <select
-            name="currency"
-            value={formState.currency}
-            onChange={handleChange}
-          >
+        <div>
+          <label htmlFor="price">Price</label>
+          <input type="text" {...register("price")} />
+          <p className="validateError">{errors.price?.message}</p>
+        </div>
+
+        <div>
+          <label htmlFor="currency">Currency</label>
+          <select {...register("currency")}>
             <option value="USD">USD</option>
           </select>
+          <p className="validateError">{errors.currency?.message}</p>
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            name="description"
-            value={formState.description}
-            onChange={handleChange}
-          />
+          <input type="text" {...register("description")} />
+          <p className="validateError">{errors.description?.message}</p>
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="width">Width</label>
-          <input
-            type="text"
-            name="width"
-            value={formState.width}
-            onChange={handleChange}
-          />
+          <input type="text" {...register("width")} />
+          <p className="validateError">{errors.width?.message}</p>
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="height">Height</label>
-          <input
-            type="text"
-            name="height"
-            value={formState.height}
-            onChange={handleChange}
-          />
+          <input type="text" {...register("height")} />
+          <p className="validateError">{errors.height?.message}</p>
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="author">Select an artist</label>
-          <select
-            name="author"
-            value={formState.author}
-            onChange={handleChange}
-          >
+          <select {...register("author")}>
             <option value="">Select an artist</option>
             {authorsList?.map((item: any) => (
               <option key={item.id} value={item.id}>
@@ -129,14 +133,12 @@ const CreatePainting = () => {
               </option>
             ))}
           </select>
+          <p className="validateError">{errors.author?.message}</p>
         </div>
-        <div className="">
-          <label htmlFor="category">Select a category</label>
-          <select
-            name="categories"
-            value={formState.category}
-            onChange={handleChange}
-          >
+
+        <div>
+          <label htmlFor="categories">Select a category</label>
+          <select {...register("categories")}>
             <option value="">Select a category</option>
             {categoriesList?.map((item: any) => (
               <option key={item.id} value={item.id}>
@@ -144,21 +146,19 @@ const CreatePainting = () => {
               </option>
             ))}
           </select>
+          <p className="validateError">{errors.categories?.message}</p>
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="image">Select a paint</label>
-          {/* <input type="file" name="image" onChange={handleFileChange} /> */}
           <Uploader onFileChange={handleFileChange} />
+          <p className="validateError">{errors.images?.message}</p>
+        </div>
+
+        <div className="create-paint__btns">
+          {isPending ? <ClipLoader /> : <BasicBtn title="Create" />}
         </div>
       </form>
-
-      <div className="create-paint__btns">
-        {isPending ? (
-          <ClipLoader />
-        ) : (
-          <BasicBtn clickFn={onSubmit} title="Create" />
-        )}
-      </div>
     </div>
   );
 };

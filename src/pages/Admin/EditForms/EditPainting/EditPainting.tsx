@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useGetAuthors, useGetCategories } from "./api/useAuthors";
 import "./EditPainting.scss";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
-import { useGetPaintings } from "../../Lists/PaintingsList/api/usePaintings";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetPaint } from "./api/useGetPaint";
-import { useDeletePaint } from "./api/useDeletePaint";
 import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
 import {
   setIsDelete,
@@ -16,6 +14,31 @@ import { useDispatch } from "react-redux";
 import { ClipLoader } from "react-spinners";
 import { useEditPaint } from "./api/useEditPaint";
 
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  title: yup.string().required("Title is required"),
+  price: yup
+    .number()
+    .typeError("Price must be a number")
+    .required("Price is required"),
+  currency: yup.string().required("Currency is required"),
+  description: yup.string().required("Description is required"),
+  width: yup
+    .number()
+    .typeError("Width must be a number")
+    .required("Width is required"),
+  height: yup
+    .number()
+    .typeError("Height must be a number")
+    .required("Height is required"),
+  author: yup.string().required("Select an artist"),
+  category: yup.string().required("Select a category"),
+  image: yup.mixed().notRequired(),
+});
+
 const EditPainting = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -24,42 +47,51 @@ const EditPainting = () => {
   const { mutate: editPaintFn, isSuccess, isPending } = useEditPaint();
   const { data: paintingData } = useGetPaint(Number(params.id));
   const dispatch = useDispatch();
-  const [formState, setFormState] = useState({
-    title: "",
-    price: "",
-    currency: "",
-    description: "",
-    width: "",
-    height: "",
-    author: "",
-    category: "",
-    image: null,
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      title: "",
+      price: 0,
+      currency: "",
+      description: "",
+      width: 0,
+      height: 0,
+      author: "",
+      category: "",
+      image: null,
+    },
   });
 
-  // useEffect(() => {
-  //   const filtered = paintingsList.filter(
-  //     (item: any) => item.id === Number(params.id)
-  //   );
-  //   setData(filtered);
-  // }, [isSuccessPaintList]);
+  // После загрузки данных картины устанавливаем дефолтные значения
+  useEffect(() => {
+    if (paintingData) {
+      reset({
+        title: paintingData.title || "",
+        price: paintingData.price || "",
+        currency: paintingData.currency || "",
+        description: paintingData.description || "",
+        width: paintingData.width || "",
+        height: paintingData.height || "",
+        // Если в данных хранится объект автора/категории, берем его id
+        author: paintingData.author?.id ? String(paintingData.author.id) : "",
+        category: paintingData.category?.id
+          ? String(paintingData.category.id)
+          : "",
+        image: null,
+      });
+    }
+  }, [paintingData, reset]);
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      image: e.target.files[0],
-    });
-  };
-
-  const onSubmit = () => {
-    editPaintFn({ data: formState, id: Number(params.id) });
+  // Обработка отправки формы
+  const onSubmit = (formData: any) => {
+    editPaintFn({ data: formData, id: Number(params.id) });
   };
 
   const handleDelete = () => {
@@ -76,115 +108,119 @@ const EditPainting = () => {
   return (
     <div className="edit-paint">
       <div className="edit-pain__header">
-        <h1 className="edit-paint__title">Create painting</h1>
+        <h1 className="edit-paint__title">Редактировать картину</h1>
       </div>
 
-      {false ? (
-        <BasicLoader />
-      ) : (
-        <form className="edit-paint__form">
-          <div className="">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="title"
-              value={formState.title || paintingData?.title}
-              onChange={handleChange}
-            />
+      {paintingData ? (
+        <form className="edit-paint__form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-group">
+            <label htmlFor="title">Name</label>
+            <input type="text" id="title" {...register("title")} />
+            {errors.title && (
+              <p className="validateError">{errors.title.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="price">Price</label>
-            <input
-              type="text"
-              name="price"
-              value={formState.price || paintingData?.price}
-              onChange={handleChange}
-            />
+            <input type="text" id="price" {...register("price")} />
+            {errors.price && (
+              <p className="validateError">{errors.price.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="currency">Currency</label>
-            <input
-              type="text"
-              name="currency"
-              value={formState.currency || paintingData?.currency}
-              onChange={handleChange}
-            />
+            <input type="text" id="currency" {...register("currency")} />
+            {errors.currency && (
+              <p className="validateError">{errors.currency.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="description">Description</label>
-            <input
-              type="text"
-              name="description"
-              value={formState.description || paintingData?.description}
-              onChange={handleChange}
-            />
+            <input type="text" id="description" {...register("description")} />
+            {errors.description && (
+              <p className="validateError">{errors.description.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="width">Width</label>
-            <input
-              type="text"
-              name="width"
-              value={formState.width || paintingData?.width}
-              onChange={handleChange}
-            />
+            <input type="text" id="width" {...register("width")} />
+            {errors.width && (
+              <p className="validateError">{errors.width.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="height">Height</label>
-            <input
-              type="text"
-              name="height"
-              value={formState.height || paintingData?.height}
-              onChange={handleChange}
-            />
+            <input type="text" id="height" {...register("height")} />
+            {errors.height && (
+              <p className="validateError">{errors.height.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="author">Select an artist</label>
-            <select name="author" onChange={handleChange}>
-              <option value={paintingData?.author?.name}>
-                {paintingData?.author?.name}
-              </option>
+            <select id="author" {...register("author")}>
               {authorsList?.map((item: any) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>
               ))}
             </select>
+            {errors.author && (
+              <p className="validateError">{errors.author.message}</p>
+            )}
           </div>
-          <div className="">
+
+          <div className="form-group">
             <label htmlFor="category">Select a category</label>
-            <select
-              name="category"
-              value={formState.category}
-              onChange={handleChange}
-            >
-              <option value={paintingData?.categories?.title}>
-                {paintingData?.category?.title}
-              </option>
+            <select id="category" {...register("category")}>
               {categoriesList?.map((item: any) => (
                 <option key={item.id} value={item.id}>
                   {item.title}
                 </option>
               ))}
             </select>
+            {errors.category && (
+              <p className="validateError">{errors.category.message}</p>
+            )}
           </div>
-          <div className="">
-            <label htmlFor="image">Select a paint</label>
 
-            <Uploader onFileChange={handleFileChange} />
+          <div className="form-group">
+            <label htmlFor="image">Select a paint</label>
+            <Controller
+              control={control}
+              name="image"
+              render={({ field }) => (
+                <>
+                  <Uploader
+                    onFileChange={(e: any) => field.onChange(e.target.files[0])}
+                  />
+                  {errors.image && (
+                    <p className="validateError">{errors.image.message}</p>
+                  )}
+                </>
+              )}
+            />
+          </div>
+
+          <div className="edit-paint__btns">
+            {isPending ? (
+              <ClipLoader />
+            ) : (
+              <>
+                <BasicBtn clickFn={handleSubmit(onSubmit)} title="Edit" />
+                <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
+              </>
+            )}
           </div>
         </form>
+      ) : (
+        <BasicLoader />
       )}
-
-      <div className="edit-paint__btns">
-        {isPending ? (
-          <ClipLoader />
-        ) : (
-          <>
-            <BasicBtn clickFn={onSubmit} title="Edit" />
-            <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
-          </>
-        )}
-      </div>
     </div>
   );
 };

@@ -1,83 +1,80 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import "./CreateAuthor.scss";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import { useCreateAuthor } from "./api/useCreateAuthor";
 import { useNavigate } from "react-router-dom";
-import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
 import { ClipLoader } from "react-spinners";
+
+// Схема валидации
+const schema = yup.object().shape({
+  name: yup.string().required("Artist's fullname is required"),
+  bio: yup.string().required("Artist's bio is required"),
+  avatar: yup
+    .mixed()
+    .test("required", "Avatar is required", (value) => !!value),
+});
 
 const CreateAuthor = () => {
   const navigate = useNavigate();
   const { mutate: createAuthorFn, isSuccess, isPending } = useCreateAuthor();
-  const [formState, setFormState] = useState({
-    name: "",
-    bio: "",
-    avatar: "",
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      avatar: e.target.files[0],
-    });
-  };
-
-  const onSubmit = () => {
-    createAuthorFn(formState);
+  const onSubmit = (data: any) => {
+    createAuthorFn(data);
   };
 
   if (isSuccess) {
     navigate("/admin/authors-list");
   }
+
   return (
     <div className="create-author">
       <div className="create-author__header">
         <h1 className="create-author__title">Create artist</h1>
       </div>
 
-      <form className="create-author__form">
-        <div className="">
-          <label htmlFor="name">Artists fullname</label>
-          <input
-            type="text"
-            name="name"
-            value={formState.name}
-            onChange={handleChange}
-          />
+      <form className="create-author__form" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="name">Artist's fullname</label>
+          <input type="text" {...register("name")} />
+          {errors.name && (
+            <p className="validateError">{errors.name.message}</p>
+          )}
         </div>
-        <div className="">
-          <label htmlFor="name">Artists bio</label>
 
-          <textarea
-            value={formState.bio}
-            onChange={handleChange}
-            name="bio"
-            id=""
-          ></textarea>
+        <div>
+          <label htmlFor="bio">Artist's bio</label>
+          <textarea {...register("bio")} />
+          {errors.bio && <p className="validateError">{errors.bio.message}</p>}
         </div>
-        <div className="">
-          <label htmlFor="image">Upload artists picture</label>
-          {/* <input type="file" name="image" onChange={handleFileChange} /> */}
-          <Uploader onFileChange={handleFileChange} />
+
+        <div>
+          <label htmlFor="avatar">Upload artist's picture</label>
+          <Uploader
+            onFileChange={(e: any) => {
+              setValue("avatar", e.target.files[0]);
+            }}
+          />
+          {errors.avatar && (
+            <p className="validateError">{errors.avatar.message}</p>
+          )}
+        </div>
+
+        <div className="create-author__btns">
+          {isPending ? <ClipLoader /> : <BasicBtn title="Create" />}
         </div>
       </form>
-
-      <div className="create-author__btns">
-        {isPending ? (
-          <ClipLoader />
-        ) : (
-          <BasicBtn clickFn={onSubmit} title="Create" />
-        )}
-      </div>
     </div>
   );
 };

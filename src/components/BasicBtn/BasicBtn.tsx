@@ -4,7 +4,7 @@ const BasicBtn = ({
   bg,
 }: {
   title: string;
-  clickFn?: () => void;
+  clickFn?: any;
   bg?: string;
 }) => {
   return (

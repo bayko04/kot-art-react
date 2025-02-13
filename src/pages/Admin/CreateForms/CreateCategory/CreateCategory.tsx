@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useCreateCategory } from "./api/useCreateCategory";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import "./CreateCategory.scss";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+
+// Схема валидации
+const schema = yup.object().shape({
+  title: yup.string().required("Category name is required"),
+  image: yup.mixed().test("required", "Image is required", (value) => !!value),
+});
 
 const CreateCategory = () => {
   const {
@@ -14,28 +22,17 @@ const CreateCategory = () => {
   } = useCreateCategory();
   const navigate = useNavigate();
 
-  const [formState, setFormState] = useState({
-    title: "",
-    image: null,
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      image: e.target.files[0],
-    });
-  };
-
-  const onSubmit = () => {
-    createCategoryFn(formState);
+  const onSubmit = (data: any) => {
+    createCategoryFn(data);
   };
 
   if (isSuccess) {
@@ -44,38 +41,35 @@ const CreateCategory = () => {
 
   return (
     <div className="create-category">
-      <div className="create-pain__header">
+      <div className="create-category__header">
         <h1 className="create-category__title">Create category</h1>
       </div>
 
-      <form className="create-category__form">
-        <div className="">
-          <label htmlFor="name">Category name</label>
-          <input
-            type="text"
-            name="title"
-            value={formState.title}
-            onChange={handleChange}
-          />
+      <form className="create-category__form" onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label htmlFor="title">Category name</label>
+          <input type="text" {...register("title")} />
+          {errors.title && (
+            <p className="validateError">{errors.title.message}</p>
+          )}
         </div>
-        <div className="">
+
+        <div>
           <label htmlFor="image">Select a painting</label>
-          {/* <input type="file" name="image" onChange={handleFileChange} /> */}
-          <Uploader onFileChange={handleFileChange} />
+          <Uploader
+            onFileChange={(e: any) => {
+              setValue("image", e.target.files[0]);
+            }}
+          />
+          {errors.image && (
+            <p className="validateError">{errors.image.message}</p>
+          )}
+        </div>
+
+        <div className="create-category__btns">
+          {isPending ? <ClipLoader /> : <BasicBtn title="Create" />}
         </div>
       </form>
-
-      <div className="create-category__btns">
-        {/* <button type="button" onClick={onSubmit}>
-          Создать
-        </button> */}
-
-        {isPending ? (
-          <ClipLoader />
-        ) : (
-          <BasicBtn clickFn={onSubmit} title="Create" />
-        )}
-      </div>
     </div>
   );
 };

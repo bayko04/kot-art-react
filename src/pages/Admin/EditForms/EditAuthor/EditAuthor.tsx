@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./EditAuthor.scss";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import Uploader from "../../../../shared/ui/Uploader/Uploader";
 import { useGetAuthors } from "../EditPainting/api/useAuthors";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEditAuthor } from "./api/useEditAuthor";
-import { useDeleteAuthor } from "./api/useDeleteAuthor";
 import BasicLoader from "../../../../shared/ui/BasicLoader/BasicLoader";
 import {
   setIsDelete,
@@ -14,43 +13,57 @@ import {
 import { useDispatch } from "react-redux";
 import { ClipLoader } from "react-spinners";
 
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().required("Имя автора обязательно"),
+  bio: yup.string().required("Биография обязательна"),
+  avatar: yup.mixed().required("Аватар обязателен"),
+});
+
 const EditAuthor = () => {
   const { data: authorsData, isFetching } = useGetAuthors();
-  const [data, setData] = useState<any>({});
-  const [formState, setFormState] = useState({
-    name: "",
-    bio: "",
-    avatar: "",
-  });
   const params = useParams();
   const navigate = useNavigate();
-  const { mutate: editAuthorFn, isSuccess, isPending } = useEditAuthor();
   const dispatch = useDispatch();
+  const { mutate: editAuthorFn, isSuccess, isPending } = useEditAuthor();
 
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: "",
+      bio: "",
+      avatar: "",
+    },
+  });
+
+  // После загрузки данных автора устанавливаем дефолтные значения
   useEffect(() => {
-    const filtered = authorsData.filter(
-      (item: any) => item.id === Number(params.id)
-    );
-    setData(filtered);
-  }, [params]);
+    if (authorsData && params.id) {
+      const filtered = authorsData.filter(
+        (item: any) => item.id === Number(params.id)
+      );
+      if (filtered.length > 0) {
+        reset({
+          name: filtered[0].name,
+          bio: filtered[0].bio,
+          avatar: "",
+        });
+      }
+    }
+  }, [authorsData, params.id, reset]);
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      avatar: e.target.files[0],
-    });
-  };
-
-  const onSubmit = () => {
-    editAuthorFn({ data: formState, id: Number(params.id) });
+  // Обработка отправки формы
+  const onSubmit = (formData: any) => {
+    editAuthorFn({ data: formData, id: Number(params.id) });
   };
 
   const handleDelete = () => {
@@ -67,44 +80,52 @@ const EditAuthor = () => {
   return (
     <div className="edit-author">
       <div className="edit-author__header">
-        <h1 className="edit-author__title">Create artist</h1>
+        <h1 className="edit-author__title">Редактировать автора</h1>
       </div>
 
       {isFetching ? (
         <BasicLoader />
       ) : (
-        <form className="edit-author__form">
-          <div className="">
-            <label htmlFor="name">Artists fullname</label>
-            <input
-              type="text"
-              name="name"
-              value={formState.name || data[0]?.name}
-              onChange={handleChange}
+        <form className="edit-author__form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form-group">
+            <label htmlFor="name">Полное имя автора</label>
+            <input type="text" id="name" {...register("name")} />
+            {errors.name && (
+              <p className="validateError">{errors.name.message}</p>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="bio">Биография автора</label>
+            <textarea id="bio" {...register("bio")}></textarea>
+            {errors.bio && (
+              <p className="validateError">{errors.bio.message}</p>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="avatar">Загрузить фото автора</label>
+            <Controller
+              control={control}
+              name="avatar"
+              render={({ field }) => (
+                <>
+                  <Uploader
+                    onFileChange={(e: any) => field.onChange(e.target.files[0])}
+                  />
+                  {errors.avatar && (
+                    <p className="validateError">{errors.avatar.message}</p>
+                  )}
+                </>
+              )}
             />
-          </div>
-          <div className="">
-            <label htmlFor="name">Artists bio</label>
-            <textarea
-              name="bio"
-              onChange={handleChange}
-              value={formState.bio || data[0]?.bio}
-              id=""
-            ></textarea>
-          </div>
-          <div className="">
-            <label htmlFor="image">Upload artists picture</label>
-            <Uploader onFileChange={handleFileChange} />
           </div>
         </form>
       )}
-
       <div className="edit-author__btns">
         {isPending ? (
           <ClipLoader />
         ) : (
           <>
-            <BasicBtn clickFn={onSubmit} title="Edit" />
+            <BasicBtn clickFn={handleSubmit(onSubmit)} title="Edit" />
             <BasicBtn bg="red" clickFn={handleDelete} title="Delete" />
           </>
         )}
