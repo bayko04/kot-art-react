@@ -16,6 +16,11 @@
 
       & a {
         color: black;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: rgb(249, 168, 212);
+        }
       }
     }
   }

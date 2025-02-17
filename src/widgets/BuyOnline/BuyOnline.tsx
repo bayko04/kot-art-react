@@ -6,8 +6,8 @@ import thirdImg from "../../images/png/viewAllCol/3.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import heartImg from "../../images/svg/header/favoriteUn.svg";
-import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
+import BuyOnlineCard from "./BuyOnlineCard/BuyOnlineCard";
+import "./BuyOnline.scss";
 
 const BuyOnline = () => {
   const slider = useRef<any>(null);
@@ -38,7 +38,7 @@ const BuyOnline = () => {
     ],
   };
 
-  const handleNavigate = (e: any) => {
+  const handleNavigate = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     navigate("painting-details");
   };
@@ -58,115 +58,12 @@ const BuyOnline = () => {
 
         <div className="slider-container">
           <Slider ref={slider} {...settings} className="buy-online__slider">
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={firstImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
-
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={secondImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
-
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={thirdImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
-            {
-              //dddd
-            }
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={firstImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
-
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={secondImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
-
-            <div onClick={handleNavigate} className="buy-online__slide">
-              <div className="buy-online__sliderUp">
-                <FavoriteBtn />
-              </div>
-
-              <div className="buy-online__painting">
-                <img src={thirdImg} alt="" />
-              </div>
-
-              <div className="buy-online__content">
-                <h5 className="buy-online__name">MOVIE TIME</h5>
-                <p className="buy-online__description">
-                  Original artwork. Mixed media on canvas. 130x100 cm
-                </p>
-                <p className="buy-online__price">$5,500</p>
-              </div>
-            </div>
+            <BuyOnlineCard handleNavigate={handleNavigate} img={firstImg} />
+            <BuyOnlineCard handleNavigate={handleNavigate} img={secondImg} />
+            <BuyOnlineCard handleNavigate={handleNavigate} img={thirdImg} />
+            <BuyOnlineCard handleNavigate={handleNavigate} img={firstImg} />
+            <BuyOnlineCard handleNavigate={handleNavigate} img={secondImg} />
+            <BuyOnlineCard handleNavigate={handleNavigate} img={thirdImg} />
           </Slider>
 
           <button

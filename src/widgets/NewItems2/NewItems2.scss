@@ -61,9 +61,21 @@
     background: rgba(249, 168, 212, 1);
     width: 192px;
     border-radius: 8px;
+    background: rgba(249, 168, 212, 1);
     box-shadow: 0px 4px 4px 0px rgba(136, 136, 136, 1);
     margin: 0 auto;
     position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0px 2px 2px 0px rgba(136, 136, 136, 1);
+      background: rgb(254, 121, 196);
+    }
+
+    &:active {
+      background: rgb(250, 131, 198);
+    }
 
     & button {
       background: transparent;

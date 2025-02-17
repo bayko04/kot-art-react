@@ -3,6 +3,7 @@ import BasicLoader from "../../../shared/ui/BasicLoader/BasicLoader";
 import ListTemplate from "../../../shared/ui/ListTemplate/ListTemplate";
 import { useGetCategory } from "../../Admin/Lists/CategoryList/api/useCategoy";
 import "./GalleryList.scss";
+import categoryImg from "../../../images/content/sl2.jpg";
 
 const GalleryList = () => {
   const { data, isFetching } = useGetCategory();
@@ -19,6 +20,7 @@ const GalleryList = () => {
           </div>
         ) : (
           <div className="gallery-list__row">
+            <CategoriesCard image={categoryImg} />
             {data.map((item: any) => (
               <CategoriesCard
                 image={item.image}

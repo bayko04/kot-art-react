@@ -2,6 +2,7 @@ import axios from "axios";
 import $api, { API_URL } from "../http/index";
 
 export default class PaintingsService {
+  
   static AuthorCreate = (formData: FormData) => {
     return $api.post("/painting/admin/author-create/", formData, {
       headers: {

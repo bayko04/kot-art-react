@@ -1,0 +1,81 @@
+.selected-art-card {
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(231, 233, 236, 1);
+
+  &__sliderUp {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__inStock {
+    font-weight: 700;
+    font-size: 20px;
+    list-style: 27px;
+    margin: 10px 0 0 10px;
+  }
+
+  &__availability {
+    background: rgba(243, 90, 173, 1);
+    font-weight: 700;
+    font-size: 8px;
+    border-radius: 8px 0 8px 0;
+    color: white;
+    padding: 12px 11px;
+  }
+
+  &__favorite {
+    margin: 12px 12px 0 0;
+  }
+
+  &__painting {
+    height: 282px;
+    width: 100%;
+    padding: 60px 10px 20px;
+    border-bottom: 1px solid rgba(231, 233, 236, 1);
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__content {
+    text-align: start;
+    padding: 6px 10px;
+  }
+
+  &__name {
+    text-transform: uppercase;
+    font-family: "open sans";
+    font-weight: 400;
+    font-size: 17px;
+  }
+
+  &__description {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(165, 182, 188, 1);
+    margin: 5px 0;
+  }
+
+  &__price {
+    font-family: "open sans";
+    font-weight: 700;
+    font-size: 18px;
+    color: #000000;
+  }
+}

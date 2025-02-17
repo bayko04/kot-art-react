@@ -34,7 +34,7 @@ const PaintingCard = ({
       return navigate(`/admin/edit-painting/${id}`);
     }
 
-    navigate("/painting-details");
+    navigate(`/painting-details/${id}`);
   };
 
   return (

@@ -1,14 +1,18 @@
 import React from "react";
 
-const MultiPaintingBlock = () => {
+const MultiPaintingBlock = ({ data }: { data?: any }) => {
   return (
     <div className="multi-block">
-      <h4 className="multi-block__title">‘’My Life, ,My Rules”</h4>
+      <h4 className="multi-block__title">
+        {data.title || "‘’My Life, ,My Rules”"}
+      </h4>
       <div className="multi-block__row">
         <div className="multi-block__left">
-          <p className="multi-block__author">Roman Kozhokin</p>
+          <p className="multi-block__author">
+            {data?.author?.name || "Roman Kozhokin"}
+          </p>
           <p className="multi-block__subinfo">
-            Original artwork, 120×122 cm, 2024
+            Original artwork, {data.width + "x" + data.height || "120×122"} cm
           </p>
         </div>
         <div className="multi-block__right">

@@ -3,7 +3,15 @@ import uploaderImg from "../../../images/svg/admin/upload.svg";
 import { useState } from "react";
 import img2 from "../../../images/content/authBg.png";
 
-const Uploader = ({ onFileChange }: { onFileChange?: any }) => {
+const Uploader = ({
+  onFileChange,
+  multiply,
+  images,
+}: {
+  onFileChange?: any;
+  multiply?: boolean;
+  images?: string[];
+}) => {
   const [fileName, setFileName] = useState("");
 
   const handleOnChange = (e: any) => {
@@ -18,6 +26,7 @@ const Uploader = ({ onFileChange }: { onFileChange?: any }) => {
         <div className="uploader__content">
           <div className="uploader__upload">
             <input
+              multiple={multiply}
               name="picture"
               onChange={handleOnChange}
               type="file"
@@ -26,9 +35,20 @@ const Uploader = ({ onFileChange }: { onFileChange?: any }) => {
             <img src={uploaderImg} alt="" />
           </div>
         </div>
-        <p>{fileName}</p>
-        {/* <div className="uploader__img">
-          <img src={img2} alt="" />
+        {/* <p>{fileName}</p> */}
+        <p>Uploaded</p>
+
+        {/* <div className="uploader__images">
+          {images?.map((img: any, index: number) => (
+            <div key={index} className="image-preview">
+              <img
+                src={URL.createObjectURL(img.image)}
+                alt={`Preview ${index}`}
+                width={100}
+                height={100}
+              />
+            </div>
+          ))}
         </div> */}
       </div>
     </div>

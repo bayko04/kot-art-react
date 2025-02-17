@@ -10,7 +10,7 @@ import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
-// Определяем схему валидации
+// Схема валидации
 const schema = yup.object().shape({
   title: yup.string().required("Name is required"),
   price: yup
@@ -32,7 +32,15 @@ const schema = yup.object().shape({
     .required("Height is required"),
   author: yup.string().required("Artist is required"),
   categories: yup.string().required("Category is required"),
-  images: yup.array().min(1, "At least one image is required"),
+  images: yup
+    .array()
+    .of(
+      yup.object().shape({
+        is_main: yup.boolean(),
+        image: yup.mixed().required("Image file is required"),
+      })
+    )
+    .min(1, "At least one image is required"),
 });
 
 const CreatePainting = () => {
@@ -45,6 +53,7 @@ const CreatePainting = () => {
     register,
     handleSubmit,
     setValue,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
@@ -61,17 +70,29 @@ const CreatePainting = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
-    createPaintFn(data);
+  // Следим за загруженными изображениями
+  const images: any = watch("images");
+
+  // Обработчик загрузки файлов
+  const handleFileChange = (e: any) => {
+    const files = Array.from(e.target.files);
+
+    if (files.length > 0) {
+      // Добавляем новые файлы к уже существующим
+      const updatedImages: any = [
+        ...images,
+        ...files.map((file, index) => ({
+          is_main: images.length === 0 && index === 0, // Первый загруженный файл становится is_main
+          image: file,
+        })),
+      ];
+
+      setValue("images", updatedImages, { shouldValidate: true });
+    }
   };
 
-  const handleFileChange = (e: any) => {
-    const file = e.target.files[0];
-    if (file) {
-      setValue("images", [{ is_main: true, image: file }], {
-        shouldValidate: true,
-      });
-    }
+  const onSubmit = (data: any) => {
+    createPaintFn(data);
   };
 
   if (isSuccess) {
@@ -85,6 +106,7 @@ const CreatePainting = () => {
       </div>
 
       <form className="create-paint__form" onSubmit={handleSubmit(onSubmit)}>
+        {/* Поля формы */}
         <div>
           <label htmlFor="title">Name</label>
           <input type="text" {...register("title")} />
@@ -150,11 +172,12 @@ const CreatePainting = () => {
         </div>
 
         <div>
-          <label htmlFor="image">Select a paint</label>
-          <Uploader onFileChange={handleFileChange} />
+          <label htmlFor="image">Select paintings</label>
+          <Uploader images={images} multiply onFileChange={handleFileChange} />
           <p className="validateError">{errors.images?.message}</p>
         </div>
 
+        {/* Кнопка */}
         <div className="create-paint__btns">
           {isPending ? <ClipLoader /> : <BasicBtn title="Create" />}
         </div>

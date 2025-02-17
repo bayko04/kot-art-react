@@ -4,15 +4,8 @@ import AuthorCard from "./AuthorCard/AuthorCard";
 import MultiPaintingBlock from "./MultiPaintingBlock/MultiPaintingBlock";
 import PaintingBanner from "./PaintingBanner/PaintingBanner";
 import pinkCatImg from "../../images/png/pinkCat.png";
-import { useParams } from "react-router-dom";
-import { useGetPaint } from "../Admin/EditForms/EditPainting/api/useGetPaint";
 
 const PaintingDetails = () => {
-  const params = useParams();
-  const { data } = useGetPaint(Number(params.id));
-
-  console.log(data);
-
   return (
     <div className="paintingDetails">
       <div className="container">
@@ -21,7 +14,7 @@ const PaintingDetails = () => {
             <img src={pinkCatImg} alt="" />
           </div>
           <div className="paintingDetails__options">
-            <MultiPaintingBlock data={data} />
+            <MultiPaintingBlock />
           </div>
         </div>
       </div>

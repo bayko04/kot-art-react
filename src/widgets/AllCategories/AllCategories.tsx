@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./AllCategories.scss";
+import CategoriesCard from "../../features/CategoriesCard/CategoriesCard";
 
 const AllCategories = () => {
   const slider = useRef<any>(null);
@@ -19,7 +20,7 @@ const AllCategories = () => {
     arrows: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 8,
+    slidesToShow: 7,
     slidesToScroll: 1,
     swipeToSlide: true, // Позволяет тянуть на любое расстояние
     variableWidth: false, // Можно попробовать true, но тогда нужно убедиться, что ширина у элементов корректная
@@ -58,69 +59,16 @@ const AllCategories = () => {
 
       <div className="slider-container">
         <Slider {...settings} className="all-categories__slider">
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={firstImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={secondImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={thirdImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fourthImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fivethImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          {
-            // scsss
-          }
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={firstImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={secondImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={thirdImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fourthImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
-          <div onClick={handleNavigate} className="all-categories__slide">
-            <div className="all-categories__painting">
-              <img src={fivethImg} alt="" />
-            </div>
-            <p className="all-categories__name">KOTART COLLECTION</p>
-          </div>
+          <CategoriesCard image={firstImg} />
+          <CategoriesCard image={secondImg} />
+          <CategoriesCard image={thirdImg} />
+          <CategoriesCard image={fourthImg} />
+          <CategoriesCard image={fivethImg} />
+          <CategoriesCard image={firstImg} />
+          <CategoriesCard image={secondImg} />
+          <CategoriesCard image={thirdImg} />
+          <CategoriesCard image={fourthImg} />
+          <CategoriesCard image={fivethImg} />
         </Slider>
         <div className="all-categories__btn">
           <button onClick={() => navigate("/all-categories")}>

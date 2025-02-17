@@ -8,7 +8,6 @@ import { useCreateAuthor } from "./api/useCreateAuthor";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
-// Схема валидации
 const schema = yup.object().shape({
   name: yup.string().required("Artist's fullname is required"),
   bio: yup.string().required("Artist's bio is required"),

@@ -11,14 +11,28 @@ const RolesList = () => {
   };
 
   return (
-    <div className="roles-list">
+    <div className="roles">
       <CreateHeader
-        title="Roles"
-        btnText="Give out the role"
+        title="Admin"
+        btnText="Create admin"
         handleClick={handleNavigate}
       />
 
-      <BasicTable />
+      <div className="roles__content">
+        <p>
+          On this page, you can create a new administrator account. This account
+          will have full access to create, edit, and delete painting categories
+          and manage the list of artists.
+          <br />
+          <br />
+          {/* <span>
+            ⚠ Warning! ⚠ An administrator account grants full control over
+            content management. Do not share its credentials with unauthorized
+            individuals, as this may lead to data loss, unauthorized changes, or
+            other serious issues. Only trusted users should have access!
+          </span> */}
+        </p>
+      </div>
     </div>
   );
 };

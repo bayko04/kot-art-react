@@ -23,15 +23,15 @@ const CategoriesCard: FC<IProps> = ({ admin, title, image, id }) => {
   };
 
   return (
-    <div onClick={handleNavigate} className="categories-card">
+    <div className="categories-card">
       <div className="categories-card__slide">
         <div className="categories-card__painting">
           <img src={image || firstImg} alt="" />
         </div>
-        <p className="categories-card__name">{title || "KOTART COLLECTION"}</p>
+        <p onClick={handleNavigate} className="categories-card__name">
+          {title || "KOTART COLLECTION"}
+        </p>
       </div>
-
-      {/* {deletable && <DeleteBtn />} */}
     </div>
   );
 };

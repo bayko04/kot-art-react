@@ -1,64 +1,68 @@
-import { useState } from "react";
 import BasicBtn from "../../../../components/BasicBtn/BasicBtn";
 import "./CreateAdmin.scss";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useCreateAdmin } from "./api/useCreateAdmin";
+import { useForm } from "react-hook-form";
+import { ClipLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Invalid email format")
+    .required("Email is required"),
+  password: yup
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .required("Password is required"),
+});
 
 const CreateAdmin = () => {
-  //   const { mutate: createCategoryFn, isSuccess } = useCreateCategory();
+  const { mutate: createAdmin, isSuccess, isPending } = useCreateAdmin();
+  const navigate = useNavigate();
 
-  const [formState, setFormState] = useState({
-    title: "",
-    image: null,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
   });
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
+  const onSubmit = (data: any) => {
+    createAdmin(data);
   };
 
-  const handleFileChange = (e: any) => {
-    setFormState({
-      ...formState,
-      image: e.target.files[0],
-    });
-  };
-
-  //   const onSubmit = () => {
-  //     createCategoryFn(formState);
-  //   };
-
-  //   if (isSuccess) {
-  //     return <h1>Картинка успешно создана!</h1>;
-  //   }
+  if (isSuccess) {
+    navigate("/admin/create-roles");
+  }
   return (
     <div className="create-admin">
       <div className="create-admin__header">
         <h1 className="create-admin__title">Give role</h1>
       </div>
 
-      <form className="create-admin__form">
+      <form onSubmit={handleSubmit(onSubmit)} className="create-admin__form">
         <div className="">
-          <label htmlFor="name">Users</label>
-          <select name="" id="">
-            <option value="">superkolo2017@gmail.com</option>
-          </select>
+          <label htmlFor="name">Email</label>
+          <input {...register("email")} type="email" />
+          {errors.email && (
+            <p className="validateError">{errors.email.message}</p>
+          )}
         </div>
         <div className="">
-          <label htmlFor="name">Roles</label>
-          <select name="" id="">
-            <option value="">User</option>
-            <option value="">Artist</option>
-            <option value="">Admin</option>
-          </select>
+          <label htmlFor="name">Password</label>
+          <input {...register("password")} type="text" />
+          {errors.password && (
+            <p className="validateError">{errors.password.message}</p>
+          )}
+        </div>
+
+        <div className="create-admin__btns">
+          {isPending ? <ClipLoader /> : <BasicBtn title="Create" />}
         </div>
       </form>
-
-      <div className="create-admin__btns">
-        {/* <button type="button">Создать</button> */}
-        <BasicBtn title="Save" />
-      </div>
     </div>
   );
 };

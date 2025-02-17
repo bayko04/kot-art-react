@@ -39,6 +39,10 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+
+      &:hover {
+        animation: wobble 1s infinite;
+      }
     }
   }
 
@@ -56,6 +60,11 @@
       width: 25px;
       height: 20px;
       object-fit: contain;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 
@@ -74,12 +83,28 @@
     background: rgb(161, 161, 161);
     border-radius: 8px;
     color: white;
+    border: 2px solid rgb(161, 161, 161);
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid rgb(161, 161, 161);
+      color: rgb(161, 161, 161);
+    }
   }
 
   &__signUp {
     border-radius: 8px;
     background: rgba(253, 204, 53, 1);
     padding: 9px 31px;
+    border: 2px solid rgba(253, 204, 53, 1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid rgba(253, 204, 53, 1);
+    }
   }
 
   &__network {
@@ -209,5 +234,26 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(5deg);
+  }
+  45% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

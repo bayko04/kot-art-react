@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import heartImg from "../../images/svg/header/favoriteUn.svg";
 import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
 import "./SelectedArt.scss";
+import SelectedArtCard from "./SelectedArtCard/SelectedArtCard";
 
 const SelectedArt = () => {
   const slider = useRef<any>(null);
@@ -57,161 +58,42 @@ const SelectedArt = () => {
 
       <div className="slider-container">
         <Slider ref={slider} {...settings} className="selected-art__slider">
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              {/* <h3 className="selected-art__inStock">In stock</h3> */}
-              <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3>
-              <FavoriteBtn id={22} />
-            </div>
-            <div className="selected-art__painting">
-              <img src={firstImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME cdfdsfdfd</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              <h3 className="selected-art__inStock">In stock</h3>
-              {/* <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3> */}
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={secondImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              {/* <h3 className="selected-art__inStock">In stock</h3> */}
-              <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3>
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={thirdImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              <h3 className="selected-art__inStock">In stock</h3>
-              {/* <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3> */}
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={fourthImg} alt="" />
-            </div>
-            <div onClick={handleNavigate} className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          {
-            // ddd
-          }
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              {/* <h3 className="selected-art__inStock">In stock</h3> */}
-              <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3>
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={firstImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              <h3 className="selected-art__inStock">In stock</h3>
-              {/* <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3> */}
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={secondImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              {/* <h3 className="selected-art__inStock">In stock</h3> */}
-              <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3>
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={thirdImg} alt="" />
-            </div>
-            <div className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
-          <div onClick={handleNavigate} className="selected-art__slide">
-            <div className="selected-art__sliderUp">
-              <h3 className="selected-art__inStock">In stock</h3>
-              {/* <h3 className="selected-art__availability">
-                ASK FOR AVAILABILITY
-              </h3> */}
-              <FavoriteBtn />
-            </div>
-            <div className="selected-art__painting">
-              <img src={fourthImg} alt="" />
-            </div>
-            <div onClick={handleNavigate} className="selected-art__content">
-              <h5 className="selected-art__name">MOVIE TIME</h5>
-              <p className="selected-art__description">
-                Original artwork. Mixed media on canvas. 130x100 cm
-              </p>
-              <p className="selected-art__price">$5,500</p>
-            </div>
-          </div>
+          <SelectedArtCard
+            isStock
+            handleNavigate={handleNavigate}
+            img={firstImg}
+          />
+          <SelectedArtCard
+            isStock
+            handleNavigate={handleNavigate}
+            img={secondImg}
+          />
+          <SelectedArtCard
+            isStock
+            handleNavigate={handleNavigate}
+            img={thirdImg}
+          />
+          <SelectedArtCard
+            isAsk
+            handleNavigate={handleNavigate}
+            img={fourthImg}
+          />
+          <SelectedArtCard handleNavigate={handleNavigate} img={firstImg} />
+          <SelectedArtCard
+            isAsk
+            handleNavigate={handleNavigate}
+            img={secondImg}
+          />
+          <SelectedArtCard
+            isStock
+            handleNavigate={handleNavigate}
+            img={thirdImg}
+          />
+          <SelectedArtCard
+            isAsk
+            handleNavigate={handleNavigate}
+            img={fourthImg}
+          />
         </Slider>
 
         {/* <button

@@ -23,8 +23,11 @@ const NewItems2 = () => {
               from all over the world enjoy door-to-door shipping, from the
               gallery to their doorstep.
             </p>
-            <div className="new-items2__btn">
-              <button onClick={() => navigate("about-us")}>read more</button>
+            <div
+              onClick={() => navigate("about-us")}
+              className="new-items2__btn"
+            >
+              <button>read more</button>
             </div>
           </div>
         </div>
