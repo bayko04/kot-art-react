@@ -1,11 +1,32 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import LineSlide from "./LineSlide/LineSlide";
 import leftArrow from "../../images/svg/arrow/leftPink.svg";
 import rightArrow from "../../images/svg/arrow/RightBlue.svg";
+import { useGetPaintings } from "../../pages/Admin/Lists/PaintingsList/api/usePaintings";
+import rondomizer from "../../shared/utils/randomizer";
 
-const LineSlider = ({ title }: { title: string }) => {
+const LineSlider = ({
+  title,
+  rec,
+  otherData,
+}: {
+  title: string;
+  rec?: boolean;
+  otherData?: any;
+}) => {
   const slider = useRef<any>(null);
+  const { data, isSuccess } = useGetPaintings();
+  const [randomData, setRandomData] = useState<any>([]);
+
+  useEffect(() => {
+    if (data.length && randomData.length <= 15) {
+      for (let i = 0; i < 15; i++) {
+        const object = rondomizer(data);
+        setRandomData((prev: any) => [...prev, object]);
+      }
+    }
+  }, [data]);
 
   const settings = {
     dots: false,
@@ -44,7 +65,17 @@ const LineSlider = ({ title }: { title: string }) => {
 
       <div className="line-slider__container">
         <Slider ref={slider} {...settings} className="line-slider__slider">
-          <LineSlide />
+          {rec
+            ? randomData?.map((item: any) => (
+                <div key={item?.id}>
+                  <LineSlide title={item.title} img={item.image} />
+                </div>
+              ))
+            : [...otherData, ...otherData, ...otherData]?.map((item: any) => (
+                <div key={item?.id}>
+                  <LineSlide title={item.title} img={item.image} />
+                </div>
+              ))}
           <LineSlide />
           <LineSlide />
           <LineSlide />

@@ -5,7 +5,7 @@ export function useCategoryPaints(categoryTitle: string) {
   return useQuery({
     queryKey: ["getCategoryPaints"],
     queryFn: async () => {
-      const response = await PaintingsService.paintingList(categoryTitle);
+      const response = await PaintingsService.paintingList(/* categoryTitle */);
       return response.data.results;
     },
     initialData: [],

@@ -2,7 +2,6 @@ import axios from "axios";
 import $api, { API_URL } from "../http/index";
 
 export default class PaintingsService {
-  
   static AuthorCreate = (formData: FormData) => {
     return $api.post("/painting/admin/author-create/", formData, {
       headers: {
@@ -21,6 +20,9 @@ export default class PaintingsService {
   }
   static async getAuthors() {
     return axios.get(`${API_URL}/painting/admin/authors/`);
+  }
+  static async authorRetrieve(id: number) {
+    return axios.get(`${API_URL}/painting/admin/author-retrive/${id}`);
   }
   static async createCategory(formData: any) {
     return $api.post(`/painting/admin/category-create/`, formData);
@@ -87,10 +89,11 @@ export default class PaintingsService {
     return $api.patch(`/painting/admin/update/${id}/`, formData);
   }
   //
-  static async paintingList(categoryTitle?: string) {
+  static async paintingList(/* categoryTitle?: string, */ authorId?: number) {
     return axios.get(`${API_URL}/painting/auth/list/`, {
       params: {
-        category_title: categoryTitle,
+        // category_title: categoryTitle,
+        author: authorId,
       },
     });
   }

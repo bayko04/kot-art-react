@@ -28,7 +28,7 @@ const AuthorCard: FC<IAuthorCard> = ({
       return navigate(`/admin/edit-author/${id}`);
     }
 
-    navigate("/author-detail");
+    navigate(`/author-detail/${id}`);
   };
 
   return (

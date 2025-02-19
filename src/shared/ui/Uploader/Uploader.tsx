@@ -36,7 +36,7 @@ const Uploader = ({
           </div>
         </div>
         {/* <p>{fileName}</p> */}
-        <p>Uploaded</p>
+        {fileName && <p>Uploaded</p>}
 
         {/* <div className="uploader__images">
           {images?.map((img: any, index: number) => (

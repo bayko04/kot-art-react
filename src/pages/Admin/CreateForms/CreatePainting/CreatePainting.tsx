@@ -32,6 +32,7 @@ const schema = yup.object().shape({
     .required("Height is required"),
   author: yup.string().required("Artist is required"),
   categories: yup.string().required("Category is required"),
+  is_stock: yup.string().required("inStock is required"),
   images: yup
     .array()
     .of(
@@ -67,6 +68,7 @@ const CreatePainting = () => {
       author: "",
       categories: "",
       images: [],
+      is_stock: "1",
     },
   });
 
@@ -169,6 +171,15 @@ const CreatePainting = () => {
             ))}
           </select>
           <p className="validateError">{errors.categories?.message}</p>
+        </div>
+
+        <div>
+          <label htmlFor="is_stock">In stock</label>
+          <select {...register("is_stock")}>
+            <option value="1">yes</option>
+            <option value="0">no</option>
+          </select>
+          <p className="validateError">{errors.is_stock?.message}</p>
         </div>
 
         <div>

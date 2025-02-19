@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const MultiPaintingBlock = ({ data }: { data?: any }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="multi-block">
       <h4 className="multi-block__title">
@@ -22,12 +25,22 @@ const MultiPaintingBlock = ({ data }: { data?: any }) => {
 
       <div className="multi-block__dashboard">
         <h3 className="multi-block__price">
-          $2,700 <span>USD</span>
+          {data?.price || "$2,700"} <span>{data?.currency || "USD"}</span>
         </h3>
 
         <div className="multi-block__btns">
-          <button className="multi-block__buy">Buy now</button>
-          <button className="multi-block__offer">Make an offer</button>
+          <button
+            onClick={() => navigate(data?.author?.whatsapp)}
+            className="multi-block__buy"
+          >
+            Buy now
+          </button>
+          <button
+            onClick={() => navigate(data?.author?.whatsapp)}
+            className="multi-block__offer"
+          >
+            Make an offer
+          </button>
         </div>
 
         <div className="multi-block__additional-btns">

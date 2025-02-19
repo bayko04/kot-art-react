@@ -77,6 +77,7 @@ const ListRenderer = ({
               admin={admin}
               image={item.image}
               id={item.id}
+              isStock={item.is_stock}
             />
           ))}
         </div>

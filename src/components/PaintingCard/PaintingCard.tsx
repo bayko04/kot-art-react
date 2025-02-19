@@ -10,6 +10,7 @@ interface IProps extends IPainting {
   width?: string;
   deletable?: boolean;
   admin?: boolean;
+  isStock?: boolean;
 }
 
 const PaintingCard = ({
@@ -24,6 +25,7 @@ const PaintingCard = ({
   width = "25%",
   admin,
   id,
+  isStock,
 }: IProps) => {
   const navigate = useNavigate();
 
@@ -40,8 +42,11 @@ const PaintingCard = ({
   return (
     <div onClick={handleNavigate} className="painting-card">
       <div className="painting-card__sliderUp">
-        {/* <h3 className="painting-card__inStock">In stock</h3> */}
-        <h3 className="painting-card__availability">ASK FOR AVAILABILITY</h3>
+        {isStock ? (
+          <h3 className="painting-card__inStock">In stock</h3>
+        ) : (
+          <h3 className="painting-card__availability">ASK FOR AVAILABILITY</h3>
+        )}
         {!admin && <FavoriteBtn id={id} />}
       </div>
       <div className="painting-card__painting">

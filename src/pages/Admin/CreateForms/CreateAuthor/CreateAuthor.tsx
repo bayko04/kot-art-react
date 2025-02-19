@@ -11,6 +11,8 @@ import { ClipLoader } from "react-spinners";
 const schema = yup.object().shape({
   name: yup.string().required("Artist's fullname is required"),
   bio: yup.string().required("Artist's bio is required"),
+  whatsapp: yup.string().required("Artist's whatsapp is required"),
+  instagram: yup.string().required("Artist's instagram is required"),
   avatar: yup
     .mixed()
     .test("required", "Avatar is required", (value) => !!value),
@@ -56,6 +58,22 @@ const CreateAuthor = () => {
           <label htmlFor="bio">Artist's bio</label>
           <textarea {...register("bio")} />
           {errors.bio && <p className="validateError">{errors.bio.message}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="whatsapp">Artist's whatsapp link</label>
+          <input type="text" {...register("whatsapp")} />
+          {errors.whatsapp && (
+            <p className="validateError">{errors.whatsapp.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="instagram">Artist's instagram link</label>
+          <input type="text" {...register("instagram")} />
+          {errors.instagram && (
+            <p className="validateError">{errors.instagram.message}</p>
+          )}
         </div>
 
         <div>

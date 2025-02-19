@@ -36,6 +36,8 @@ const schema = yup.object().shape({
     .required("Height is required"),
   author: yup.string().required("Select an artist"),
   category: yup.string().required("Select a category"),
+  is_stock: yup.string().required("inStock is required"),
+
   image: yup.mixed().notRequired(),
 });
 
@@ -66,8 +68,11 @@ const EditPainting = () => {
       author: "",
       category: "",
       image: null,
+      is_stock: "1",
     },
   });
+
+  console.log(paintingData);
 
   // После загрузки данных картины устанавливаем дефолтные значения
   useEffect(() => {
@@ -85,6 +90,7 @@ const EditPainting = () => {
           ? String(paintingData.category.id)
           : "",
         image: null,
+        is_stock: (paintingData.is_stock ? "1" : "0") || "",
       });
     }
   }, [paintingData, reset]);
@@ -187,6 +193,15 @@ const EditPainting = () => {
             {errors.category && (
               <p className="validateError">{errors.category.message}</p>
             )}
+          </div>
+
+          <div>
+            <label htmlFor="is_stock">In stock</label>
+            <select {...register("is_stock")}>
+              <option value="1">yes</option>
+              <option value="0">no</option>
+            </select>
+            <p className="validateError">{errors.is_stock?.message}</p>
           </div>
 
           <div className="form-group">

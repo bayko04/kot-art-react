@@ -1,13 +1,13 @@
 import slideImg from "../../../images/png/slider1/1.png";
 
-const LineSlide = () => {
+const LineSlide = ({ title, img }: { title?: string; img?: string }) => {
   return (
     <div className="line-slide">
       <div className="line-slide__painting">
-        <img src={slideImg} alt="" />
+        <img src={img || slideImg} alt="" />
       </div>
       <div className="line-slide__content">
-        <h3>Wood Art</h3>
+        <h3>{title || "Wood Art"}</h3>
       </div>
     </div>
   );

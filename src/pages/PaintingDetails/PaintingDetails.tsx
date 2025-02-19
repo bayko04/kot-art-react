@@ -4,21 +4,65 @@ import AuthorCard from "./AuthorCard/AuthorCard";
 import MultiPaintingBlock from "./MultiPaintingBlock/MultiPaintingBlock";
 import PaintingBanner from "./PaintingBanner/PaintingBanner";
 import pinkCatImg from "../../images/png/pinkCat.png";
+import pinkCatImg2 from "../../images/png/selectedArt/2.png";
 import { useParams } from "react-router-dom";
 import { useGetPaint } from "../Admin/EditForms/EditPainting/api/useGetPaint";
+import { useGetPaintings } from "../Admin/Lists/PaintingsList/api/usePaintings";
+import { useEffect, useState } from "react";
 
 const PaintingDetails = () => {
   const params = useParams();
   const { data } = useGetPaint(Number(params.id));
+  const { data: authorPaints } = useGetPaintings(data?.author?.id);
+  const [images, setImages] = useState<any>();
 
-  console.log(data);
+  useEffect(() => {
+    setImages(data.images);
+  }, [data]);
+
+  const handleMainImage = (id: number) => {
+    setImages((prev: any) =>
+      prev?.map((item: any) =>
+        item.id === id
+          ? { ...item, is_main: true }
+          : { ...item, is_main: false }
+      )
+    );
+  };
+
+  console.log(images);
 
   return (
     <div className="paintingDetails">
       <div className="container">
         <div className="paintingDetails__introduction">
           <div className="paintingDetails__paintings">
-            <img src={pinkCatImg} alt="" />
+            <div className="paintingDetails__main-img">
+              <img
+                src={
+                  images?.filter((item: any) => item.is_main)[0].image ||
+                  pinkCatImg
+                }
+                alt=""
+              />
+            </div>
+            <div className="paintingDetails__secondary-imgs">
+              {data?.images?.length > 1 &&
+                data?.images?.map((item: any) => (
+                  <div onClick={() => handleMainImage(item.id)} key={item.id}>
+                    <img src={item.image} alt="" />
+                  </div>
+                ))}
+              {/* <div>
+                <img src={pinkCatImg} alt="" />
+              </div>
+              <div>
+                <img src={pinkCatImg2} alt="" />
+              </div>
+              <div>
+                <img src={pinkCatImg} alt="" />
+              </div> */}
+            </div>
           </div>
           <div className="paintingDetails__options">
             <MultiPaintingBlock data={data} />
@@ -35,13 +79,13 @@ const PaintingDetails = () => {
           <div className="paintingDetails__row">
             <h3 className="paintingDetails__left">Artist</h3>
             <div className="paintingDetails__right paintingDetails__author">
-              Roman <br /> KOzhokin
+              {data?.title || `Roman ${(<br />)} KOzhokin`}
             </div>
           </div>
 
           {/* authorCard */}
           <div className="paintingDetails__author-card">
-            <AuthorCard />
+            <AuthorCard data={data} />
           </div>
 
           {/* details */}
@@ -49,11 +93,12 @@ const PaintingDetails = () => {
             <h3 className="paintingDetails__left">About The Artwork</h3>
             <div className="paintingDetails__right">
               <p>
-                Painting: Oil and pencil on masonite panel. Size: 18 H x 18 W x
+                {data?.description ||
+                  `Painting: Oil and pencil on masonite panel. Size: 18 H x 18 W x
                 1 in Oil on canvas I’ve written a little about the process and
                 thoughts behind Wading Pool and it's sibling painting Maruta. A
                 link to the first, “Waruta: Connections & Inspiration”, is
-                below: http://www.mryczek.com/waruta-connections-inspiration/
+                below: http://www.mryczek.com/waruta-connections-inspiration/`}
               </p>
             </div>
           </div>
@@ -63,13 +108,17 @@ const PaintingDetails = () => {
             <div className="paintingDetails__right">
               <ul>
                 <li>
-                  <strong>Painting:</strong> Oil on Wood
+                  <strong>Painting:</strong> {data?.title || "Oil on Wood"}
                 </li>
                 <li>
-                  <strong>Original:</strong> One-of-a-kind Artwork
+                  <strong>Original:</strong>
+
+                  {data?.categories?.map((item: string) => `${item} `) ||
+                    "One-of-a-kind Artwork"}
                 </li>
                 <li>
-                  <strong>Size:</strong> 20 W x 20 H x 1.5 D in
+                  <strong>Size:</strong> {data?.width || "20"} W x{" "}
+                  {data?.height || "20"} H
                 </li>
               </ul>
             </div>
@@ -98,12 +147,15 @@ const PaintingDetails = () => {
       </div>
 
       <div className="paintingDetails__other-artworks">
-        <LineSlider title="Other artworks by the artist" />
+        <LineSlider
+          otherData={authorPaints}
+          title="Other artworks by the artist"
+        />
       </div>
 
       <div className="container">
         <div className="paintingDetails__recoms">
-          <LineSlider title="Recommendations" />
+          <LineSlider rec title="Recommendations" />
         </div>
 
         <BackToTop />

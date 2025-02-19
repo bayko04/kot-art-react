@@ -58,7 +58,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HeaderLayout />}>
             <Route index element={<HomePage />} />
-            <Route path="/author-detail" element={<AuthorDetail />} />
+            <Route path="/author-detail/:id" element={<AuthorDetail />} />
             <Route path="/painting-details/:id" element={<PaintingDetails />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/about-us" element={<AboutUs />} />

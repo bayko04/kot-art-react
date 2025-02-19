@@ -9,9 +9,16 @@
     padding: 0 0 45px 0;
   }
   &__paintings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__main-img {
     height: 655px;
     flex: 0 0 555px;
     width: 555px;
+
     // background: #000;
 
     & img {
@@ -19,6 +26,31 @@
       height: 100%;
       object-fit: contain;
       object-position: center;
+    }
+  }
+
+  &__secondary-imgs {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    & > div {
+      flex: 0 0 150px;
+      height: 150px;
+      border: 1px dashed rgba(2, 48, 89, 1);
+      padding: 10px;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     }
   }
 
