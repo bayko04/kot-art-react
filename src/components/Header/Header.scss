@@ -1,0 +1,259 @@
+.header {
+  background: #fdfdfd;
+  position: relative;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 0;
+  }
+
+  &__btn {
+    & button {
+      display: inline-block;
+      background: transparent;
+      font-weight: 400;
+      font-size: 15px;
+      padding: 15px 46px;
+      border-radius: 8px;
+      border: 2px solid rgba(249, 168, 212, 1);
+      transition: all 0.3s ease;
+    }
+
+    &:hover button {
+      background: rgba(249, 168, 212, 1);
+      color: white;
+    }
+  }
+
+  &__logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 78px;
+    height: 75px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      &:hover {
+        animation: wobble 1s infinite;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__panel {
+    display: flex;
+    gap: 33px;
+
+    & img {
+      width: 25px;
+      height: 20px;
+      object-fit: contain;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__auth {
+    display: flex;
+    gap: 14px;
+    color: rgba(2, 48, 89, 1);
+    background: transparent;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  &__signIn {
+    padding: 9px 12px;
+    background: rgb(161, 161, 161);
+    border-radius: 8px;
+    color: white;
+    border: 2px solid rgb(161, 161, 161);
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid rgb(161, 161, 161);
+      color: rgb(161, 161, 161);
+    }
+  }
+
+  &__signUp {
+    border-radius: 8px;
+    background: rgba(253, 204, 53, 1);
+    padding: 9px 31px;
+    border: 2px solid rgba(253, 204, 53, 1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: transparent;
+      border: 2px solid rgba(253, 204, 53, 1);
+    }
+  }
+
+  &__network {
+    position: absolute;
+    top: 610px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+  }
+
+  &__network-row {
+    display: flex;
+    gap: 15px;
+
+    & img {
+      cursor: pointer;
+    }
+  }
+
+  // adaptive
+
+  @media (max-width: 1300px) {
+    &__list {
+      font-size: 14px;
+    }
+  }
+  @media (max-width: 992px) {
+    &__list {
+      font-size: 12px;
+    }
+
+    &__panel {
+      gap: 23px;
+    }
+  }
+  @media (max-width: 768px) {
+    padding: 10px 0;
+
+    &__logo {
+      // display: none;
+    }
+
+    &__auth {
+      display: none;
+    }
+
+    &__network.active {
+      display: flex;
+    }
+
+    &__auth.active {
+      display: flex;
+      flex-direction: column-reverse;
+      position: fixed;
+      top: 460px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    &__nav {
+      // display: none;
+    }
+
+    &__list {
+      transform: translateY(-100%);
+    }
+
+    &__list.active {
+      flex-direction: column;
+      position: absolute;
+      font-size: 18px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: toDown 0.3s ease;
+    }
+
+    &__right {
+      display: none;
+      transform: translateY(-100%);
+    }
+
+    &__panel {
+    }
+
+    &__right.active {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 10001;
+      transform: translateY(0);
+      animation: toDown 0.3s ease;
+    }
+
+    &__panel.active {
+      flex-direction: row;
+      justify-content: end;
+      position: fixed;
+      top: 60px;
+      width: 100%;
+      right: 50px;
+      text-align: center;
+
+      & svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    &__btn {
+      display: none;
+    }
+  }
+}
+
+@keyframes toDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-10px) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(10px) rotate(5deg);
+  }
+  45% {
+    transform: translateX(-5px) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(5px) rotate(3deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

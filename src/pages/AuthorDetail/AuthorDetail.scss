@@ -1,0 +1,139 @@
+.author {
+  padding: 0 0 22px 0;
+
+  &__picture {
+    height: 100vh;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 0;
+    gap: 10px;
+  }
+
+  &__name {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 44px;
+    color: #023059;
+  }
+
+  &__strangetext {
+    font-family: "open sans";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+  }
+
+  &__text {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    max-width: 805px;
+    overflow: hidden;
+    position: relative;
+    margin: 18px 0;
+    transition: all 0.3s ease;
+
+    & span {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    &::after {
+      content: "";
+      width: calc(100% + 100px);
+      height: 1px;
+      position: absolute;
+      bottom: -30px;
+      left: -100px;
+      background: transparent;
+      box-shadow: 0 -10px 100px 80px white;
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    &.hided {
+      max-height: 105px;
+    }
+
+    &.showed {
+      max-height: auto;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__readMore {
+    & button {
+      font-family: roboto;
+      color: #5cd3cb;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 21px;
+      background: transparent;
+      text-decoration: underline;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & button {
+      font-family: 400;
+      font-weight: 400;
+      font-size: 16px;
+      width: 120px;
+      display: inline-block;
+      padding: 15px 0;
+      color: white;
+      border-radius: 6px;
+      background: #f579bd;
+    }
+    & .author__message {
+      background: #eeeeee;
+      color: #000000;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    // border-bottom: 8px solid rgba(92, 211, 203, 1);
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    &__info {
+      flex-direction: column;
+      align-items: end;
+    }
+  }
+
+  &__right {
+  }
+
+  &__btns {
+    flex-direction: row;
+    gap: 10px;
+  }
+}

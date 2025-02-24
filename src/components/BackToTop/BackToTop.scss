@@ -1,0 +1,30 @@
+.backToTop {
+  border: 1px solid rgba(233, 233, 233, 1);
+  text-align: center;
+  width: 150px;
+  border-radius: 8px;
+  margin: 0 auto;
+
+  & button {
+    width: 100%;
+    background: transparent;
+    font-weight: 400;
+    font-size: 10px;
+    color: rgba(2, 48, 89, 1);
+    position: relative;
+    padding: 8px 0;
+
+    &::before {
+      content: "";
+      background: url("../../shared/assets/images/svg/arrow/Right.svg")
+        no-repeat;
+      background-size: contain;
+      transform: rotate(-90deg);
+      width: 15px;
+      height: 8px;
+      position: absolute;
+      top: 5px;
+      left: 20px;
+    }
+  }
+}

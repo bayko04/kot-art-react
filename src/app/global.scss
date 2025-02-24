@@ -1,0 +1,34 @@
+@use "./sliderSettings.scss";
+@use "./font.scss";
+@use "./null.scss";
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: roboto;
+  font-weight: 400;
+  background: white;
+}
+
+.validateError {
+  margin: 10px 0 0 0;
+  color: red;
+}
+
+.container {
+  max-width: 1230px;
+  margin: 0 auto;
+
+  @media (max-width: 1300px) {
+    max-width: 992px;
+  }
+  @media (max-width: 992px) {
+    padding: 0 20px;
+    max-width: 868px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+}

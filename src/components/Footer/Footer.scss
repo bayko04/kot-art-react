@@ -1,0 +1,162 @@
+.footer {
+  max-width: 1500px;
+  box-shadow: 0px 4px 55px 0px #188b8385;
+  padding: 20px 97px 58px;
+  margin: 0 auto;
+  background: white;
+
+  &__lists {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__column {
+    & h3 {
+      font-family: fair;
+      font-weight: 700;
+      font-size: 24px;
+      color: rgba(0, 0, 0, 1);
+      line-height: 31px;
+      padding: 0 0 37px 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    & li {
+      font-family: "open sans";
+      font-weight: 400;
+      font-size: 15px;
+    }
+
+    & a {
+      color: black;
+    }
+  }
+
+  &__contact {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 15px;
+
+    & a {
+      display: block;
+      padding: 0 0 0 35px;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 22px;
+        height: 22px;
+        background-size: contain;
+      }
+    }
+  }
+
+  &__number {
+    &::before {
+      background: url("../../shared/assets/images/svg/footer/phone.svg")
+        no-repeat;
+    }
+  }
+
+  &__gmail {
+    &::before {
+      background: url("../../shared/assets/images/svg/footer/email.svg")
+        no-repeat;
+    }
+  }
+
+  &__adress {
+    &::before {
+      background: url("../../shared/assets/images/svg/footer/location.svg")
+        no-repeat;
+    }
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__media-row {
+    display: flex;
+    gap: 15px;
+
+    & img {
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+    margin: 0 0 33px 0;
+
+    & img {
+      width: 85px;
+      height: 87px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  }
+
+  &__payment {
+    display: block;
+    object-fit: contain;
+    text-align: center;
+    padding: 30px 0;
+
+    & img {
+      width: 570px;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+    padding: 20px 57px 58px;
+
+    &__column {
+      margin: 0 0 70px 0;
+    }
+  }
+  @media (max-width: 768px) {
+    &__lists {
+      flex-direction: column;
+    }
+
+    &__media {
+      align-items: start;
+    }
+  }
+
+  &__column {
+    margin: 0 0 70px 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  &__payment {
+    & img {
+      width: 500px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    &__payment {
+      & img {
+        width: 300px;
+      }
+    }
+  }
+}

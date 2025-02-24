@@ -1,0 +1,159 @@
+.paintingDetails {
+  padding: 45px 0;
+  overflow-x: hidden;
+
+  &__introduction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 45px 0;
+  }
+  &__paintings {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__main-img {
+    height: 655px;
+    flex: 0 0 555px;
+    width: 555px;
+
+    // background: #000;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+
+  &__secondary-imgs {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    & > div {
+      flex: 0 0 150px;
+      height: 150px;
+      border: 1px dashed rgba(2, 48, 89, 1);
+      padding: 10px;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &__details {
+    padding: 90px 0 0 0;
+  }
+
+  &__author-card {
+    margin: 90px 0;
+  }
+
+  &__row {
+    display: flex;
+    gap: 85px;
+    padding: 20px 0 65px 0;
+    border-bottom: 2px solid rgba(238, 238, 238, 1);
+
+    &:first-child {
+      border-bottom: none;
+    }
+  }
+
+  &__left {
+    font-family: roboto;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 25.3px;
+    flex: 0 0 225px;
+  }
+
+  &__right {
+    font-family: inter;
+    font-size: 13.75px;
+    font-weight: 400;
+    line-height: 18.4px;
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__author {
+    font-family: inter;
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(2, 48, 89, 1);
+    text-transform: uppercase;
+    line-height: 22px;
+  }
+
+  &__other-artworks {
+    padding: 60px 0;
+    border-top: 2px solid rgba(253, 204, 53, 1);
+    border-bottom: 2px solid rgba(253, 204, 53, 1);
+  }
+
+  &__recoms {
+    padding: 60px 0 0 0;
+  }
+
+  @media (max-width: 1300px) {
+    &__paintings {
+      height: 555px;
+      flex: 0 0 455px;
+      width: 455px;
+    }
+  }
+  @media (max-width: 992px) {
+    &__paintings {
+      height: 455px;
+      flex: 0 0 355px;
+      width: 355px;
+    }
+  }
+  @media (max-width: 768px) {
+    &__introduction {
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+    }
+  }
+
+  &__row {
+    gap: 25px;
+    padding: 15px 0 35px 0;
+  }
+
+  &__left {
+    flex: 0 0 125px;
+  }
+
+  @media (max-width: 430px) {
+    &__row {
+      gap: 15px;
+    }
+    &__left {
+      font-size: 18px;
+      flex: 0 0 90px;
+    }
+    &__right {
+      font-size: 10.75px;
+    }
+  }
+}

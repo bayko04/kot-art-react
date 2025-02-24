@@ -1,0 +1,124 @@
+.kot-auth {
+  height: 600px;
+  background: url("../../shared/assets/images/content/authBg.png") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  position: relative;
+
+  &__wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  &__filter {
+    background: #0000008c;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    font-family: inter;
+    font-weight: 400;
+    font-size: 32px;
+    color: rgba(92, 211, 203, 1);
+  }
+
+  &__text {
+    font-family: roboto;
+    font-size: 24px;
+    color: white;
+    line-height: 24px;
+    margin: 30px 0 75px;
+  }
+
+  &__slogan {
+    font-family: roboto;
+    color: rgba(243, 90, 173, 1);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+
+  &__form {
+    margin: 60px 0 0 0;
+
+    & > div {
+      height: 44px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    & input {
+      font-family: helv;
+      font-weight: 300;
+      line-height: 17px;
+      height: 100%;
+      max-width: 285px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px 0 0 8px;
+
+      &:focus {
+      }
+    }
+
+    & button {
+      font-family: helv;
+      font-size: 10px;
+      height: 100%;
+      background: rgba(92, 211, 203, 1);
+      border-radius: 0 8px 8px 0;
+      color: white;
+      font-weight: 700 !important;
+      padding: 12px 29px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgb(100, 226, 217);
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    &__form {
+      margin: 60px 0 0 0;
+
+      & input {
+        line-height: 17px;
+        height: 44px;
+        max-width: 185px;
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px 0 0 8px;
+      }
+
+      & button {
+        height: 44px;
+        background: rgba(92, 211, 203, 1);
+        border-radius: 0 8px 8px 0;
+        color: white;
+        font-weight: 700;
+        padding: 12px 29px;
+      }
+    }
+
+    &__btns {
+      padding: 150px 0 0 0;
+      flex-direction: column;
+      gap: 250px;
+    }
+  }
+}

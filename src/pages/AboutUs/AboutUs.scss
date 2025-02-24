@@ -1,0 +1,53 @@
+.about-us {
+  position: relative;
+  padding: 60px 0;
+
+  &__bg {
+    min-height: 100%;
+    background: url("../../shared/assets/images/content/bgnewitem.png");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #000000c9;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__dashboard {
+    // background: #00000074;
+    color: white;
+  }
+
+  &__title {
+    font-size: 26px;
+    color: #5cd3cb;
+    font-weight: 500;
+    margin: 0 0 30px 0;
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  @media (max-width: 1300px) {
+  }
+  @media (max-width: 992px) {
+  }
+  @media (max-width: 768px) {
+    &__dashboard {
+      width: 90%;
+    }
+  }
+}

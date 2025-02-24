@@ -1,0 +1,198 @@
+.multi-block {
+  &__title {
+    font-family: roboto;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    color: rgba(2, 48, 89, 1);
+  }
+
+  &__author {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(92, 211, 203, 1);
+    text-decoration: underline;
+    margin: 5px 0;
+  }
+
+  &__subinfo {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 1);
+    margin: 0 0 10px 0;
+  }
+
+  &__dashboard {
+    border: 1px solid rgba(204, 204, 204, 1);
+    border-radius: 16px;
+    padding: 24px;
+    width: 430px;
+    position: relative;
+  }
+
+  &__price {
+    font-family: roboto;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 39px;
+    color: rgba(0, 0, 0, 1);
+    margin: 0 0 20px 0;
+
+    & span {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    width: 100%;
+
+    & button {
+      color: rgba(0, 0, 0, 1);
+      border-radius: 8px;
+      padding: 15px 0;
+      display: inline;
+
+      &:first-child {
+        background: rgba(243, 90, 173, 0.81);
+      }
+      &:last-child {
+        background: rgba(92, 211, 203, 1);
+      }
+    }
+  }
+
+  &__additional-btns {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateX(-100%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 12px;
+
+    & button {
+      font-family: roboto;
+      border-radius: 10px 0 0 10px;
+      border: 1px solid rgba(0, 0, 0, 1);
+      line-height: 40px;
+      font-size: 14px;
+      font-weight: 400;
+      display: inline-block;
+      padding: 3px 35px 3px 55px;
+      background: transparent;
+      position: relative;
+
+      &:first-child::after {
+        content: "";
+        background: url("../../../shared/assets/images/svg/reply.svg") no-repeat;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+      }
+
+      &:last-child::after {
+        content: "";
+        background: url("../../../shared/assets/images/svg/comment.svg")
+          no-repeat;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+  }
+
+  &__question-btn {
+    font-family: monts;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0 0 0;
+
+    & button {
+      font-size: 14px;
+      line-height: 24px;
+      color: rgba(2, 48, 89, 1);
+      letter-spacing: 0.84px;
+      background: transparent;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      padding: 0 0 0 30px;
+
+      &::after {
+        content: "";
+        background: url("../../../shared/assets/images/svg/quest.svg") no-repeat;
+        position: absolute;
+        top: 1px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+        background-position: center;
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    &__dashboard {
+      width: 390px;
+    }
+  }
+  @media (max-width: 992px) {
+    &__dashboard {
+      width: 320px;
+    }
+
+    &__additional-btns {
+      gap: 10px;
+
+      & button {
+        font-size: 12px;
+        padding: 3px 25px 3px 45px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    text-align: center;
+
+    &__additional-btns {
+      top: auto;
+      left: auto;
+      position: inherit;
+      gap: 10px;
+      transform: translateX(0) translateY(0);
+      align-items: center;
+      margin: 10px 0 0 0;
+
+      & button {
+        width: 100%;
+        font-size: 12px;
+        padding: 3px 25px 3px 45px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

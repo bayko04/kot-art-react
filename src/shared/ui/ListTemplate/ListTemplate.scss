@@ -1,0 +1,13 @@
+.list-template {
+  &__content {
+    // padding: 100px 0;
+  }
+
+  &__title {
+    font-family: roboto;
+    font-weight: 500;
+    font-size: 32px;
+    color: #023059;
+    margin: 0 0 50px 0;
+  }
+}

@@ -1,0 +1,35 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 55px 0 0 0;
+  gap: 8px;
+
+  & li {
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid rgba(227, 227, 227, 1);
+
+    width: 40px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    line-height: 40px;
+    color: rgba(120, 120, 120, 1);
+
+    &:first-child {
+      border: 1px solid rgba(2, 48, 89, 1);
+    }
+
+    &:last-child {
+      background: rgba(233, 234, 236, 1);
+
+      & img {
+        width: 10px;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}

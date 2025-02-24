@@ -1,0 +1,9 @@
+.basic-btn {
+  & button {
+    background: purple;
+    color: white;
+    border-radius: 6px;
+    display: inline-block;
+    padding: 8px 20px;
+  }
+}

@@ -1,0 +1,25 @@
+.contact {
+  cursor: pointer;
+
+  &__row {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__img {
+    width: 20px;
+    height: 20px;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  & a {
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,143 @@
+.bat-banner {
+  background: #1e1e1e;
+  height: 435px;
+  position: relative;
+  padding: 70px 0;
+
+  &__row {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 260px;
+  }
+
+  &__img {
+    position: absolute;
+    bottom: 0;
+    left: -50px;
+
+    & img {
+      width: 669px;
+      height: 577px;
+    }
+  }
+
+  &__content {
+    text-align: center;
+  }
+
+  &__btn {
+    & a {
+      font-family: roboto;
+      font-weight: 400;
+      font-size: 16px;
+      display: inline-block;
+      padding: 10px 40px 10px 10px;
+      background: #13e6e6c2;
+      border-radius: 4px;
+      border: 2px solid #022479;
+      box-shadow: 0px 4px 4px 0px #f2f2f2;
+      color: #220848;
+      text-transform: uppercase;
+      width: 173px;
+      text-align: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #08fafac2;
+        box-shadow: 0px 2px 2px 0px #f2f2f2;
+      }
+    }
+  }
+
+  &__title {
+    font-family: inter;
+    font-weight: 700;
+    font-size: 36px;
+    text-transform: uppercase;
+    color: #f9a8d4;
+  }
+
+  &__text {
+    font-family: inter;
+    font-weight: 500;
+    font-size: 18px;
+    max-width: 256px;
+    line-height: 24px;
+    color: #fff9f9;
+    margin: 35px auto;
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+
+    & a {
+      font-family: inter;
+      font-weight: 500;
+      font-size: 18px;
+      color: #f9a8d4;
+
+      &::after {
+        content: "";
+        width: 20px;
+        height: 10px;
+        position: absolute;
+        top: 3px;
+        right: -45px;
+        background: url("../../shared/assets/images/png/btnsArrow/pink.svg")
+          no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    &__img {
+      left: -90px;
+    }
+
+    &__row {
+      gap: 100px;
+    }
+
+    &__text {
+      margin: 20px auto;
+    }
+  }
+  @media (max-width: 992px) {
+    &__row {
+      flex-direction: column;
+      align-items: end;
+      gap: 20px;
+    }
+  }
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 40px 0 0 0;
+
+    &__row {
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__btn {
+      order: 2;
+    }
+
+    &__img {
+      position: relative;
+      left: 0;
+      bottom: 0;
+      order: 3;
+
+      & img {
+        width: 400px;
+        height: 350px;
+      }
+    }
+  }
+}
