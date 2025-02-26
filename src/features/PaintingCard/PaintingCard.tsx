@@ -4,6 +4,7 @@ import { IPainting } from "../../shared/types/paintingsType";
 import "./PaintingCard.scss";
 import DeleteBtn from "../../shared/ui/DeleteBtn/DeleteBtn";
 import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
+import Magnifier from "react-magnifier";
 
 interface IProps extends IPainting {
   img?: string;
@@ -50,7 +51,8 @@ const PaintingCard = ({
         {!admin && <FavoriteBtn id={id} />}
       </div>
       <div className="painting-card__painting">
-        <img src={image} alt="" />
+        {/* <img src={image} alt="" /> */}
+        <Magnifier src={image!} width={"100%"} height={"100%"} />
       </div>
       <div className="painting-card__content">
         <h5 className="painting-card__name">{title || "MOVIE TIME"}</h5>

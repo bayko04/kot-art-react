@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import "./BuyOnlineCard.scss";
 import FavoriteBtn from "../../../shared/ui/FavoriteBtn/FavoriteBtn";
+import Magnifier from "react-magnifier";
 
 interface IProps {
   handleNavigate: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -15,7 +16,8 @@ const BuyOnlineCard: FC<IProps> = ({ handleNavigate, img }) => {
       </div>
 
       <div className="buy-online-card__painting">
-        <img src={img} alt="" />
+        {/* <img src={img} alt="" /> */}
+        <Magnifier src={img} width={"100%"} height={"100%"} />
       </div>
 
       <div onClick={handleNavigate} className="buy-online-card__content">
