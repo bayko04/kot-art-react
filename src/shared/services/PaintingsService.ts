@@ -18,11 +18,21 @@ export default class PaintingsService {
   static async updateAuthorPatch(formData: FormData, id: number) {
     return $api.patch(`/painting/admin/author-update/${id}/`, formData);
   }
-  static async getAuthors() {
-    return axios.get(`${API_URL}/painting/admin/authors/`);
+  static async getAuthors(
+    page: number,
+    pageSize: number,
+    authorId?: number | undefined
+  ) {
+    return axios.get(`${API_URL}/painting/admin/authors/`, {
+      params: {
+        page,
+        page_size: pageSize,
+        author: authorId,
+      },
+    });
   }
   static async authorRetrieve(id: number) {
-    return axios.get(`${API_URL}/painting/admin/author-retrive/${id}`);
+    return axios.get(`${API_URL}/painting/admin/author-retrive/${id}/`);
   }
   static async createCategory(formData: any) {
     return $api.post(`/painting/admin/category-create/`, formData);
@@ -30,8 +40,13 @@ export default class PaintingsService {
   static async deleteCategory(id: number) {
     return $api.delete(`/painting/admin/category-delete/${id}`);
   }
-  static async getCategoryList() {
-    return axios.get(`${API_URL}/painting/admin/category-list/`);
+  static async getCategoryList(page: number, pageSize: number) {
+    return axios.get(`${API_URL}/painting/admin/category-list/`, {
+      params: {
+        page,
+        page_size: pageSize,
+      },
+    });
   }
   static async getCategoryPaints(id: number) {
     return axios.get(`${API_URL}/painting/admin/category-retreive/${id}/`);
@@ -68,19 +83,31 @@ export default class PaintingsService {
     return $api.patch(`/painting/admin/update/${id}/`, formData);
   }
   //
-  static async paintingList(/* categoryTitle?: string, */ authorId?: number) {
+  static async paintingList(
+    page: number,
+    pageSize: number,
+    categoryTitle?: string,
+    authorId?: number | undefined
+  ) {
     return axios.get(`${API_URL}/painting/auth/list/`, {
       params: {
-        // category_title: categoryTitle,
+        page,
+        page_size: pageSize,
         author: authorId,
+        category_title: categoryTitle,
       },
     });
   }
   static async paintingRetrieve(id: number) {
     return axios.get(`${API_URL}/painting/auth/retrieve/${id}/`);
   }
-  static async paintingFollowList() {
-    return $api.get(`${API_URL}/painting/auth/follow-list/`);
+  static async paintingFollowList(page: number, pageSize: number) {
+    return $api.get(`${API_URL}/painting/auth/follow-list/`, {
+      params: {
+        page,
+        page_size: pageSize,
+      },
+    });
   }
   static async paintingFollow(id: number) {
     return $api.post(`/painting/auth/${id}/follow/`);

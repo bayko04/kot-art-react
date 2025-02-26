@@ -7,6 +7,7 @@ import PaintingCard from "../../../features/PaintingCard/PaintingCard";
 import CategoriesCard from "../../../features/CategoriesCard/CategoriesCard";
 import AuthorCard from "../../../features/AuthorCard/AuthorCard";
 import BasicLoader from "../BasicLoader/BasicLoader";
+import Pagination from "../../../components/Pagination/Pagination";
 
 const ListRenderer = ({
   children,
@@ -14,12 +15,16 @@ const ListRenderer = ({
   admin,
   data,
   isFetching,
+  handlePageClick,
+  pageSize,
 }: {
   children?: any;
   listType?: any;
   admin?: boolean;
   data?: any;
   isFetching?: boolean;
+  handlePageClick: (event: any) => void;
+  pageSize: number;
 }) => {
   return (
     <div className="list-renderer">
@@ -30,7 +35,7 @@ const ListRenderer = ({
       ) : listType === "category" ? (
         <div className="list-renderer__row">
           <CategoriesCard admin={admin} id={0} />
-          {data.map((item: any) => (
+          {data?.results?.map((item: any) => (
             <CategoriesCard
               image={item.image}
               title={item.title}
@@ -42,7 +47,7 @@ const ListRenderer = ({
       ) : listType === "author" ? (
         <div className="list-renderer__row">
           <AuthorCard admin={admin} />
-          {data.map((item: any) => (
+          {data?.results?.map((item: any) => (
             <AuthorCard
               name={item.name}
               avatar={item.avatar}
@@ -69,7 +74,7 @@ const ListRenderer = ({
           <PaintingCard admin={admin} image={cardImg2} />
           <PaintingCard admin={admin} image={cardImg3} />
           <PaintingCard admin={admin} image={cardImg4} />
-          {data.map((item: any) => (
+          {data?.results?.map((item: any) => (
             <PaintingCard
               title={item.title}
               description={item.description}
@@ -82,6 +87,12 @@ const ListRenderer = ({
           ))}
         </div>
       )}
+
+      <Pagination
+        handlePageClick={handlePageClick}
+        pageSize={pageSize}
+        count={data?.count}
+      />
     </div>
   );
 };

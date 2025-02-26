@@ -9,7 +9,7 @@ const NewItems2 = () => {
       <div className="container">
         <h2 className="new-items2__title">New items</h2>
         <p className="new-items2__subtitle">
-          <Link to="/all-paintings">All paintings</Link>
+          <Link to="/all-artworks">All paintings</Link>
         </p>
 
         <div className="new-items2__dashboard">

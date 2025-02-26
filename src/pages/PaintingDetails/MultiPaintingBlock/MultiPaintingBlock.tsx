@@ -1,8 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./MultiPaintingBlock.scss";
+import WhatsAppLink from "../../../shared/ui/WhatsAppLink/WhatsAppLink";
 
 const MultiPaintingBlock = ({ data }: { data?: any }) => {
   const navigate = useNavigate();
+  const currentUrl = window.location.href;
 
   return (
     <div className="multi-block">
@@ -29,18 +31,30 @@ const MultiPaintingBlock = ({ data }: { data?: any }) => {
         </h3>
 
         <div className="multi-block__btns">
-          <button
+          {/* <button
             onClick={() => navigate(data?.author?.whatsapp)}
             className="multi-block__buy"
           >
             Buy now
-          </button>
-          <button
+          </button> */}
+          <WhatsAppLink
+            phone={data?.author?.whatsapp}
+            message={`Hi, I'm here about the painting \n${currentUrl}`}
+          >
+            Buy now
+          </WhatsAppLink>
+          {/* <button
             onClick={() => navigate(data?.author?.whatsapp)}
             className="multi-block__offer"
           >
             Make an offer
-          </button>
+          </button> */}
+          <WhatsAppLink
+            phone={data?.author?.whatsapp}
+            message={`Hi, I'm here about the painting \n${currentUrl}`}
+          >
+            Make an offer
+          </WhatsAppLink>
         </div>
 
         <div className="multi-block__additional-btns">

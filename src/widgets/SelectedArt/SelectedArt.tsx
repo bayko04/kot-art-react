@@ -11,9 +11,11 @@ import heartImg from "../../shared/assets/images/svg/header/favoriteUn.svg";
 import FavoriteBtn from "../../shared/ui/FavoriteBtn/FavoriteBtn";
 import "./SelectedArt.scss";
 import SelectedArtCard from "./SelectedArtCard/SelectedArtCard";
+import { useGetFavorites } from "../../pages/Lists/FavoriteList/api/useGetFavorites";
 
 const SelectedArt = () => {
   const slider = useRef<any>(null);
+  const { favoritesList } = useGetFavorites();
   const navigate = useNavigate();
 
   const settings = {
@@ -53,7 +55,7 @@ const SelectedArt = () => {
     <div className="selected-art">
       <h2 className="selected-art__title">Selected artworks</h2>
       <p className="selected-art__subtitle">
-        <Link to="/all-paintings">All paintings</Link>
+        <Link to="/all-artworks">All paintings</Link>
       </p>
 
       <div className="slider-container">

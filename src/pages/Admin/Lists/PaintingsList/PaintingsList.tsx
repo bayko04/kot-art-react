@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useGetPaintings } from "./api/usePaintings";
 import { useNavigate } from "react-router-dom";
 import someImg from "../../../shared/assets/images/content/back.jpg";
@@ -7,11 +7,18 @@ import ListTemplate from "../../../../shared/ui/ListTemplate/ListTemplate";
 import { useDispatch } from "react-redux";
 
 const PaintingsList: FC = () => {
-  const { data, isFetching } = useGetPaintings();
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 15;
+  const { data, isFetching } = useGetPaintings(currentPage, pageSize);
   const navigate = useNavigate();
 
   const handleCreatePainting = () => {
     navigate("/admin/create-painting");
+  };
+
+  const handlePageClick = (event: any) => {
+    const selectedPage = event.selected + 1;
+    setCurrentPage(selectedPage);
   };
 
   return (
@@ -36,7 +43,13 @@ const PaintingsList: FC = () => {
         ))}
       </div> */}
 
-      <ListTemplate isFetching={isFetching} data={data} admin />
+      <ListTemplate
+        handlePageClick={handlePageClick}
+        pageSize={pageSize}
+        isFetching={isFetching}
+        data={data}
+        admin
+      />
     </div>
   );
 };

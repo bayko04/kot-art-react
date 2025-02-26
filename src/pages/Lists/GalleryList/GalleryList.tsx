@@ -21,7 +21,7 @@ const GalleryList = () => {
         ) : (
           <div className="gallery-list__row">
             <CategoriesCard image={categoryImg} />
-            {data.map((item: any) => (
+            {data?.results?.map((item: any) => (
               <CategoriesCard
                 image={item.image}
                 title={item.title}

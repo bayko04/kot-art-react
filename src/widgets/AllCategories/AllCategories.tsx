@@ -54,7 +54,7 @@ const AllCategories = () => {
     <div className="all-categories">
       <h2 className="all-categories__title">Shop by Category</h2>
       <p className="all-categories__subtitle">
-        <Link to="/all-paintings">All paintings</Link>
+        <Link to="/all-artworks">All paintings</Link>
       </p>
 
       <div className="slider-container">

@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import { useGetAuthor } from "./api/useGetAuthor";
+import { useGetPaintings } from "../Admin/Lists/PaintingsList/api/usePaintings";
 import BackToTop from "../../components/BackToTop/BackToTop";
 import LineSlider from "../../components/LineSlider/LineSlider";
 import Pagination from "../../components/Pagination/Pagination";
@@ -9,24 +12,26 @@ import cardImg2 from "../../shared/assets/images/png/slider1/2.png";
 import cardImg3 from "../../shared/assets/images/png/slider1/3.png";
 import cardImg4 from "../../shared/assets/images/png/slider1/4.png";
 import "./AuthorDetail.scss";
-import { useNavigate, useParams } from "react-router-dom";
-import { useGetAuthor } from "./api/useGetAuthor";
-import { useGetAuthors } from "../Admin/CreateForms/CreatePainting/api/useAuthors";
-import { useGetPaintings } from "../Admin/Lists/PaintingsList/api/usePaintings";
 
 const AuthorDetail = () => {
   const [isHided, setIsHided] = useState(true);
-  const navigate = useNavigate();
   const params = useParams();
-  // const { data } = useGetAuthor(Number(params.id));
-  const { data } = useGetAuthors();
-  const authorData = data?.filter(
-    (item: any) => item.id === Number(params.id)
-  )[0];
-  const { data: paintingList } = useGetPaintings(Number(params?.id));
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 15;
+  const { data: authorData } = useGetAuthor(Number(params.id));
+  const { data: paintingList } = useGetPaintings(
+    currentPage,
+    pageSize,
+    Number(params?.id)
+  );
 
   const toggleHide = () => {
     setIsHided((prev) => !prev);
+  };
+
+  const handlePageClick = (event: any) => {
+    const selectedPage = event.selected + 1;
+    setCurrentPage(selectedPage);
   };
 
   return (
@@ -39,7 +44,7 @@ const AuthorDetail = () => {
         <div className="author__info">
           <div className="authour__left">
             <h1 className="author__name">
-              {authorData?.name.toUpperCase() || "ROMAN KOZHOKIN"}
+              {authorData?.name?.toUpperCase() || "ROMAN KOZHOKIN"}
             </h1>
             <p className="author__strangetext">Home page \\ ARTISTS \\</p>
             <p className={`author__text ${isHided ? "hided" : "showed"}`}>
@@ -68,13 +73,13 @@ const AuthorDetail = () => {
           <div className="authour__right">
             <div className="author__btns">
               <button
-                onClick={() => navigate(data?.instagram)}
+                // onClick={() => navigate(data?.instagram)}
                 className="author__follow"
               >
                 Follow
               </button>
               <button
-                onClick={() => navigate(data?.whatsapp)}
+                // onClick={() => navigate(data?.whatsapp)}
                 className="author__message"
               >
                 Send message
@@ -105,11 +110,18 @@ const AuthorDetail = () => {
           <PaintingCard image={cardImg4} />
 
           {paintingList &&
-            paintingList.map((item: any) => (
+            paintingList?.results?.map((item: any) => (
               <PaintingCard image={item.image} title={item.title} />
             ))}
         </div>
-        <Pagination />
+
+        {paintingList?.results?.length !== 0 && (
+          <Pagination
+            handlePageClick={handlePageClick}
+            pageSize={pageSize}
+            count={paintingList.count}
+          />
+        )}
       </div>
       <LineSlider rec title="Recommendations" />
       <BackToTop />

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import firstImg from "../../shared/assets/images/png/newItems/1.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -37,7 +37,9 @@ const NewItems = () => {
     <div className="new-items">
       <div className="new-items__header">
         <h2>Popular art</h2>
-        <p>All popular paintings</p>
+        <p>
+          <Link to="/all-artworks">All popular paintings</Link>
+        </p>
       </div>
 
       <div className="slider-container">

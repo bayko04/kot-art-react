@@ -16,6 +16,8 @@ export function useEditPaint() {
             );
             formData.append(`images[${index}]image`, imageObj.image);
           });
+        } else if (key === "categories") {
+          formData.append(`categories[0]`, value as string);
         } else {
           formData.append(key, value as string | Blob);
         }

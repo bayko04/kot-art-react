@@ -37,6 +37,8 @@ import CreateAdmin from "../pages/Admin/CreateForms/CreateAdmin/CreateAdmin";
 import AuthorsAdminList from "../pages/Admin/Lists/AuthorsList/AuthorsAdminList";
 import RolesList from "../pages/Admin/Lists/RolesList/RolesList";
 import ScrollToTop from "../components/ScrollTotop/ScrollToTop";
+import Discover from "../pages/Discover/Discover";
+import NftList from "../pages/Lists/NftList/NftList";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
@@ -58,6 +60,8 @@ function App() {
             <Route path="/painting-details/:id" element={<PaintingDetails />} />
             <Route path="/contacts" element={<Contacts />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/discover" element={<Discover />} />
+            <Route path="/nft-list" element={<NftList />} />
             <Route path="/all-paintings" element={<AllPaintings />} />
             <Route path="/all-categories" element={<AllCategories />} />
             <Route path="/all-artworks" element={<AllArtworks />} />

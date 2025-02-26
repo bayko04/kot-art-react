@@ -1,14 +1,28 @@
+import { useState } from "react";
 import ListTemplate from "../../../shared/ui/ListTemplate/ListTemplate";
 import { useGetPaintings } from "../../Admin/Lists/PaintingsList/api/usePaintings";
 import "./AllArtworks.scss";
 
 const AllArtworks = () => {
-  const { data, isFetching } = useGetPaintings();
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 2;
+  const { data, isFetching } = useGetPaintings(currentPage, pageSize);
+
+  const handlePageClick = (event: any) => {
+    const selectedPage = event.selected + 1;
+    setCurrentPage(selectedPage);
+  };
 
   return (
     <div className="all-artworks">
       <div className="container">
-        <ListTemplate data={data} isFetching={isFetching} title="Artworks" />
+        <ListTemplate
+          handlePageClick={handlePageClick}
+          data={data}
+          isFetching={isFetching}
+          pageSize={pageSize}
+          title="Artworks"
+        />
       </div>
     </div>
   );

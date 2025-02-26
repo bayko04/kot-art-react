@@ -32,13 +32,13 @@ const UnderHeader = () => {
           onClick={() => dispatch(setBurger(false))}
           className="underHeader__item"
         >
-          <Link to="/gallery">THE GALLERY</Link>
+          <Link to="/nft-list">NFT</Link>
         </li>
         <li
           onClick={() => dispatch(setBurger(false))}
           className="underHeader__item"
         >
-          <Link to="/gallery">NFT</Link>
+          <Link to="/gallery">THE GALLERY</Link>
         </li>
         <li
           onClick={() => dispatch(setBurger(false))}

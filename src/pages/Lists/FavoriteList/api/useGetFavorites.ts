@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import PaintingsService from "../../../../shared/services/PaintingsService";
 
-export function useGetFavorites() {
+export function useGetFavorites(page: number, pageSize: number) {
   return useQuery({
-    queryKey: ["getFollowList"],
+    queryKey: ["getFollowList", page, pageSize],
     queryFn: async () => {
-      const response = await PaintingsService.paintingFollowList();
-      return response.data.results;
+      const response = await PaintingsService.paintingFollowList(
+        page,
+        pageSize
+      );
+      return response.data;
     },
     initialData: [],
   });

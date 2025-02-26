@@ -102,8 +102,6 @@ const EditPainting = () => {
     }
   }, [paintingData, reset]);
 
-  console.log(paintingData);
-
   const images: any = watch("images");
 
   const handleFileChange = (e: any) => {
@@ -208,8 +206,8 @@ const EditPainting = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="category">Select a category</label>
-            <select id="category" {...register("categories")}>
+            <label htmlFor="categories">Select a category</label>
+            <select id="categories" {...register("categories")}>
               {categoriesList?.map((item: any) => (
                 <option key={item.id} value={item.id}>
                   {item.title}

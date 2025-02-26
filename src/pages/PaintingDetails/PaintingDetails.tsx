@@ -54,15 +54,6 @@ const PaintingDetails = () => {
                     <img src={item.image} alt="" />
                   </div>
                 ))}
-              {/* <div>
-                <img src={pinkCatImg} alt="" />
-              </div>
-              <div>
-                <img src={pinkCatImg2} alt="" />
-              </div>
-              <div>
-                <img src={pinkCatImg} alt="" />
-              </div> */}
             </div>
           </div>
           <div className="paintingDetails__options">

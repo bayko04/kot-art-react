@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BuyOnlineCard from "./BuyOnlineCard/BuyOnlineCard";
 import "./BuyOnline.scss";
+import prevImg from "../../shared/assets/images/svg/arrow/Left.svg";
+import nextImg from "../../shared/assets/images/svg/arrow/Right.svg";
 
 const BuyOnline = () => {
   const slider = useRef<any>(null);
@@ -53,7 +55,7 @@ const BuyOnline = () => {
           Discover our curation of original artworks for sale.
         </p>
         <div className="buy-online__all-collection">
-          <Link to="/all-categories">All our collections</Link>
+          <Link to="/gallery">All our collections</Link>
         </div>
 
         <div className="slider-container">
@@ -70,19 +72,13 @@ const BuyOnline = () => {
             className="custom-prev-arrow"
             onClick={() => slider?.current?.slickPrev()}
           >
-            <img
-              src="../../shared/assets/images/svg/arrow/Left.svg"
-              alt="Previous"
-            />
+            <img src={prevImg} alt="Previous" />
           </button>
           <button
             className="custom-next-arrow"
             onClick={() => slider?.current?.slickNext()}
           >
-            <img
-              src="../../shared/assets/images/svg/arrow/Right.svg"
-              alt="Next"
-            />
+            <img src={nextImg} alt="Next" />
           </button>
         </div>
       </div>

@@ -1,0 +1,13 @@
+.nft-list {
+  padding: 60px 0;
+
+  &__header {
+    & h2 {
+      font-family: roboto;
+      font-weight: 500;
+      font-size: 32px;
+      color: #023059;
+      margin: 0 0 50px 0;
+    }
+  }
+}

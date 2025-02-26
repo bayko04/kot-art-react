@@ -2,35 +2,40 @@
 
 @font-face {
   font-family: roboto;
-  src: url("../../fonts/roboto/Roboto-Light.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/roboto/Roboto-Light.ttf")
+    format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: roboto;
-  src: url("../../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/roboto/Roboto-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: roboto;
-  src: url("../../fonts/roboto/Roboto-Medium.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/roboto/Roboto-Medium.ttf")
+    format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: roboto;
-  src: url("../../fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/roboto/Roboto-Bold.ttf")
+    format("truetype");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: roboto;
-  src: url("../../fonts/roboto/Roboto-Black.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/roboto/Roboto-Black.ttf")
+    format("truetype");
   font-weight: 800;
   font-style: normal;
 }
@@ -39,14 +44,16 @@
 
 @font-face {
   font-family: inter;
-  src: url("../../fonts/inter/static/Inter-Medium.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/inter/static/Inter-Medium.ttf")
+    format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: inter;
-  src: url("../../fonts/inter/static/Inter-SemiBold.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/inter/static/Inter-SemiBold.ttf")
+    format("truetype");
   font-weight: 600;
   font-style: normal;
 }
@@ -55,7 +62,7 @@
 
 @font-face {
   font-family: "open sans";
-  src: url("../../fonts/open-sans/OpenSansHebrew-Regular.ttf")
+  src: url("../../src/shared/assets/fonts/open-sans/OpenSansHebrew-Regular.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -63,7 +70,8 @@
 
 @font-face {
   font-family: "open sans";
-  src: url("../../fonts/open-sans/OpenSansHebrew-Bold.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/open-sans/OpenSansHebrew-Bold.ttf")
+    format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -72,7 +80,8 @@
 
 @font-face {
   font-family: inder;
-  src: url("../../fonts/inder/Inder-Regular.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/inder/Inder-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -81,7 +90,8 @@
 
 @font-face {
   font-family: monts;
-  src: url("../../fonts/monts/Montserrat-SemiBold.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/monts/Montserrat-SemiBold.ttf")
+    format("truetype");
   font-weight: 600;
   font-style: normal;
 }
@@ -90,7 +100,8 @@
 
 @font-face {
   font-family: lato;
-  src: url("../../fonts/Lato/Lato-Black.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/Lato/Lato-Black.ttf")
+    format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -99,7 +110,7 @@
 
 @font-face {
   font-family: fair;
-  src: url("../../fonts/playfair/PlayfairDisplay-Regular.ttf")
+  src: url("../../src/shared/assets/fonts/playfair/PlayfairDisplay-Regular.ttf")
     format("truetype");
   font-weight: 400;
   font-style: normal;
@@ -109,35 +120,39 @@
 
 @font-face {
   font-family: railway;
-  src: url("../../fonts/railway/Raleway-Light.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/railway/Raleway-Light.ttf")
+    format("truetype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: railway;
-  src: url("../../fonts/railway/Raleway-Regular.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/railway/Raleway-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: railway;
-  src: url("../../fonts/railway/Raleway-Medium.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/railway/Raleway-Medium.ttf")
+    format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: railway;
-  src: url("../../fonts/railway/Raleway-SemiBold.ttf") format("truetype");
+  src: url("../../src/shared/assets/fonts/railway/Raleway-SemiBold.ttf")
+    format("truetype");
   font-weight: 600;
   font-style: normal;
 }
 // helv
 @font-face {
   font-family: helv;
-  src: url("../../fonts/Helvetica/HelveticaNeueCyr-Light.otf")
+  src: url("../../src/shared/assets/fonts/Helvetica/HelveticaNeueCyr-Light.otf")
     format("opentype");
   font-weight: 300;
   font-style: normal;
@@ -145,7 +160,7 @@
 
 @font-face {
   font-family: helv;
-  src: url("../../fonts/Helvetica/HelveticaNeueCyr-Black.otf")
+  src: url("../../src/shared/assets/fonts/Helvetica/HelveticaNeueCyr-Black.otf")
     format("opentype");
   font-weight: 700;
   font-style: normal;

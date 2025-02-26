@@ -9,16 +9,18 @@ interface IProps {
   deletable?: boolean;
   admin?: boolean;
   isFetching?: boolean;
+  handlePageClick: (event: any) => void;
+  pageSize: number;
 }
 
 const ListTemplate = ({
   title,
-  img,
   data,
   listType,
-  deletable,
   admin,
   isFetching,
+  handlePageClick,
+  pageSize,
 }: IProps) => {
   return (
     <div className="list-template">
@@ -32,6 +34,8 @@ const ListTemplate = ({
           data={data}
           admin={admin}
           listType={listType}
+          handlePageClick={handlePageClick}
+          pageSize={pageSize}
         />
       </div>
     </div>

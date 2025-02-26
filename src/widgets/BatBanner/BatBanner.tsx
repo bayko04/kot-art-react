@@ -12,7 +12,7 @@ const BatBanner = () => {
             <img src={batImg} alt="" />
           </div>
           <div className="bat-banner__btn">
-            <Link to="">discover</Link>
+            <Link to="/discover">discover</Link>
           </div>
           <div className="bat-banner__content">
             <h4 className="bat-banner__title">
