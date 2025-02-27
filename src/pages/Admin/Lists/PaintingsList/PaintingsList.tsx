@@ -9,7 +9,10 @@ import { useDispatch } from "react-redux";
 const PaintingsList: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
-  const { data, isFetching } = useGetPaintings(currentPage, pageSize);
+  const { data, isFetching } = useGetPaintings({
+    page: currentPage,
+    pageSize: pageSize,
+  });
   const navigate = useNavigate();
 
   const handleCreatePainting = () => {

@@ -30,7 +30,7 @@ const Pagination: FC<IProps> = ({ count, handlePageClick, pageSize }) => {
         previousLabel={<img src={paginArrowImg} alt="" />}
         nextLabel={<img src={paginArrowImg} alt="" />}
         breakLabel={"..."}
-        pageCount={Math.ceil(count / pageSize)}
+        pageCount={Math.floor(count / pageSize)}
         marginPagesDisplayed={1} // Кол-во страниц по бокам
         pageRangeDisplayed={2} // Кол-во страниц в центре
         onPageChange={handlePageClick}

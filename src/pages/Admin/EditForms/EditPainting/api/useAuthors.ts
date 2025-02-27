@@ -6,7 +6,7 @@ export function useGetAuthors() {
     queryKey: ["getAuthors"],
     queryFn: async () => {
       const response = await PaintingsService.getAuthors();
-      return response.data.results;
+      return response.data;
     },
     initialData: [],
   });
@@ -17,7 +17,7 @@ export function useGetCategories() {
     queryKey: ["getCategories"],
     queryFn: async () => {
       const response = await PaintingsService.getCategoryList();
-      return response.data.results;
+      return response.data;
     },
     initialData: [],
   });

@@ -35,7 +35,7 @@ const schema = yup.object().shape({
     .typeError("Height must be a number")
     .required("Height is required"),
   author: yup.string().required("Select an artist"),
-  categories: yup.string().required("Select a category"),
+  categories: yup.array().min(1, "At least one category is required"),
   is_stock: yup.string().required("inStock is required"),
 
   images: yup
@@ -76,7 +76,7 @@ const EditPainting = () => {
       width: 0,
       height: 0,
       author: "",
-      categories: "",
+      categories: [],
       images: [],
       is_stock: "1",
     },
@@ -94,8 +94,8 @@ const EditPainting = () => {
         // Если в данных хранится объект автора/категории, берем его id
         author: paintingData.author?.id ? String(paintingData.author.id) : "",
         categories: paintingData.categories
-          ? String(paintingData.categories[0])
-          : "",
+          ? paintingData.categories.map((category: any) => String(category.id)) // ✅ Преобразуем в массив строк
+          : [],
         images: [],
         is_stock: (paintingData.is_stock ? "1" : "0") || "",
       });
@@ -194,7 +194,7 @@ const EditPainting = () => {
           <div className="form-group">
             <label htmlFor="author">Select an artist</label>
             <select id="author" {...register("author")}>
-              {authorsList?.map((item: any) => (
+              {authorsList?.results?.map((item: any) => (
                 <option key={item.id} value={item.id}>
                   {item.name}
                 </option>
@@ -207,8 +207,8 @@ const EditPainting = () => {
 
           <div className="form-group">
             <label htmlFor="categories">Select a category</label>
-            <select id="categories" {...register("categories")}>
-              {categoriesList?.map((item: any) => (
+            {/* <select id="categories" {...register("categories")}>
+              {categoriesList?.results?.map((item: any) => (
                 <option key={item.id} value={item.id}>
                   {item.title}
                 </option>
@@ -216,7 +216,21 @@ const EditPainting = () => {
             </select>
             {errors.categories && (
               <p className="validateError">{errors.categories.message}</p>
-            )}
+            )} */}
+
+            <div className="edit-paint__checkboxes">
+              {categoriesList?.results?.map((item: any) => (
+                <div key={item.id} className="edit-paint__checkbox">
+                  <input
+                    type="checkbox"
+                    value={item.id}
+                    {...register("categories")}
+                    checked={watch("categories")?.includes(String(item.id))} // ✅ Проверяем, выбрана ли категория
+                  />
+                  <label>{item.title}</label>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div>

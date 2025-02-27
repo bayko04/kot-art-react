@@ -19,12 +19,11 @@ const AuthorDetail = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
   const { data: authorData } = useGetAuthor(Number(params.id));
-  const { data: paintingList } = useGetPaintings(
-    currentPage,
-    pageSize,
-    Number(params?.id)
-  );
-
+  const { data: paintingList } = useGetPaintings({
+    page: currentPage,
+    pageSize: pageSize,
+    authorId: Number(params?.id),
+  });
   const toggleHide = () => {
     setIsHided((prev) => !prev);
   };
@@ -111,7 +110,11 @@ const AuthorDetail = () => {
 
           {paintingList &&
             paintingList?.results?.map((item: any) => (
-              <PaintingCard image={item.image} title={item.title} />
+              <PaintingCard
+                id={item.id}
+                image={item.image}
+                title={item.title}
+              />
             ))}
         </div>
 

@@ -14,7 +14,11 @@ import "./PaintingDetails.scss";
 const PaintingDetails = () => {
   const params = useParams();
   const { data } = useGetPaint(Number(params.id));
-  const { data: authorPaints } = useGetPaintings(data?.author?.id);
+  const { data: authorPaints } = useGetPaintings({
+    page: 1,
+    pageSize: 20,
+    authorId: data?.author?.id,
+  });
   const [images, setImages] = useState<any>();
 
   useEffect(() => {
@@ -30,8 +34,6 @@ const PaintingDetails = () => {
       )
     );
   };
-
-  console.log(images);
 
   return (
     <div className="paintingDetails">

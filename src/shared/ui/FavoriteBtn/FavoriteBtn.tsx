@@ -12,12 +12,14 @@ const FavoriteBtn = ({ id }: { id?: number }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const followidList = data.filter((item: any) => item.id === id);
+    const followidList =
+      data?.results?.filter((item: any) => item.id === id) || [];
     setIsLiked(followidList[0]?.id || false);
   }, [isFetched]);
 
   const toggleLike = (e: any) => {
     e.stopPropagation();
+
     setIsLiked((prev) => !prev);
 
     if (isLiked) {

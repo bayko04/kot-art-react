@@ -10,10 +10,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./AllCategories.scss";
 import CategoriesCard from "../../features/CategoriesCard/CategoriesCard";
+import { useGetCategory } from "../../pages/Admin/Lists/CategoryList/api/useCategoy";
 
 const AllCategories = () => {
-  const slider = useRef<any>(null);
   const navigate = useNavigate();
+  const { data } = useGetCategory(1, 30);
 
   const settings = {
     dots: false,
@@ -46,10 +47,6 @@ const AllCategories = () => {
     ],
   };
 
-  const handleNavigate = () => {
-    navigate("/category/KOTART COLLECTION");
-  };
-
   return (
     <div className="all-categories">
       <h2 className="all-categories__title">Shop by Category</h2>
@@ -69,6 +66,15 @@ const AllCategories = () => {
           <CategoriesCard image={thirdImg} />
           <CategoriesCard image={fourthImg} />
           <CategoriesCard image={fivethImg} />
+
+          {data?.results?.map((item: any) => (
+            <CategoriesCard
+              key={item.id}
+              image={item.image}
+              title={item.title}
+              id={item.id}
+            />
+          ))}
         </Slider>
         <div className="all-categories__btn">
           <button onClick={() => navigate("/all-categories")}>

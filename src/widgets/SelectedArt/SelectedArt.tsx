@@ -15,8 +15,7 @@ import { useGetFavorites } from "../../pages/Lists/FavoriteList/api/useGetFavori
 
 const SelectedArt = () => {
   const slider = useRef<any>(null);
-  const { favoritesList } = useGetFavorites();
-  const navigate = useNavigate();
+  const { data: favoritesList } = useGetFavorites(1, 30);
 
   const settings = {
     dots: false,
@@ -45,12 +44,6 @@ const SelectedArt = () => {
     ],
   };
 
-  const handleNavigate = (e: any) => {
-    e.stopPropagation();
-
-    navigate("/painting-details");
-  };
-
   return (
     <div className="selected-art">
       <h2 className="selected-art__title">Selected artworks</h2>
@@ -60,42 +53,25 @@ const SelectedArt = () => {
 
       <div className="slider-container">
         <Slider ref={slider} {...settings} className="selected-art__slider">
-          <SelectedArtCard
-            isStock
-            handleNavigate={handleNavigate}
-            img={firstImg}
-          />
-          <SelectedArtCard
-            isStock
-            handleNavigate={handleNavigate}
-            img={secondImg}
-          />
-          <SelectedArtCard
-            isStock
-            handleNavigate={handleNavigate}
-            img={thirdImg}
-          />
-          <SelectedArtCard
-            isAsk
-            handleNavigate={handleNavigate}
-            img={fourthImg}
-          />
-          <SelectedArtCard handleNavigate={handleNavigate} img={firstImg} />
-          <SelectedArtCard
-            isAsk
-            handleNavigate={handleNavigate}
-            img={secondImg}
-          />
-          <SelectedArtCard
-            isStock
-            handleNavigate={handleNavigate}
-            img={thirdImg}
-          />
-          <SelectedArtCard
-            isAsk
-            handleNavigate={handleNavigate}
-            img={fourthImg}
-          />
+          <SelectedArtCard isStock img={firstImg} />
+          <SelectedArtCard isStock img={secondImg} />
+          <SelectedArtCard isStock img={thirdImg} />
+          <SelectedArtCard isAsk img={fourthImg} />
+          <SelectedArtCard img={firstImg} />
+          <SelectedArtCard isAsk img={secondImg} />
+          <SelectedArtCard isStock img={thirdImg} />
+          <SelectedArtCard isAsk img={fourthImg} />
+
+          {favoritesList?.results?.map((item: any) => (
+            <SelectedArtCard
+              id={item.id}
+              isStock={item.is_stock}
+              price={item.price}
+              description={item.description}
+              title={item.title}
+              img={item.image}
+            />
+          ))}
         </Slider>
 
         {/* <button

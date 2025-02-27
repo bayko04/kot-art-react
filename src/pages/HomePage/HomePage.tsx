@@ -11,9 +11,7 @@ import "./HomePage.scss";
 import { useGetFavorites } from "../Lists/FavoriteList/api/useGetFavorites";
 
 const HomePage = () => {
-  const { data: favoritesData } = useGetFavorites();
-
-  console.log(favoritesData);
+  const { data: favoritesData } = useGetFavorites({ page: 1, pageSize: 15 });
 
   return (
     <div className="home-page">

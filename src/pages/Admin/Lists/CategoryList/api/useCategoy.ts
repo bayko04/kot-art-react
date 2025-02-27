@@ -10,7 +10,6 @@ export function useGetCategory(page: number, pageSize: number) {
     queryKey: ["getCategories", page, pageSize],
     queryFn: async () => {
       const response = await PaintingsService.getCategoryList(page, pageSize);
-      console.log(response);
       dispatch(setData(response.data));
       return response.data;
     },

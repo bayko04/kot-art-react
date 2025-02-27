@@ -61,7 +61,7 @@ const CreateAuthor = () => {
         </div>
 
         <div>
-          <label htmlFor="whatsapp">Artist's whatsapp link</label>
+          <label htmlFor="whatsapp">Artist's whatsapp phone</label>
           <input type="text" {...register("whatsapp")} />
           {errors.whatsapp && (
             <p className="validateError">{errors.whatsapp.message}</p>

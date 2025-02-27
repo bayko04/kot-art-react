@@ -17,7 +17,7 @@ const LineSlider = ({
   otherData?: any;
 }) => {
   const slider = useRef<any>(null);
-  const { data, isSuccess } = useGetPaintings();
+  const { data, isSuccess } = useGetPaintings({ page: 1, pageSize: 20 });
   const [randomData, setRandomData] = useState<any>([]);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const LineSlider = ({
                   <LineSlide title={item.title} img={item.image} />
                 </div>
               ))
-            : [...otherData, ...otherData, ...otherData]?.map((item: any) => (
+            : [otherData]?.map((item: any) => (
                 <div key={item?.id}>
                   <LineSlide title={item?.title} img={item?.image} />
                 </div>

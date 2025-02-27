@@ -1,19 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import PaintingsService from "../../../../shared/services/PaintingsService";
 
-export function useCategoryPaints(
-  page: number,
-  pageSize: number,
-  categoryTitle?: string
-) {
+export function useCategoryPaints({
+  page,
+  pageSize,
+  categoryTitle,
+}: {
+  page: number;
+  pageSize: number;
+  categoryTitle?: string;
+}) {
   return useQuery({
     queryKey: ["getCategoryPaints", page, pageSize],
     queryFn: async () => {
-      const response = await PaintingsService.paintingList(
+      const response = await PaintingsService.paintingList({
         page,
         pageSize,
-        categoryTitle
-      );
+        categoryTitle,
+      });
       return response.data;
     },
     initialData: [],

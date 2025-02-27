@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignUp } from "./api/useAuth";
 import { ClipLoader } from "react-spinners";
+import eye from "../../shared/assets/images/svg/eye.svg";
+import eyeHide from "../../shared/assets/images/svg/eyeHide.svg";
 
 interface IForm {
   email: string;
@@ -11,6 +13,8 @@ interface IForm {
 
 const SignUp: FC = () => {
   const { mutate: signUpFn, isSuccess, isPending } = useSignUp();
+  const [showPassowrd, setShowPassowrd] = useState(false);
+  const [showRePassowrd, setShowRePassowrd] = useState(false);
   const navigate = useNavigate();
   const [form, setForm] = useState<IForm>({
     email: "",
@@ -28,8 +32,15 @@ const SignUp: FC = () => {
   };
 
   if (isSuccess) {
-    navigate("/confirm-email");
+    navigate("/auth/sign-in");
   }
+
+  const toggleShowPass = () => {
+    setShowPassowrd((prev) => !prev);
+  };
+  const toggleShowRePass = () => {
+    setShowRePassowrd((prev) => !prev);
+  };
 
   return (
     <div>
@@ -51,21 +62,47 @@ const SignUp: FC = () => {
         </div>
         <div className="auth__password">
           <label htmlFor="">Enter your password</label>
-          <input
-            onChange={handleOnChnage}
-            value={form.password}
-            name="password"
-            type="text"
-          />
+
+          <div className="auth__pass-wrapper">
+            <input
+              onChange={handleOnChnage}
+              value={form.password}
+              name="password"
+              type={showPassowrd ? "text" : "password"}
+            />
+
+            {showPassowrd ? (
+              <div onClick={toggleShowPass} className="auth__eye-open">
+                <img src={eye} alt="" />
+              </div>
+            ) : (
+              <div onClick={toggleShowPass} className="auth__eye-closed">
+                <img src={eyeHide} alt="" />
+              </div>
+            )}
+          </div>
         </div>
         <div className="auth__password">
           <label htmlFor="">Re-enter the password</label>
-          <input
-            onChange={handleOnChnage}
-            value={form.passowrdConfirm}
-            name="passowrdConfirm"
-            type="text"
-          />
+
+          <div className="auth__pass-wrapper">
+            <input
+              onChange={handleOnChnage}
+              value={form.passowrdConfirm}
+              name="passowrdConfirm"
+              type={showRePassowrd ? "text" : "password"}
+            />
+
+            {showPassowrd ? (
+              <div onClick={toggleShowRePass} className="auth__eye-open">
+                <img src={eye} alt="" />
+              </div>
+            ) : (
+              <div onClick={toggleShowRePass} className="auth__eye-closed">
+                <img src={eyeHide} alt="" />
+              </div>
+            )}
+          </div>
         </div>
       </form>
 

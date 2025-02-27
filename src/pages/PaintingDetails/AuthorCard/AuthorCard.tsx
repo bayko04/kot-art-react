@@ -11,7 +11,7 @@ const AuthorCard = ({ data }: { data?: any }) => {
   };
 
   const handleNavigate = () => {
-    navigate("/author-detail");
+    navigate(`/author-detail/${data?.author?.id}`);
   };
 
   return (

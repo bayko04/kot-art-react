@@ -1,12 +1,25 @@
 import CategoriesCard from "../../../features/CategoriesCard/CategoriesCard";
 import BasicLoader from "../../../shared/ui/BasicLoader/BasicLoader";
-import ListTemplate from "../../../shared/ui/ListTemplate/ListTemplate";
 import { useGetCategory } from "../../Admin/Lists/CategoryList/api/useCategoy";
 import "./GalleryList.scss";
 import categoryImg from "../../../shared/assets/images/content/sl2.jpg";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const GalleryList = () => {
-  const { data, isFetching } = useGetCategory();
+  const { data, isFetching, isFetched } = useGetCategory(1, 100);
+  const [filtered, setFiltered] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isFetched) {
+      const filterData = data?.results?.filter((item: any) => {
+        return item.title.split("-")[0].toLowerCase() !== "double";
+      });
+
+      setFiltered(filterData);
+    }
+  }, [isFetched]);
 
   return (
     <div className="gallery-list">
@@ -20,8 +33,10 @@ const GalleryList = () => {
           </div>
         ) : (
           <div className="gallery-list__row">
-            <CategoriesCard image={categoryImg} />
-            {data?.results?.map((item: any) => (
+            <div onClick={() => navigate("/double-category")}>
+              <CategoriesCard image={categoryImg} />
+            </div>
+            {filtered.map((item: any) => (
               <CategoriesCard
                 image={item.image}
                 title={item.title}

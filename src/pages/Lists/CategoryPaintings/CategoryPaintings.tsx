@@ -8,7 +8,11 @@ const CategoryPaintings = () => {
   const params = useParams();
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
-  const { data } = useCategoryPaints(currentPage, pageSize, params.slug || "");
+  const { data } = useCategoryPaints({
+    page: currentPage,
+    pageSize: pageSize,
+    categoryTitle: params.slug,
+  });
 
   const handlePageClick = (event: any) => {
     const selectedPage = event.selected + 1;

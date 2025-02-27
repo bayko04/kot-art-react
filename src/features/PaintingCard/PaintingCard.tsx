@@ -32,11 +32,9 @@ const PaintingCard = ({
 
   const handleNavigate = (e: any) => {
     e.stopPropagation();
-
     if (admin) {
       return navigate(`/admin/edit-painting/${id}`);
     }
-
     navigate(`/painting-details/${id}`);
   };
 

@@ -16,9 +16,11 @@ export function useCreatePaint() {
             );
             formData.append(`images[${index}]image`, imageObj.image);
           });
-        } /* else if (key === "categories") {
-          formData.append(`categories[0]`, value as string);
-        } */ else {
+        } else if (key === "categories" && Array.isArray(value)) {
+          value.forEach((categoryId, index) => {
+            formData.append(`categories`, categoryId);
+          });
+        } else {
           formData.append(key, value as string | Blob);
         }
       });

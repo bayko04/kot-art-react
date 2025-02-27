@@ -45,7 +45,7 @@ const EditCategory = () => {
 
   useEffect(() => {
     if (categoryData && params.id) {
-      const filtered = categoryData.filter(
+      const filtered = categoryData.results.filter(
         (item: any) => item.id === Number(params.id)
       );
       if (filtered.length > 0) {

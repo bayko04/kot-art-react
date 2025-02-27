@@ -6,7 +6,7 @@ import "./FavoriteList.scss";
 const FavoriteList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
-  const { data } = useGetFavorites(currentPage, pageSize);
+  const { data } = useGetFavorites({ page: currentPage, pageSize: pageSize });
 
   const handlePageClick = (event: any) => {
     const selectedPage = event.selected + 1;
@@ -18,12 +18,12 @@ const FavoriteList = () => {
   return (
     <div className="favorite-list">
       <div className="container">
-        {/* <ListTemplate
+        <ListTemplate
           handlePageClick={handlePageClick}
           pageSize={pageSize}
           data={data}
           title="Favorites"
-        /> */}
+        />
       </div>
     </div>
   );

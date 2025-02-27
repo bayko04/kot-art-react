@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -31,7 +31,7 @@ const schema = yup.object().shape({
     .positive("Height must be greater than zero")
     .required("Height is required"),
   author: yup.string().required("Artist is required"),
-  categories: yup.string().required("Category is required"),
+  categories: yup.array().min(1, "At least one category is required"),
   is_stock: yup.string().required("inStock is required"),
   images: yup
     .array()
@@ -66,7 +66,7 @@ const CreatePainting = () => {
       width: 0,
       height: 0,
       author: "",
-      categories: "",
+      categories: [],
       images: [],
       is_stock: "1",
     },
@@ -151,7 +151,7 @@ const CreatePainting = () => {
           <label htmlFor="author">Select an artist</label>
           <select {...register("author")}>
             <option value="">Select an artist</option>
-            {authorsList?.map((item: any) => (
+            {authorsList?.results?.map((item: any) => (
               <option key={item.id} value={item.id}>
                 {item.name}
               </option>
@@ -161,15 +161,28 @@ const CreatePainting = () => {
         </div>
 
         <div>
-          <label htmlFor="categories">Select a category</label>
-          <select {...register("categories")}>
-            <option value="">Select a category</option>
-            {categoriesList?.map((item: any) => (
+          <label htmlFor="categories">Select a categories</label>
+          {/* <select multiple {...register("categories")}>
+            {categoriesList?.results?.map((item: any) => (
               <option key={item.id} value={item.id}>
                 {item.title}
               </option>
             ))}
-          </select>
+          </select> */}
+
+          <div className="create-paint__checkboxes">
+            {categoriesList?.results?.map((item: any) => (
+              <div key={item.id} className="create-paint__checkbox">
+                <input
+                  type="checkbox"
+                  value={item.id}
+                  {...register("categories")}
+                />
+                <label>{item.title}</label>
+              </div>
+            ))}
+          </div>
+
           <p className="validateError">{errors.categories?.message}</p>
         </div>
 

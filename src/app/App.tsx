@@ -39,6 +39,7 @@ import RolesList from "../pages/Admin/Lists/RolesList/RolesList";
 import ScrollToTop from "../components/ScrollTotop/ScrollToTop";
 import Discover from "../pages/Discover/Discover";
 import NftList from "../pages/Lists/NftList/NftList";
+import DoubleCategory from "../pages/Lists/DoubleCategory/DoubleCategory";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
@@ -65,6 +66,7 @@ function App() {
             <Route path="/all-paintings" element={<AllPaintings />} />
             <Route path="/all-categories" element={<AllCategories />} />
             <Route path="/all-artworks" element={<AllArtworks />} />
+            <Route path="/double-category" element={<DoubleCategory />} />
             <Route
               path="/category/paintings/:slug"
               element={<CategoryPaintings />}

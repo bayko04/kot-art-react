@@ -40,6 +40,11 @@
     background: rgba(252, 250, 253, 1);
     border-bottom: 1px solid rgba(92, 211, 203, 1);
 
+    & > div {
+      height: 100%;
+      width: 100%;
+    }
+
     & img {
       height: 100%;
       width: 100%;

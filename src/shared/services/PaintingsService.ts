@@ -19,8 +19,8 @@ export default class PaintingsService {
     return $api.patch(`/painting/admin/author-update/${id}/`, formData);
   }
   static async getAuthors(
-    page: number,
-    pageSize: number,
+    page?: number,
+    pageSize?: number,
     authorId?: number | undefined
   ) {
     return axios.get(`${API_URL}/painting/admin/authors/`, {
@@ -40,7 +40,7 @@ export default class PaintingsService {
   static async deleteCategory(id: number) {
     return $api.delete(`/painting/admin/category-delete/${id}`);
   }
-  static async getCategoryList(page: number, pageSize: number) {
+  static async getCategoryList(page?: number, pageSize?: number) {
     return axios.get(`${API_URL}/painting/admin/category-list/`, {
       params: {
         page,
@@ -83,12 +83,17 @@ export default class PaintingsService {
     return $api.patch(`/painting/admin/update/${id}/`, formData);
   }
   //
-  static async paintingList(
-    page: number,
-    pageSize: number,
-    categoryTitle?: string,
-    authorId?: number | undefined
-  ) {
+  static async paintingList({
+    page,
+    pageSize,
+    categoryTitle,
+    authorId,
+  }: {
+    page: number;
+    pageSize: number;
+    categoryTitle?: string;
+    authorId?: number | undefined;
+  }) {
     return axios.get(`${API_URL}/painting/auth/list/`, {
       params: {
         page,
@@ -101,7 +106,13 @@ export default class PaintingsService {
   static async paintingRetrieve(id: number) {
     return axios.get(`${API_URL}/painting/auth/retrieve/${id}/`);
   }
-  static async paintingFollowList(page: number, pageSize: number) {
+  static async paintingFollowList({
+    page,
+    pageSize,
+  }: {
+    page?: number;
+    pageSize?: number;
+  }) {
     return $api.get(`${API_URL}/painting/auth/follow-list/`, {
       params: {
         page,

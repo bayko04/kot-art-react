@@ -2,6 +2,8 @@ import { FC, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignIn } from "./api/useAuth";
 import { ClipLoader } from "react-spinners";
+import eye from "../../shared/assets/images/svg/eye.svg";
+import eyeHide from "../../shared/assets/images/svg/eyeHide.svg";
 
 interface IForm {
   email: string;
@@ -10,6 +12,7 @@ interface IForm {
 
 const SignIn: FC = () => {
   const { mutate: signInFn, isSuccess, isPending } = useSignIn();
+  const [showPassowrd, setShowPassowrd] = useState(false);
   const navigate = useNavigate();
   const [form, setForm] = useState<IForm>({
     email: "",
@@ -23,6 +26,10 @@ const SignIn: FC = () => {
 
   const onSubmit = () => {
     signInFn({ email: form.email, password: form.password });
+  };
+
+  const toggleShowPass = () => {
+    setShowPassowrd((prev) => !prev);
   };
 
   if (isSuccess) {
@@ -43,12 +50,25 @@ const SignIn: FC = () => {
         </div>
         <div className="auth__password">
           <label htmlFor="">Enter your password</label>
-          <input
-            onChange={handleOnChnage}
-            value={form.password}
-            name="password"
-            type="text"
-          />
+
+          <div className="auth__pass-wrapper">
+            <input
+              onChange={handleOnChnage}
+              value={form.password}
+              name="password"
+              type={showPassowrd ? "text" : "password"}
+            />
+
+            {showPassowrd ? (
+              <div onClick={toggleShowPass} className="auth__eye-open">
+                <img src={eye} alt="" />
+              </div>
+            ) : (
+              <div onClick={toggleShowPass} className="auth__eye-closed">
+                <img src={eyeHide} alt="" />
+              </div>
+            )}
+          </div>
         </div>
       </form>
 

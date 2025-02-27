@@ -45,6 +45,33 @@
     }
   }
 
+  &__checkboxes {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      & label {
+        margin: 0;
+      }
+
+      & input {
+        width: 20px;
+        height: 20px;
+
+        &:focus {
+          border: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
   &__btns {
     margin: 20px 0 0 0;
 
