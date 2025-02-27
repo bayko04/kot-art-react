@@ -36,7 +36,7 @@ const GalleryList = () => {
             <div onClick={() => navigate("/double-category")}>
               <CategoriesCard image={categoryImg} />
             </div>
-            {filtered.map((item: any) => (
+            {filtered?.map((item: any) => (
               <CategoriesCard
                 image={item.image}
                 title={item.title}
