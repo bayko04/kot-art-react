@@ -13,10 +13,9 @@ const GalleryList = () => {
 
   useEffect(() => {
     if (isFetched) {
-      const filterData =
-        data?.results?.filter((item: any) => {
-          return item.title.split("-")[0].toLowerCase() !== "double";
-        }) || [];
+      const filterData = data?.results?.filter((item: any) => {
+        return item.title.split("-")[0].toLowerCase() !== "double";
+      });
 
       setFiltered(filterData);
     }
@@ -38,7 +37,7 @@ const GalleryList = () => {
               <CategoriesCard image={categoryImg} />
             </div>
             {filtered?.length > 0 &&
-              filtered?.map((item: any) => (
+              (filtered || []).map((item: any) => (
                 <CategoriesCard
                   image={item.image}
                   title={item.title}
