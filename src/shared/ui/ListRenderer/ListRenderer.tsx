@@ -34,7 +34,7 @@ const ListRenderer = ({
         </div>
       ) : listType === "category" ? (
         <div className="list-renderer__row">
-          <CategoriesCard admin={admin} id={0} />
+          {/* <CategoriesCard admin={admin} id={0} /> */}
           {data?.results?.map((item: any) => (
             <CategoriesCard
               image={item.image}
@@ -46,7 +46,7 @@ const ListRenderer = ({
         </div>
       ) : listType === "author" ? (
         <div className="list-renderer__row">
-          <AuthorCard admin={admin} />
+          {/* <AuthorCard admin={admin} /> */}
           {data?.results?.map((item: any) => (
             <AuthorCard
               name={item.name}
@@ -58,22 +58,6 @@ const ListRenderer = ({
         </div>
       ) : (
         <div className="list-renderer__row">
-          <PaintingCard admin={admin} image={cardImg1} />
-          <PaintingCard admin={admin} image={cardImg2} />
-          <PaintingCard admin={admin} image={cardImg3} />
-          <PaintingCard admin={admin} image={cardImg4} />
-          <PaintingCard admin={admin} image={cardImg1} />
-          <PaintingCard admin={admin} image={cardImg2} />
-          <PaintingCard admin={admin} image={cardImg3} />
-          <PaintingCard admin={admin} image={cardImg4} />
-          <PaintingCard admin={admin} image={cardImg1} />
-          <PaintingCard admin={admin} image={cardImg2} />
-          <PaintingCard admin={admin} image={cardImg3} />
-          <PaintingCard admin={admin} image={cardImg4} />
-          <PaintingCard admin={admin} image={cardImg1} />
-          <PaintingCard admin={admin} image={cardImg2} />
-          <PaintingCard admin={admin} image={cardImg3} />
-          <PaintingCard admin={admin} image={cardImg4} />
           {data?.results?.map((item: any) => (
             <PaintingCard
               title={item.title}
@@ -88,11 +72,13 @@ const ListRenderer = ({
         </div>
       )}
 
-      <Pagination
-        handlePageClick={handlePageClick}
-        pageSize={pageSize}
-        count={data?.count}
-      />
+      {pageSize < data?.count && (
+        <Pagination
+          handlePageClick={handlePageClick}
+          pageSize={pageSize}
+          count={data?.count}
+        />
+      )}
     </div>
   );
 };

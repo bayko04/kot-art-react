@@ -4,36 +4,16 @@ import CloseBtn from "../CloseBtn/CloseBtn";
 import { useDispatch } from "react-redux";
 import { setSearchModal } from "../../store/reducers/useSearchStore";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const SearchModal = () => {
+const SearchModal = ({ data }: any) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [filtered, setFiltered] = useState<any>([]);
   const [searchValue, setSearchValue] = useState();
-  const data = [
-    {
-      img: dataImg,
-      title: "Abc",
-    },
-    {
-      img: dataImg,
-      title: "Bbc",
-    },
-    {
-      img: dataImg,
-      title: "Ccs",
-    },
-    {
-      img: dataImg,
-      title: "Deee",
-    },
-    {
-      img: dataImg,
-      title: "Title of painting",
-    },
-  ];
 
   useEffect(() => {
-    const isFiltered = data.filter((item: any) => {
+    const isFiltered = data?.results?.filter((item: any) => {
       return item.title
         .toLowerCase()
         .includes((searchValue || "").toLowerCase());
@@ -43,6 +23,11 @@ const SearchModal = () => {
   }, [searchValue]);
 
   const handleClose = () => {
+    dispatch(setSearchModal(false));
+  };
+
+  const navigateToPainting = (id: number) => {
+    navigate(`painting-details/${id}`);
     dispatch(setSearchModal(false));
   };
 
@@ -83,10 +68,10 @@ const SearchModal = () => {
               </div>
               <p>Title of painting</p>
             </li> */}
-            {filtered?.map((item: any, index: number) => (
-              <li key={index}>
+            {filtered?.slice(0, 4)?.map((item: any, index: number) => (
+              <li onClick={() => navigateToPainting(item.id)} key={index}>
                 <div className="search-modal__data-img">
-                  <img src={item?.img} alt="" />
+                  <img src={item?.image} alt="" />
                 </div>
                 <p>{item?.title}</p>
               </li>

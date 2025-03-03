@@ -8,16 +8,12 @@ const MultiPaintingBlock = ({ data }: { data?: any }) => {
 
   return (
     <div className="multi-block">
-      <h4 className="multi-block__title">
-        {data?.title || "‘’My Life, ,My Rules”"}
-      </h4>
+      <h4 className="multi-block__title">{data?.title}</h4>
       <div className="multi-block__row">
         <div className="multi-block__left">
-          <p className="multi-block__author">
-            {data?.author?.name || "Roman Kozhokin"}
-          </p>
+          <p className="multi-block__author">{data?.author?.name}</p>
           <p className="multi-block__subinfo">
-            Original artwork, {data?.width + "x" + data?.height || "120×122"} cm
+            Original artwork, {data?.width + "x" + data?.height} cm
           </p>
         </div>
         <div className="multi-block__right">
@@ -27,7 +23,7 @@ const MultiPaintingBlock = ({ data }: { data?: any }) => {
 
       <div className="multi-block__dashboard">
         <h3 className="multi-block__price">
-          {data?.price || "$2,700"} <span>{data?.currency || "USD"}</span>
+          {data?.price} <span>{data?.currency}</span>
         </h3>
 
         <div className="multi-block__btns">
@@ -43,28 +39,38 @@ const MultiPaintingBlock = ({ data }: { data?: any }) => {
           >
             Buy now
           </WhatsAppLink>
-          {/* <button
+          <button
             onClick={() => navigate(data?.author?.whatsapp)}
             className="multi-block__offer"
           >
             Make an offer
-          </button> */}
-          <WhatsAppLink
+          </button>
+          {/* <WhatsAppLink
             phone={data?.author?.whatsapp}
             message={`Hi, I'm here about the painting \n${currentUrl}`}
           >
             Make an offer
-          </WhatsAppLink>
+          </WhatsAppLink> */}
         </div>
 
         <div className="multi-block__additional-btns">
-          <button>Share</button>
-          <button>Talk to an expert</button>
+          {/* <button>Share</button> */}
+          <WhatsAppLink
+            phone={data?.author?.whatsapp}
+            message={`Hi, I'm here about the painting \n${currentUrl}`}
+          >
+            Share
+          </WhatsAppLink>
+          <button onClick={() => navigate(data?.author?.whatsapp)}>
+            Talk to an expert
+          </button>
         </div>
       </div>
 
       <h4 className="multi-block__question-btn">
-        <button>Have a question?</button>
+        <button onClick={() => navigate(data?.author?.whatsapp)}>
+          Have a question?
+        </button>
       </h4>
     </div>
   );

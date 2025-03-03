@@ -10,11 +10,13 @@ export function useCreatePaint() {
       Object.entries(data).forEach(([key, value]) => {
         if (key === "images" && Array.isArray(value)) {
           value.forEach((imageObj, index) => {
-            formData.append(
-              `images[${index}]is_main`,
-              String(imageObj.is_main)
-            );
-            formData.append(`images[${index}]image`, imageObj.image);
+            if (index < 3) {
+              formData.append(
+                `images[${index}]is_main`,
+                String(imageObj.is_main)
+              );
+              formData.append(`images[${index}]image`, imageObj.image);
+            }
           });
         } else if (key === "categories" && Array.isArray(value)) {
           value.forEach((categoryId, index) => {

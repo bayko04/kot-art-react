@@ -21,6 +21,8 @@ const schema = yup.object().shape({
   name: yup.string().required("Имя автора обязательно"),
   bio: yup.string().required("Биография обязательна"),
   avatar: yup.mixed().required("Аватар обязателен"),
+  whatsapp: yup.string().required("Artist's whatsapp is required"),
+  instagram: yup.string().required("Artist's instagram is required"),
 });
 
 const EditAuthor = () => {
@@ -45,23 +47,23 @@ const EditAuthor = () => {
     },
   });
 
-  // После загрузки данных автора устанавливаем дефолтные значения
   useEffect(() => {
     if (authorsData && params.id) {
-      const filtered = authorsData.filter(
+      const filtered = authorsData?.results?.filter(
         (item: any) => item.id === Number(params.id)
       );
-      if (filtered.length > 0) {
+      if (filtered?.length > 0) {
         reset({
           name: filtered[0].name,
           bio: filtered[0].bio,
+          whatsapp: filtered[0].whatsapp,
+          instagram: filtered[0].instagram,
           avatar: "",
         });
       }
     }
   }, [authorsData, params.id, reset]);
 
-  // Обработка отправки формы
   const onSubmit = (formData: any) => {
     editAuthorFn({ data: formData, id: Number(params.id) });
   };
@@ -101,6 +103,23 @@ const EditAuthor = () => {
               <p className="validateError">{errors.bio.message}</p>
             )}
           </div>
+
+          <div>
+            <label htmlFor="whatsapp">Artist's whatsapp link</label>
+            <input type="text" {...register("whatsapp")} />
+            {errors.whatsapp && (
+              <p className="validateError">{errors.whatsapp.message}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="instagram">Artist's instagram link</label>
+            <input type="text" {...register("instagram")} />
+            {errors.instagram && (
+              <p className="validateError">{errors.instagram.message}</p>
+            )}
+          </div>
+
           <div className="form-group">
             <label htmlFor="avatar">Загрузить фото автора</label>
             <Controller

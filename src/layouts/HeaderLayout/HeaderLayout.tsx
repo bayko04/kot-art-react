@@ -6,9 +6,11 @@ import { FC, useEffect } from "react";
 import "./HeaderLayout.scss";
 import SearchModal from "../../shared/ui/SearchModal/SearchModal";
 import { useSelector } from "react-redux";
+import { useGetPaintings } from "../../pages/Admin/Lists/PaintingsList/api/usePaintings";
 
 const HeaderLayout: FC = () => {
   const { searchModal } = useSelector((state: any) => state.search);
+  const { data: paintingsData } = useGetPaintings({ page: 1, pageSize: 10000 });
 
   useEffect(() => {
     searchModal
@@ -23,7 +25,7 @@ const HeaderLayout: FC = () => {
           <Header />
           <UnderHeader />
 
-          {searchModal && <SearchModal />}
+          {searchModal && <SearchModal data={paintingsData} />}
         </div>
         <div className="header-layout__content">
           <Outlet />

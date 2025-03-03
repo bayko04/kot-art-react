@@ -12,8 +12,6 @@ const AdminLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location);
-
   useEffect(() => {
     if (location.pathname === "/admin") {
       navigate("paintings-list");

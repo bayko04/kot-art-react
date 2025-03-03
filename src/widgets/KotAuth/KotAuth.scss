@@ -1,15 +1,15 @@
 .kot-auth {
   height: 600px;
   background: url("../../shared/assets/images/content/authBg.png") no-repeat;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-size: cover;
   background-position: center;
   text-align: center;
   position: relative;
 
-  @supports (-webkit-touch-callout: none) {
-    transform: translate3d(0, 0, 0);
-  }
+  // @supports (-webkit-touch-callout: none) {
+  //   transform: translate3d(0, 0, 0);
+  // }
 
   &__wrapper {
     position: absolute;

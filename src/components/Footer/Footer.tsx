@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import inImg from "../../shared/assets/images/png/in.png";
 // import youtubeImg from "../../shared/assets/images/png/you.png";
 import facebookImg from "../../shared/assets/images/svg/footer/facebook.svg";
@@ -10,10 +10,12 @@ import paymentImg from "../../shared/assets/images/png/payments.png";
 import "./Footer.scss";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <div style={{ backgroundColor: "#E9EAEC" }}>
       <div className="footer">
-        <div className="footer__logo">
+        <div onClick={() => navigate("/")} className="footer__logo">
           <img src={logoWhite} alt="" />
         </div>
         <div className="footer__lists">
@@ -21,19 +23,17 @@ const Footer = () => {
             <h3>Pages</h3>
             <ul className="footer__list">
               <li>
-                <Link to="">About</Link>
+                <Link to="about-us">About</Link>
               </li>
               <li>
-                <Link to="">Artists</Link>
+                <Link to="/authors-list">Artists</Link>
+              </li>
+              {/* <li><Link to="/gallery">Collections</Link></li> */}
+              <li>
+                <Link to="/gallery">Gallery</Link>
               </li>
               <li>
-                <Link to="">Collections</Link>
-              </li>
-              <li>
-                <Link to="">Gallery</Link>
-              </li>
-              <li>
-                <Link to="">NFT</Link>
+                <Link to="/nft-list">NFT</Link>
               </li>
             </ul>
           </div>
@@ -41,10 +41,10 @@ const Footer = () => {
             <h3>Services</h3>
             <ul className="footer__list">
               <li>
-                <Link to="">All Artworks</Link>
+                <Link to="/all-artworks">All Artworks</Link>
               </li>
               <li>
-                <Link to="">Artist Collaborations</Link>
+                <Link to="/gallery">Artist Collaborations</Link>
               </li>
             </ul>
           </div>

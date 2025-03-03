@@ -3,12 +3,18 @@
 
   &__wrapper {
     width: 100%;
-    // min-height: 500px;
+    min-height: 300px;
     background: rgb(255, 255, 255);
     padding: 50px 100px;
     border-radius: 8px;
     position: relative;
     box-shadow: 0 10px 10px #00000081;
+  }
+
+  &__success {
+    text-align: center;
+    font-size: 22px;
+    line-height: 30px;
   }
 
   &__upBg {
@@ -51,8 +57,7 @@
     position: relative;
   }
 
-  &__eye-open,
-  &__eye-closed {
+  &__eye {
     cursor: pointer;
     content: "";
     position: absolute;
@@ -74,7 +79,8 @@
     justify-content: end;
     gap: 105px;
 
-    & a {
+    & a,
+    & button {
       font-family: roboto;
       font-weight: 700;
       font-size: 25px;

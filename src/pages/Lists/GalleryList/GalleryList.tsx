@@ -39,9 +39,9 @@ const GalleryList = () => {
             {filtered?.length > 0 &&
               (filtered || []).map((item: any) => (
                 <CategoriesCard
-                  image={item.image}
-                  title={item.title}
-                  id={item.id}
+                  image={item?.image}
+                  title={item?.title}
+                  id={item?.id}
                 />
               ))}
           </div>

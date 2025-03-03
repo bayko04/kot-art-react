@@ -1,6 +1,6 @@
 import "./global.scss";
 import HomePage from "../pages/HomePage/HomePage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Auth from "../pages/Auth/Auth";
 import Author from "./pages/AuthorDetail/AuthorDetail";
 import HeaderLayout from "../layouts/HeaderLayout/HeaderLayout";
@@ -21,7 +21,6 @@ import FavoriteList from "../pages/Lists/FavoriteList/FavoriteList";
 import CategoryRenderer from "../shared/ui/CategoryRenderer/CategoryRenderer";
 import SignIn from "../pages/Auth/SignIn";
 import SignUp from "../pages/Auth/SignUp";
-import ConfirmEmail from "../pages/Auth/ConfirmEmail";
 import ProfileLayout from "../layouts/ProfileLayout/ProfileLayout";
 import AdminLogin from "../pages/Admin/AdminLogin/AdminLogin";
 import AdminLayout from "../layouts/AdminLayout/AdminLayout";
@@ -40,9 +39,12 @@ import ScrollToTop from "../components/ScrollTotop/ScrollToTop";
 import Discover from "../pages/Discover/Discover";
 import NftList from "../pages/Lists/NftList/NftList";
 import DoubleCategory from "../pages/Lists/DoubleCategory/DoubleCategory";
+import { useRefresh } from "../pages/Auth/api/useAuth";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
   const { burger } = useSelector((state: any) => state.burger);
+  const { mutate: refreshFn } = useRefresh();
 
   useEffect(() => {
     burger
@@ -50,10 +52,15 @@ function App() {
       : (document.body.style.overflow = "visible");
   }, [burger]);
 
+  useEffect(() => {
+    refreshFn();
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="app">
         <ScrollToTop />
+        <PrivateRoutes />
         <Routes>
           <Route path="/" element={<HeaderLayout />}>
             <Route index element={<HomePage />} />
@@ -75,18 +82,14 @@ function App() {
             <Route path="/gallery" element={<GalleryList />} />
             <Route path="/authors-list" element={<AuthorsList />} />
             <Route path="profile/favorite" element={<FavoriteList />} />
-
             <Route path="/category/:slug" element={<CategoryRenderer />} />
-
             <Route path="/auth" element={<Auth />}>
               <Route path="sign-in" element={<SignIn />} />
               <Route path="sign-up" element={<SignUp />} />
-              <Route path="confirm-email" element={<ConfirmEmail />} />
             </Route>
           </Route>
 
           <Route path="/profile" element={<ProfileLayout />}></Route>
-
           <Route path="admin-login" element={<AdminLogin />} />
           <Route path="/admin/" element={<AdminLayout />}>
             <Route path="paintings-list" element={<PaintingsList />} />

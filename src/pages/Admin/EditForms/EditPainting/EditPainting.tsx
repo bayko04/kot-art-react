@@ -38,15 +38,12 @@ const schema = yup.object().shape({
   categories: yup.array().min(1, "At least one category is required"),
   is_stock: yup.string().required("inStock is required"),
 
-  images: yup
-    .array()
-    .of(
-      yup.object().shape({
-        is_main: yup.boolean(),
-        image: yup.mixed().required("Image file is required"),
-      })
-    )
-    .min(1, "At least one image is required"),
+  images: yup.array().of(
+    yup.object().shape({
+      is_main: yup.boolean(),
+      image: yup.mixed().notRequired(),
+    })
+  ),
 });
 
 const EditPainting = () => {
@@ -91,10 +88,9 @@ const EditPainting = () => {
         description: paintingData.description || "",
         width: paintingData.width || "",
         height: paintingData.height || "",
-        // Если в данных хранится объект автора/категории, берем его id
         author: paintingData.author?.id ? String(paintingData.author.id) : "",
         categories: paintingData.categories
-          ? paintingData.categories.map((category: any) => String(category.id)) // ✅ Преобразуем в массив строк
+          ? paintingData.categories.map((category: any) => String(category.id))
           : [],
         images: [],
         is_stock: (paintingData.is_stock ? "1" : "0") || "",

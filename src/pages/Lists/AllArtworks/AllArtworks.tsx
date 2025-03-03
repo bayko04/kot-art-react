@@ -5,7 +5,7 @@ import "./AllArtworks.scss";
 
 const AllArtworks = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 2;
+  const pageSize = 15;
   const { data, isFetching } = useGetPaintings({
     page: currentPage,
     pageSize: pageSize,

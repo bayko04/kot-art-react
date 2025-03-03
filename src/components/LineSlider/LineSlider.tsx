@@ -10,20 +10,21 @@ import "./LineSlider.scss";
 const LineSlider = ({
   title,
   rec,
-  otherData,
+  authorData,
 }: {
   title: string;
   rec?: boolean;
   otherData?: any;
+  authorData?: any;
 }) => {
   const slider = useRef<any>(null);
-  const { data, isSuccess } = useGetPaintings({ page: 1, pageSize: 20 });
+  const { data } = useGetPaintings({ page: 1, pageSize: 7 });
   const [randomData, setRandomData] = useState<any>([]);
 
   useEffect(() => {
-    if (data.length && randomData.length <= 15) {
+    if (data?.count > 0 && randomData.length <= 15) {
       for (let i = 0; i < 15; i++) {
-        const object = rondomizer(data);
+        const object = rondomizer(data.results);
         setRandomData((prev: any) => [...prev, object]);
       }
     }
@@ -43,7 +44,6 @@ const LineSlider = ({
       return <div className="custom-dot"></div>;
     },
     dotsClass: "slick-dots custom-dots",
-
     responsive: [
       {
         breakpoint: 992,
@@ -66,28 +66,23 @@ const LineSlider = ({
 
       <div className="line-slider__container">
         <Slider ref={slider} {...settings} className="line-slider__slider">
-          {rec
-            ? randomData?.map((item: any) => (
-                <div key={item?.id}>
-                  <LineSlide title={item.title} img={item.image} />
-                </div>
-              ))
-            : [otherData]?.map((item: any) => (
-                <div key={item?.id}>
-                  <LineSlide title={item?.title} img={item?.image} />
-                </div>
-              ))}
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
-          <LineSlide />
+          {rec &&
+            randomData?.map((item: any) => (
+              <div key={item?.id}>
+                <LineSlide title={item?.title} img={item?.image} />
+              </div>
+            ))}
+
+          {!rec &&
+            [
+              ...(authorData || []),
+              ...(authorData || []),
+              ...(authorData || []),
+            ]?.map((item: any) => (
+              <div key={item?.id}>
+                <LineSlide title={item?.title} img={item?.image} />
+              </div>
+            ))}
         </Slider>
 
         <div className="line-slider__btns">

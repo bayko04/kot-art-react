@@ -14,15 +14,12 @@ export default class AuthService {
   static async createAdmin(email: string, password: string) {
     return axios.post(`${API_URL}/user/admin_create/`, { email, password });
   }
-  static async refreshToken(refresh: string) {
-    $api.post("/user/logout/", { refresh });
-  }
   static async verifyEmail(email: string, confirmation_code: string) {
     axios.post(`${API_URL}/user/verify-email/`, { email, confirmation_code });
   }
   static async checkAuth() {
     const refreshToken = localStorage.getItem("refreshToken");
-    return $api.post("/user/refresh/", {
+    return $api.post("/user/token/refresh/", {
       refresh: refreshToken,
     });
   }

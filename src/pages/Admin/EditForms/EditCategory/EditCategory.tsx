@@ -45,10 +45,10 @@ const EditCategory = () => {
 
   useEffect(() => {
     if (categoryData && params.id) {
-      const filtered = categoryData.results.filter(
+      const filtered = categoryData?.results?.filter(
         (item: any) => item.id === Number(params.id)
       );
-      if (filtered.length > 0) {
+      if (filtered?.length > 0) {
         reset({
           title: filtered[0].title,
           image: "",

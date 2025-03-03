@@ -1,5 +1,7 @@
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import AuthService from "../../../shared/services/AuthService";
+import { useDispatch } from "react-redux";
+import { setIsAuth } from "../../../shared/store/reducers/useAuthStore";
 
 export function useSignUp() {
   return useMutation({
@@ -16,7 +18,10 @@ export function useSignUp() {
     },
   });
 }
+
 export function useSignIn() {
+  const dispatch = useDispatch();
+
   return useMutation({
     mutationKey: ["signIn"],
     mutationFn: async ({
@@ -27,27 +32,32 @@ export function useSignIn() {
       password: string;
     }) => {
       const response = await AuthService.login(email, password);
-      localStorage.setItem("token", response.data.access);
-      return response.data.results;
+      localStorage.setItem("accessToken", response.data.access);
+      localStorage.setItem("refreshToken", response.data.refresh);
+
+      if (response.status === 200) {
+        dispatch(setIsAuth(true));
+      }
+
+      return response.data;
     },
   });
 }
 
-export function useConfirmGmail() {
+export function useRefresh() {
+  const dispatch = useDispatch();
+
   return useMutation({
-    mutationKey: ["confirmGmail"],
-    mutationFn: async ({
-      email,
-      confirmation_code,
-    }: {
-      email: string;
-      confirmation_code: string;
-    }) => {
-      const response: any = await AuthService.verifyEmail(
-        email,
-        confirmation_code
-      );
-      return response.data.results;
+    mutationKey: ["refresh"],
+    mutationFn: async () => {
+      const response = await AuthService.checkAuth();
+      localStorage.setItem("accessToken", response.data.access);
+
+      if (response.status === 200) {
+        dispatch(setIsAuth(true));
+      }
+
+      return response.data;
     },
   });
 }

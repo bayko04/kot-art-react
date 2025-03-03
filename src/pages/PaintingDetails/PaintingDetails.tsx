@@ -42,10 +42,7 @@ const PaintingDetails = () => {
           <div className="paintingDetails__paintings">
             <div className="paintingDetails__main-img">
               <img
-                src={
-                  images?.filter((item: any) => item.is_main)[0].image ||
-                  pinkCatImg
-                }
+                src={images?.filter((item: any) => item.is_main)[0].image}
                 alt=""
               />
             </div>
@@ -73,7 +70,7 @@ const PaintingDetails = () => {
           <div className="paintingDetails__row">
             <h3 className="paintingDetails__left">Artist</h3>
             <div className="paintingDetails__right paintingDetails__author">
-              {data?.title || `Roman ${(<br />)} KOzhokin`}
+              {data?.title}
             </div>
           </div>
 
@@ -86,14 +83,7 @@ const PaintingDetails = () => {
           <div className="paintingDetails__row">
             <h3 className="paintingDetails__left">About The Artwork</h3>
             <div className="paintingDetails__right">
-              <p>
-                {data?.description ||
-                  `Painting: Oil and pencil on masonite panel. Size: 18 H x 18 W x
-                1 in Oil on canvas I’ve written a little about the process and
-                thoughts behind Wading Pool and it's sibling painting Maruta. A
-                link to the first, “Waruta: Connections & Inspiration”, is
-                below: http://www.mryczek.com/waruta-connections-inspiration/`}
-              </p>
+              <p>{data?.description}</p>
             </div>
           </div>
 
@@ -102,17 +92,15 @@ const PaintingDetails = () => {
             <div className="paintingDetails__right">
               <ul>
                 <li>
-                  <strong>Painting:</strong> {data?.title || "Oil on Wood"}
+                  <strong>Painting:</strong> {data?.title}
                 </li>
                 <li>
-                  <strong>Original:</strong>
+                  <strong>Original: </strong>
 
-                  {data?.categories?.map((item: string) => `${item} `) ||
-                    "One-of-a-kind Artwork"}
+                  {data?.categories?.map((item: any) => item.title)}
                 </li>
                 <li>
-                  <strong>Size:</strong> {data?.width || "20"} W x{" "}
-                  {data?.height || "20"} H
+                  <strong>Size:</strong> {data?.width} W x {data?.height} H
                 </li>
               </ul>
             </div>
@@ -140,12 +128,14 @@ const PaintingDetails = () => {
         </div>
       </div>
 
-      <div className="paintingDetails__other-artworks">
-        <LineSlider
-          otherData={authorPaints}
-          title="Other artworks by the artist"
-        />
-      </div>
+      {authorPaints?.count > 1 && (
+        <div className="paintingDetails__other-artworks">
+          <LineSlider
+            authorData={authorPaints?.results}
+            title="Other artworks by the artist"
+          />
+        </div>
+      )}
 
       <div className="container">
         <div className="paintingDetails__recoms">

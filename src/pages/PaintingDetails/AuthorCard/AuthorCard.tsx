@@ -24,21 +24,10 @@ const AuthorCard = ({ data }: { data?: any }) => {
             <img src={data?.author?.avatar} alt="" />
           </div>
           <div className="author-card__left">
-            <h6 className="author-card__fullname">
-              {data?.author?.name || "Roman Kozhokin"}
-            </h6>
+            <h6 className="author-card__fullname">{data?.author?.name}</h6>
             <p className="author-card__text">
               <strong>Biography:</strong>
-              {data?.author?.bio ||
-                `Born in 1985 in Northern Russia, and
-              immigrated to Israel with his family at the age of 6. For his
-              paintings and sculptures, Roman often uses various organic
-              materials, mainly wood, which to his perception “… Has lived for
-              an entire life, accumulating energy and experience from its
-              environment that have left paintings and sculptures, Roman often
-              uses various organic materials, mainly wood, which to his
-              perception “… Has lived for an entire life, accumulating energy
-              and experience from its environment that have left`}
+              {data?.author?.bio}
             </p>
 
             <div

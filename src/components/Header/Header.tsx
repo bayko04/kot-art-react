@@ -16,6 +16,7 @@ import pinterestImg from "../../shared/assets/images/svg/footer/pinterest.svg";
 
 const Header = () => {
   const { burger } = useSelector((state: any) => state.burger);
+  const { isAuth } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,31 +46,33 @@ const Header = () => {
               <Link to="/profile/favorite">
                 <img src={favoriteImg} alt="" />
               </Link>
-              <Link to="/">
+              {/* <Link to="/">
                 <img src={profileImg} alt="" />
-              </Link>
+              </Link> */}
             </div>
 
-            <div className={`header__auth ${burger ? "active" : ""}`}>
-              <button
-                onClick={() => {
-                  navigate("/auth/sign-in");
-                  dispatch(setBurger(false));
-                }}
-                className="header__signIn"
-              >
-                Sign in
-              </button>
-              <button
-                onClick={() => {
-                  navigate("/auth/sign-up");
-                  dispatch(setBurger(false));
-                }}
-                className="header__signUp"
-              >
-                Sign up
-              </button>
-            </div>
+            {!isAuth && (
+              <div className={`header__auth ${burger ? "active" : ""}`}>
+                <button
+                  onClick={() => {
+                    navigate("/auth/sign-in");
+                    dispatch(setBurger(false));
+                  }}
+                  className="header__signIn"
+                >
+                  Sign in
+                </button>
+                <button
+                  onClick={() => {
+                    navigate("/auth/sign-up");
+                    dispatch(setBurger(false));
+                  }}
+                  className="header__signUp"
+                >
+                  Sign up
+                </button>
+              </div>
+            )}
 
             <div className={`header__network ${burger ? "active" : ""}`}>
               <div className="header__network-row">

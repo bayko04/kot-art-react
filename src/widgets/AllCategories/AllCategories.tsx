@@ -77,9 +77,7 @@ const AllCategories = () => {
           ))}
         </Slider>
         <div className="all-categories__btn">
-          <button onClick={() => navigate("/all-categories")}>
-            Shop for Art
-          </button>
+          <button onClick={() => navigate("/gallery")}>Shop for Art</button>
         </div>
       </div>
     </div>
