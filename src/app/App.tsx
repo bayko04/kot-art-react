@@ -90,7 +90,7 @@ function App() {
           </Route>
 
           <Route path="/profile" element={<ProfileLayout />}></Route>
-          <Route path="admin-login" element={<AdminLogin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/admin/" element={<AdminLayout />}>
             <Route path="paintings-list" element={<PaintingsList />} />
             <Route path="category-list" element={<CategoryList />} />
