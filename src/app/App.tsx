@@ -1,6 +1,11 @@
 import "./global.scss";
 import HomePage from "../pages/HomePage/HomePage";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  /* BrowserRouter */ HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Auth from "../pages/Auth/Auth";
 import Author from "./pages/AuthorDetail/AuthorDetail";
 import HeaderLayout from "../layouts/HeaderLayout/HeaderLayout";
@@ -57,7 +62,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <Router>
       <div className="app">
         <ScrollToTop />
         <PrivateRoutes />
@@ -106,7 +111,7 @@ function App() {
           </Route>
         </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
